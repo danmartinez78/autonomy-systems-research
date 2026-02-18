@@ -386,11 +386,15 @@ def main():
     print(f"✓ Generated {TAGS_INDEX}")
     print()
     
+    # Track which tag files should exist
+    current_tag_files = set()
+    
     # Generate individual tag pages
     print(f"Generating individual tag pages in {TAGS_DIR}/")
     for tag, pages in sorted(tag_pages.items()):
         tag_slug = slugify(tag)
         tag_file = TAGS_DIR / f"{tag_slug}.md"
+        current_tag_files.add(tag_file)
         
         tag_content = generate_tag_page(tag, pages)
         with open(tag_file, 'w', encoding='utf-8') as f:
@@ -399,8 +403,27 @@ def main():
         print(f"  ✓ {tag_slug}.md ({len(pages)} pages)")
     
     print()
+    
+    # Delete obsolete tag pages
+    print("Checking for obsolete tag pages...")
+    existing_tag_files = set(TAGS_DIR.glob("*.md"))
+    obsolete_files = existing_tag_files - current_tag_files
+    
+    if obsolete_files:
+        obsolete_count = len(obsolete_files)
+        print(f"Found {obsolete_count} obsolete tag page(s) to delete:")
+        for obsolete_file in sorted(obsolete_files):
+            print(f"  ✗ Deleting {obsolete_file.name}")
+            obsolete_file.unlink()
+        print()
+    else:
+        print("✓ No obsolete tag pages found")
+        print()
+    
     print("=" * 60)
     print(f"✓ Successfully generated {len(tag_pages)} tag pages")
+    if obsolete_files:
+        print(f"✓ Deleted {len(obsolete_files)} obsolete tag pages")
     print("=" * 60)
     print()
     print("Tag pages are ready! You can now:")
