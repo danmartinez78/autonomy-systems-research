@@ -16,6 +16,8 @@ jobs:
   validate-tags:
     runs-on: ubuntu-latest
     name: Check Tag Pages are Up-to-Date
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
