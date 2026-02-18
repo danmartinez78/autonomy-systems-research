@@ -28,12 +28,24 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <p>1 page</p>
   </div>
   <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/embodied-ai/">embodied-ai</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/infrastructure/">infrastructure</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/knowledge-graphs/">knowledge-graphs</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/localization/">localization</a></h3>
     <p>2 pages</p>
+  </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/memory-systems/">memory-systems</a></h3>
+    <p>1 page</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/perception/">perception</a></h3>
@@ -48,7 +60,15 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <p>1 page</p>
   </div>
   <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/robotics/">robotics</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/safety/">safety</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/semantic-memory/">semantic-memory</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
@@ -63,6 +83,10 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <h3><a href="{{ site.baseurl }}/tags/system-architecture/">system-architecture</a></h3>
     <p>1 page</p>
   </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/vla/">vla</a></h3>
+    <p>1 page</p>
+  </div>
 </div>
 
 ## All Tags (Alphabetical)
@@ -71,12 +95,18 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**behavior-trees**]({{ site.baseurl }}/tags/behavior-trees/) (1 page)
 - [**control-architecture**]({{ site.baseurl }}/tags/control-architecture/) (1 page)
 - [**decision-making**]({{ site.baseurl }}/tags/decision-making/) (1 page)
+- [**embodied-ai**]({{ site.baseurl }}/tags/embodied-ai/) (1 page)
 - [**infrastructure**]({{ site.baseurl }}/tags/infrastructure/) (1 page)
+- [**knowledge-graphs**]({{ site.baseurl }}/tags/knowledge-graphs/) (1 page)
 - [**localization**]({{ site.baseurl }}/tags/localization/) (2 pages)
+- [**memory-systems**]({{ site.baseurl }}/tags/memory-systems/) (1 page)
 - [**perception**]({{ site.baseurl }}/tags/perception/) (2 pages)
 - [**planning**]({{ site.baseurl }}/tags/planning/) (1 page)
 - [**reliability**]({{ site.baseurl }}/tags/reliability/) (1 page)
+- [**robotics**]({{ site.baseurl }}/tags/robotics/) (1 page)
 - [**safety**]({{ site.baseurl }}/tags/safety/) (1 page)
+- [**semantic-memory**]({{ site.baseurl }}/tags/semantic-memory/) (1 page)
 - [**setup**]({{ site.baseurl }}/tags/setup/) (1 page)
 - [**state-estimation**]({{ site.baseurl }}/tags/state-estimation/) (2 pages)
 - [**system-architecture**]({{ site.baseurl }}/tags/system-architecture/) (1 page)
+- [**vla**]({{ site.baseurl }}/tags/vla/) (1 page)
