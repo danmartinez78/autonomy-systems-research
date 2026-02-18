@@ -6,7 +6,7 @@ permalink: /tags/vla/
 
 # Tag: vla
 
-2 pages tagged with **vla**
+1 page tagged with **vla**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -15,11 +15,6 @@ permalink: /tags/vla/
 ---
 
 <ul class="post-list">
-  <li>
-    <span class="post-meta">Feb 18, 2026</span>
-    <h4><a href="{{ site.baseurl }}/journal/2026/2026-02-18-memory-systems-synthesis/">Memory Systems for VLA-based Autonomous Robots</a></h4>
-    <p class="post-summary">First research synthesis: memory architectures for Vision-Language-Action models</p>
-  </li>
   <li>
     <span class="post-meta">Feb 18, 2026</span>
     <h4><a href="{{ site.baseurl }}/syntheses/memory-systems-vla-robots/">Memory Systems for Autonomous Robots with VLA Architectures</a></h4>

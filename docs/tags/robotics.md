@@ -6,7 +6,7 @@ permalink: /tags/robotics/
 
 # Tag: robotics
 
-2 pages tagged with **robotics**
+1 page tagged with **robotics**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -15,11 +15,6 @@ permalink: /tags/robotics/
 ---
 
 <ul class="post-list">
-  <li>
-    <span class="post-meta">Feb 18, 2026</span>
-    <h4><a href="{{ site.baseurl }}/journal/2026/2026-02-18-memory-systems-synthesis/">Memory Systems for VLA-based Autonomous Robots</a></h4>
-    <p class="post-summary">First research synthesis: memory architectures for Vision-Language-Action models</p>
-  </li>
   <li>
     <span class="post-meta">Feb 18, 2026</span>
     <h4><a href="{{ site.baseurl }}/syntheses/memory-systems-vla-robots/">Memory Systems for Autonomous Robots with VLA Architectures</a></h4>
