@@ -1,8 +1,8 @@
 # Jekyll configuration for Autonomy Systems Research Knowledge Base
 title: Autonomy Systems Research
 description: A knowledge base for robotics and autonomy research - reading notes, syntheses, and structured knowledge.
-baseurl: ""
-url: "https://danmartinez78.github.io/autonomy-systems-research"
+baseurl: "/autonomy-systems-research"
+url: "https://danmartinez78.github.io"
 
 # GitHub repository configuration
 github:
@@ -28,6 +28,8 @@ header_pages:
   - syntheses.md
   - knowledge-base.md
   - references.md
+  - tags.md
+  - search.md
 
 # Exclude from processing
 exclude:

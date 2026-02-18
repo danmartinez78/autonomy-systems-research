@@ -25,6 +25,8 @@ The content is organized into several sections, accessible via the navigation me
 - **[Syntheses]({{ "/syntheses/" | relative_url }})**: Consolidated understanding of research topics
 - **[Knowledge Base]({{ "/knowledge-base/" | relative_url }})**: Evergreen reference material
 - **[References]({{ "/references/" | relative_url }})**: Glossary and canonical links
+- **[Tags]({{ "/tags/" | relative_url }})**: Browse content by topic tags
+- **[Search]({{ "/search/" | relative_url }})**: Full-text search across all content
 
 ## Contributing
 
@@ -36,6 +38,8 @@ Browse the sections above or start with:
 - Recent [journal entries]({{ "/journal/" | relative_url }}) for current research focus
 - [Reading notes]({{ "/reading/" | relative_url }}) for summaries of key papers
 - [Knowledge base]({{ "/knowledge-base/" | relative_url }}) for quick reference material
+- [Tags]({{ "/tags/" | relative_url }}) to explore topics
+- [Search]({{ "/search/" | relative_url }}) to find specific content
 
 ---
 

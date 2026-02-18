@@ -21,6 +21,8 @@ The knowledge base is organized into several content types:
 - **[Journal Entries](https://danmartinez78.github.io/autonomy-systems-research/journal/)**: Chronological progress logs and research decisions
 - **[Knowledge Base](https://danmartinez78.github.io/autonomy-systems-research/knowledge-base/)**: Evergreen reference pages on concepts and patterns
 - **[References](https://danmartinez78.github.io/autonomy-systems-research/references/)**: Glossary, definitions, and canonical links
+- **[Tags](https://danmartinez78.github.io/autonomy-systems-research/tags/)**: Browse content by topic tags
+- **[Search](https://danmartinez78.github.io/autonomy-systems-research/search/)**: Full-text search across all content
 
 ## Quick Start
 
