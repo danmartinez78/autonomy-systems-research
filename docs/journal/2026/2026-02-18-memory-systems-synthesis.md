@@ -11,4 +11,4 @@ Published first research synthesis examining memory architectures for VLA-based 
 
 **Key insight**: Current VLA models operate on single observations — memory systems enable long-horizon tasks, non-Markovian dependencies, and multi-episode understanding.
 
-[Read the synthesis](/syntheses/memory-systems-vla-robots/) | [PR #21](https://github.com/danmartinez78/autonomy-systems-research/pull/21)
+[Read the synthesis]({{ "/syntheses/memory-systems-vla-robots/" | relative_url }}) | [PR #21](https://github.com/danmartinez78/autonomy-systems-research/pull/21)
