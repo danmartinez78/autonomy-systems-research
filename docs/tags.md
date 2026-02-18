@@ -12,74 +12,74 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 
 <div class="tag-cloud">
   <div class="tag-item">
-    <h3><a href="/tags/bayes-filter/">bayes-filter</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/bayes-filter/">bayes-filter</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/behavior-trees/">behavior-trees</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/behavior-trees/">behavior-trees</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/control-architecture/">control-architecture</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/control-architecture/">control-architecture</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/decision-making/">decision-making</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/decision-making/">decision-making</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/infrastructure/">infrastructure</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/infrastructure/">infrastructure</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/localization/">localization</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/localization/">localization</a></h3>
     <p>2 pages</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/perception/">perception</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/perception/">perception</a></h3>
     <p>2 pages</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/planning/">planning</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/planning/">planning</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/reliability/">reliability</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/reliability/">reliability</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/safety/">safety</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/safety/">safety</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/setup/">setup</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/setup/">setup</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/state-estimation/">state-estimation</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/state-estimation/">state-estimation</a></h3>
     <p>2 pages</p>
   </div>
   <div class="tag-item">
-    <h3><a href="/tags/system-architecture/">system-architecture</a></h3>
+    <h3><a href="{{ site.baseurl }}/tags/system-architecture/">system-architecture</a></h3>
     <p>1 page</p>
   </div>
 </div>
 
 ## All Tags (Alphabetical)
 
-- [**bayes-filter**](/tags/bayes-filter/) (1 page)
-- [**behavior-trees**](/tags/behavior-trees/) (1 page)
-- [**control-architecture**](/tags/control-architecture/) (1 page)
-- [**decision-making**](/tags/decision-making/) (1 page)
-- [**infrastructure**](/tags/infrastructure/) (1 page)
-- [**localization**](/tags/localization/) (2 pages)
-- [**perception**](/tags/perception/) (2 pages)
-- [**planning**](/tags/planning/) (1 page)
-- [**reliability**](/tags/reliability/) (1 page)
-- [**safety**](/tags/safety/) (1 page)
-- [**setup**](/tags/setup/) (1 page)
-- [**state-estimation**](/tags/state-estimation/) (2 pages)
-- [**system-architecture**](/tags/system-architecture/) (1 page)
+- [**bayes-filter**]({{ site.baseurl }}/tags/bayes-filter/) (1 page)
+- [**behavior-trees**]({{ site.baseurl }}/tags/behavior-trees/) (1 page)
+- [**control-architecture**]({{ site.baseurl }}/tags/control-architecture/) (1 page)
+- [**decision-making**]({{ site.baseurl }}/tags/decision-making/) (1 page)
+- [**infrastructure**]({{ site.baseurl }}/tags/infrastructure/) (1 page)
+- [**localization**]({{ site.baseurl }}/tags/localization/) (2 pages)
+- [**perception**]({{ site.baseurl }}/tags/perception/) (2 pages)
+- [**planning**]({{ site.baseurl }}/tags/planning/) (1 page)
+- [**reliability**]({{ site.baseurl }}/tags/reliability/) (1 page)
+- [**safety**]({{ site.baseurl }}/tags/safety/) (1 page)
+- [**setup**]({{ site.baseurl }}/tags/setup/) (1 page)
+- [**state-estimation**]({{ site.baseurl }}/tags/state-estimation/) (2 pages)
+- [**system-architecture**]({{ site.baseurl }}/tags/system-architecture/) (1 page)
 
 <style>
 .tag-cloud {
