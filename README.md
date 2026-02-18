@@ -1,1 +1,183 @@
-# autonomy-systems-research
+# Autonomy Systems Research
+
+A public knowledge base for robotics and autonomy research. This repository contains structured reading notes, syntheses, and evergreen reference material on perception, planning, control, learning, and system architecture.
+
+## Purpose
+
+This knowledge base serves as a public repository for research artifacts, enabling:
+
+- **Structured Learning**: Capture and organize understanding from papers and technical resources
+- **Knowledge Synthesis**: Consolidate insights across multiple sources into coherent narratives
+- **Evergreen Reference**: Maintain practical, actionable guidance on concepts and patterns
+- **Transparent Research**: Document progress, decisions, and evolving understanding
+- **Team Collaboration**: Enable research team members to build shared understanding
+
+## Organization
+
+The knowledge base is organized into several content types:
+
+- **[Reading Notes](https://danmartinez78.github.io/autonomy-systems-research/reading/)**: Structured summaries and analysis of papers and articles
+- **[Syntheses](https://danmartinez78.github.io/autonomy-systems-research/syntheses/)**: Topic-level consolidation of understanding across sources
+- **[Journal Entries](https://danmartinez78.github.io/autonomy-systems-research/journal/)**: Chronological progress logs and research decisions
+- **[Knowledge Base](https://danmartinez78.github.io/autonomy-systems-research/knowledge-base/)**: Evergreen reference pages on concepts and patterns
+- **[References](https://danmartinez78.github.io/autonomy-systems-research/references/)**: Glossary, definitions, and canonical links
+
+## Quick Start
+
+### Browse Online
+
+Visit the published site: **https://danmartinez78.github.io/autonomy-systems-research**
+
+### Add Content
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions on adding reading notes, syntheses, journal entries, and knowledge base pages.
+
+Quick workflow:
+1. Copy appropriate template from `/docs/_templates/`
+2. Fill in the content following the template structure
+3. Submit a pull request using the PR template
+
+### Local Development
+
+To preview changes locally:
+
+```bash
+# Install dependencies (first time only)
+cd docs
+bundle install
+
+# Run local server
+bundle exec jekyll serve
+
+# Open http://localhost:4000 in browser
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions.
+
+## Publishing
+
+This site is automatically published via GitHub Pages:
+- **Source**: `/docs` directory on `main` branch
+- **URL**: https://danmartinez78.github.io/autonomy-systems-research
+- **Updates**: Automatically deployed when changes are pushed to `main`
+
+No manual build or deployment steps required.
+
+### Initial GitHub Pages Setup
+
+To enable GitHub Pages for the first time:
+
+1. Go to repository Settings → Pages
+2. Under "Build and deployment":
+   - **Source**: Deploy from a branch
+   - **Branch**: `main`
+   - **Folder**: `/docs`
+3. Click "Save"
+
+GitHub will automatically build and deploy the site. The URL will be `https://[username].github.io/autonomy-systems-research`.
+
+## Repository Structure
+
+```
+autonomy-systems-research/
+├── docs/                          # Jekyll site source (GitHub Pages)
+│   ├── _config.yml               # Jekyll configuration
+│   ├── Gemfile                   # Ruby dependencies
+│   ├── index.md                  # Landing page
+│   ├── journal.md                # Journal index page
+│   ├── reading.md                # Reading notes index page
+│   ├── syntheses.md              # Syntheses index page
+│   ├── knowledge-base.md         # Knowledge base index page
+│   ├── references.md             # References and glossary
+│   ├── journal/                  # Journal entries by year
+│   │   └── 2026/
+│   │       └── 2026-02-18-*.md
+│   ├── reading/                  # Reading notes
+│   │   └── *.md
+│   ├── syntheses/                # Synthesis documents
+│   │   └── *.md
+│   ├── knowledge-base/           # Evergreen reference pages
+│   │   └── *.md
+│   ├── references/               # (Reserved for future structure)
+│   ├── _templates/               # Content templates (not published)
+│   │   ├── reading-note.md
+│   │   ├── synthesis.md
+│   │   ├── journal-entry.md
+│   │   └── knowledge-base.md
+│   └── _assets/                  # Images and media
+│       └── images/
+├── .github/
+│   ├── PULL_REQUEST_TEMPLATE.md  # PR template
+│   └── ISSUE_TEMPLATE/           # Issue templates
+│       ├── reading-to-ingest.md
+│       └── synthesis-kb-task.md
+├── CONTRIBUTING.md               # Contribution guidelines
+├── LICENSE-DOCS                  # CC BY 4.0 for documentation
+├── LICENSE-CODE                  # MIT for code
+└── README.md                     # This file
+```
+
+## Licensing
+
+This repository uses dual licensing:
+
+### Documentation and Content: CC BY 4.0
+
+All documentation, reading notes, journal entries, syntheses, knowledge base pages, and media are licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+
+You are free to share and adapt this content with attribution.
+
+See [LICENSE-DOCS](LICENSE-DOCS) for full terms.
+
+### Code: MIT License
+
+All code (scripts, tools, automation, code examples) is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this code.
+
+See [LICENSE-CODE](LICENSE-CODE) for full terms.
+
+### What This Means
+
+- **Reading a paper summary?** You can freely share, adapt, and build upon it with attribution (CC BY 4.0)
+- **Using a code snippet?** You can freely use it in your own projects (MIT)
+- **Not sure which applies?** Markdown content and prose are CC BY 4.0; code and scripts are MIT
+
+## Disclaimer
+
+**This knowledge base is provided for educational and research purposes.**
+
+⚠️ **Important Limitations**:
+
+- **No Warranty**: Content is provided "as is" without warranty of any kind
+- **Not Safety-Certified**: Information has not been validated for safety-critical applications
+- **Not Production-Ready**: Concepts and code examples are for research and learning
+- **Validate Before Use**: Always validate any information before applying to real autonomous systems
+- **Active Research**: Content reflects current understanding which may change as research progresses
+
+The contributors make no representations about the suitability, reliability, accuracy, or completeness of any information for any purpose. 
+
+**Do not use this content in safety-critical systems or real-world deployments without thorough validation, testing, and safety certification appropriate for your application.**
+
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
+
+- How to add different types of content
+- Style guidelines and conventions
+- Pull request process
+- Local development setup
+
+## Questions or Issues?
+
+- Open an issue for questions, suggestions, or discussions
+- Use the issue templates for content suggestions
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidance
+
+## Acknowledgments
+
+This knowledge base structure is inspired by best practices from research note-taking systems, evergreen note methodologies, and open science principles.
+
+---
+
+**Visit the site**: https://danmartinez78.github.io/autonomy-systems-research

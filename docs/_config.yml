@@ -1,0 +1,65 @@
+# Jekyll configuration for Autonomy Systems Research Knowledge Base
+title: Autonomy Systems Research
+description: A knowledge base for robotics and autonomy research - reading notes, syntheses, and structured knowledge.
+baseurl: ""
+url: "https://danmartinez78.github.io/autonomy-systems-research"
+
+# GitHub repository configuration
+github:
+  repository_nwo: danmartinez78/autonomy-systems-research
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  templates:
+    output: false
+
+# Navigation
+header_pages:
+  - index.md
+  - journal.md
+  - reading.md
+  - syntheses.md
+  - knowledge-base.md
+  - references.md
+
+# Exclude from processing
+exclude:
+  - _templates/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+
+# Front matter defaults
+defaults:
+  - scope:
+      path: "journal"
+    values:
+      layout: "post"
+      type: "journal"
+  - scope:
+      path: "reading"
+    values:
+      layout: "post"
+      type: "reading"
+  - scope:
+      path: "syntheses"
+    values:
+      layout: "page"
+      type: "synthesis"
+  - scope:
+      path: "knowledge-base"
+    values:
+      layout: "page"
+      type: "knowledge-base"
+  - scope:
+      path: "references"
+    values:
+      layout: "page"
+      type: "reference"
