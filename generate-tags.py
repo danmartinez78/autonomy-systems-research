@@ -280,9 +280,10 @@ permalink: /tags/{tag_slug}/
         title_escaped = page['title'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
         content += f"    <h4><a href=\"{page['url']}/\">{title_escaped}</a></h4>\n"
         
-        # Add summary if available
+        # Add summary if available (escape HTML entities)
         if page['summary']:
-            content += f"    <p class=\"post-summary\">{page['summary']}</p>\n"
+            summary_escaped = page['summary'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+            content += f"    <p class=\"post-summary\">{summary_escaped}</p>\n"
         
         content += "  </li>\n"
     
