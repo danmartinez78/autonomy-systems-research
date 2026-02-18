@@ -106,6 +106,56 @@ pre code {
   border-top: 1px solid var(--border-color);
 }
 
+/* Navigation elements dark mode support */
+.site-title,
+.site-title:visited {
+  color: var(--text-color) !important;
+}
+
+.site-title:hover {
+  text-decoration: none;
+}
+
+.site-nav {
+  background-color: var(--header-bg);
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+}
+
+.site-nav .page-link:hover {
+  color: var(--link-hover);
+}
+
+/* Mobile menu support */
+.site-nav .menu-icon > svg {
+  fill: var(--text-color);
+}
+
+.site-nav input:checked ~ .trigger {
+  background-color: var(--header-bg);
+}
+
+/* Navigation trigger (hamburger menu) */
+.nav-trigger {
+  display: none;
+}
+
+.menu-icon {
+  display: block;
+  float: right;
+  width: 36px;
+  height: 26px;
+  line-height: 0;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.menu-icon > svg path {
+  fill: var(--text-color);
+}
+
 /* ===================================
    Tag Cloud Styles (Modern Cards)
    =================================== */
