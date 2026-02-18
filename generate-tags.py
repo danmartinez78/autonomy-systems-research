@@ -391,16 +391,14 @@ def main():
             print(f"  ✗ Deleting {obsolete_file.name}")
             obsolete_file.unlink()
         print()
-        deleted_message = f"✓ Deleted {obsolete_count} obsolete tag pages"
     else:
         print("✓ No obsolete tag pages found")
         print()
-        deleted_message = None
     
     print("=" * 60)
     print(f"✓ Successfully generated {len(tag_pages)} tag pages")
-    if deleted_message:
-        print(deleted_message)
+    if obsolete_files:
+        print(f"✓ Deleted {len(obsolete_files)} obsolete tag pages")
     print("=" * 60)
     print()
     print("Tag pages are ready! You can now:")
