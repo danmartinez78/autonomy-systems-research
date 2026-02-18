@@ -114,7 +114,6 @@ def sanitize_url(url):
     if not url.startswith('/'):
         url = '/' + url
     return url
-    return False
 
 
 def collect_tags_and_pages():

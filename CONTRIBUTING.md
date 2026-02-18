@@ -220,6 +220,11 @@ The repository includes a Python script that automatically generates:
    ```bash
    python3 generate-tags.py
    ```
+   
+   Or use the Makefile shortcut:
+   ```bash
+   make tags
+   ```
 
 2. The script will:
    - Scan all markdown files in `docs/` for tags
