@@ -107,12 +107,12 @@ pre code {
 }
 
 /* Navigation elements dark mode support */
-.site-title,
-.site-title:visited {
-  color: var(--text-color) !important;
+.site-header .site-title,
+.site-header .site-title:visited {
+  color: var(--text-color);
 }
 
-.site-title:hover {
+.site-header .site-title:hover {
   text-decoration: none;
 }
 
@@ -128,32 +128,17 @@ pre code {
   color: var(--link-hover);
 }
 
-/* Mobile menu support */
+/* Mobile menu support - color overrides only */
 .site-nav .menu-icon > svg {
+  fill: var(--text-color);
+}
+
+.site-nav .menu-icon > svg path {
   fill: var(--text-color);
 }
 
 .site-nav input:checked ~ .trigger {
   background-color: var(--header-bg);
-}
-
-/* Navigation trigger (hamburger menu) */
-.nav-trigger {
-  display: none;
-}
-
-.menu-icon {
-  display: block;
-  float: right;
-  width: 36px;
-  height: 26px;
-  line-height: 0;
-  padding-top: 10px;
-  text-align: center;
-}
-
-.menu-icon > svg path {
-  fill: var(--text-color);
 }
 
 /* ===================================
