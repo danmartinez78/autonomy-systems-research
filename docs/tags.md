@@ -32,10 +32,6 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="{{ site.baseurl }}/tags/infrastructure/">infrastructure</a></h3>
-    <p>1 page</p>
-  </div>
-  <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/knowledge-graphs/">knowledge-graphs</a></h3>
     <p>1 page</p>
   </div>
@@ -72,10 +68,6 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <p>1 page</p>
   </div>
   <div class="tag-item">
-    <h3><a href="{{ site.baseurl }}/tags/setup/">setup</a></h3>
-    <p>1 page</p>
-  </div>
-  <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/state-estimation/">state-estimation</a></h3>
     <p>2 pages</p>
   </div>
@@ -96,7 +88,6 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**control-architecture**]({{ site.baseurl }}/tags/control-architecture/) (1 page)
 - [**decision-making**]({{ site.baseurl }}/tags/decision-making/) (1 page)
 - [**embodied-ai**]({{ site.baseurl }}/tags/embodied-ai/) (1 page)
-- [**infrastructure**]({{ site.baseurl }}/tags/infrastructure/) (1 page)
 - [**knowledge-graphs**]({{ site.baseurl }}/tags/knowledge-graphs/) (1 page)
 - [**localization**]({{ site.baseurl }}/tags/localization/) (2 pages)
 - [**memory-systems**]({{ site.baseurl }}/tags/memory-systems/) (1 page)
@@ -106,7 +97,6 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**robotics**]({{ site.baseurl }}/tags/robotics/) (1 page)
 - [**safety**]({{ site.baseurl }}/tags/safety/) (1 page)
 - [**semantic-memory**]({{ site.baseurl }}/tags/semantic-memory/) (1 page)
-- [**setup**]({{ site.baseurl }}/tags/setup/) (1 page)
 - [**state-estimation**]({{ site.baseurl }}/tags/state-estimation/) (2 pages)
 - [**system-architecture**]({{ site.baseurl }}/tags/system-architecture/) (1 page)
 - [**vla**]({{ site.baseurl }}/tags/vla/) (1 page)

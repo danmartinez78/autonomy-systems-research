@@ -6,30 +6,15 @@ permalink: /journal/
 
 # Research Journal
 
-Chronological entries documenting research activities, progress, decisions, and next steps.
-
-Entries are organized by date (YYYY/YYYY-MM-DD-title.md) and typically cover weekly progress.
-
----
-
-## Recent Entries
-
-{% assign journal_posts = site.pages | where_exp: "page", "page.path contains 'journal/'" | where_exp: "page", "page.title != nil" | sort: "date" | reverse %}
-{% for post in journal_posts limit:10 %}
-  {% if post.title %}
-### [{{ post.title }}]({{ post.url | relative_url }})
-**Date**: {{ post.date | date: "%Y-%m-%d" }}  
-{% if post.summary %}{{ post.summary | escape }}{% endif %}
-  {% endif %}
-{% endfor %}
+Chronological log of research activities, decisions, and published artifacts.
 
 ---
 
 ## Archive
 
 Browse by year:
-- [2026](/journal/2026/)
+- [2026]({{ "/journal/2026/" | relative_url }})
 
 ---
 
-*To add a new journal entry, see the [journal entry template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/journal-entry.md).*
+*Entries are lightweight breadcrumbs — 3-4 sentences with links to actual artifacts.*
