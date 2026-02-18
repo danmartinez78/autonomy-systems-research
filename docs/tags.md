@@ -119,6 +119,10 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
   border-bottom: 1px solid #e8e8e8;
 }
 
+.post-list li:last-child {
+  border-bottom: none;
+}
+
 .post-meta {
   color: #828282;
   font-size: 0.9em;

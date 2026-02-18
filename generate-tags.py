@@ -27,6 +27,66 @@ DOCS_DIR = Path(__file__).parent / "docs"
 TAGS_DIR = DOCS_DIR / "tags"
 TAGS_INDEX = DOCS_DIR / "tags.md"
 EXCLUDE_DIRS = ["_site", "_templates", ".jekyll-cache", "vendor", ".bundle"]
+REPO_URL = "https://danmartinez78.github.io/autonomy-systems-research"
+
+# Shared CSS for tag pages
+TAG_PAGE_CSS = """
+<style>
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.tag-item {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  padding: 15px;
+  min-width: 150px;
+  background: #fafafa;
+}
+
+.tag-item h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+}
+
+.tag-item p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.post-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-list li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.post-list li:last-child {
+  border-bottom: none;
+}
+
+.post-meta {
+  color: #828282;
+  font-size: 0.9em;
+}
+
+.post-list h4 {
+  margin: 5px 0;
+}
+
+.post-summary {
+  margin: 5px 0 15px 0;
+}
+</style>
+"""
 
 
 def slugify(text):
@@ -36,6 +96,17 @@ def slugify(text):
     slug = re.sub(r'[^\w\s-]', '', slug)
     slug = re.sub(r'[-\s]+', '-', slug)
     return slug.strip('-')
+
+
+def escape_html(text):
+    """Escape HTML special characters for safe insertion into HTML."""
+    if not text:
+        return text
+    return (text.replace('&', '&amp;')
+                .replace('<', '&lt;')
+                .replace('>', '&gt;')
+                .replace('"', '&quot;')
+                .replace("'", '&#x27;'))
 
 
 def extract_front_matter(file_path):
@@ -62,6 +133,19 @@ def should_exclude_path(path):
     for exclude_dir in EXCLUDE_DIRS:
         if exclude_dir in parts:
             return True
+    return False
+
+
+def sanitize_url(url):
+    """Sanitize URL path to prevent path traversal and ensure valid URLs."""
+    # Remove any path traversal sequences
+    url = url.replace('..', '')
+    # Normalize multiple slashes
+    url = re.sub(r'/+', '/', url)
+    # Ensure it starts with /
+    if not url.startswith('/'):
+        url = '/' + url
+    return url
     return False
 
 
@@ -102,9 +186,10 @@ def collect_tags_and_pages():
         # Get date (could be date, date_read, or last_updated)
         date = front_matter.get('date') or front_matter.get('date_read') or front_matter.get('last_updated')
         
-        # Calculate relative URL
+        # Calculate relative URL and sanitize it
         rel_path = md_file.relative_to(DOCS_DIR)
         url = '/' + str(rel_path.with_suffix('')).replace(os.sep, '/')
+        url = sanitize_url(url)
         
         # Build page info
         page_info = {
@@ -148,11 +233,12 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     
     for tag in sorted_tags:
         tag_slug = slugify(tag)
+        tag_escaped = escape_html(tag)
         page_count = len(tag_pages[tag])
         plural = 'page' if page_count == 1 else 'pages'
         
         content += f"""  <div class="tag-item">
-    <h3><a href="/tags/{tag_slug}/">{tag}</a></h3>
+    <h3><a href="/tags/{tag_slug}/">{tag_escaped}</a></h3>
     <p>{page_count} {plural}</p>
   </div>
 """
@@ -165,64 +251,13 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     
     for tag in sorted_tags:
         tag_slug = slugify(tag)
+        tag_escaped = escape_html(tag)
         page_count = len(tag_pages[tag])
         plural = 'page' if page_count == 1 else 'pages'
-        content += f"- [**{tag}**](/tags/{tag_slug}/) ({page_count} {plural})\n"
+        content += f"- [**{tag_escaped}**](/tags/{tag_slug}/) ({page_count} {plural})\n"
     
     # Add CSS
-    content += """
-<style>
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin: 30px 0;
-}
-
-.tag-item {
-  border: 1px solid #e8e8e8;
-  border-radius: 4px;
-  padding: 15px;
-  min-width: 150px;
-  background: #fafafa;
-}
-
-.tag-item h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.1em;
-}
-
-.tag-item p {
-  margin: 0;
-  color: #666;
-  font-size: 0.9em;
-}
-
-.post-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.post-list li {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.post-meta {
-  color: #828282;
-  font-size: 0.9em;
-}
-
-.post-list h4 {
-  margin: 5px 0;
-}
-
-.post-summary {
-  margin: 5px 0 15px 0;
-}
-</style>
-"""
+    content += TAG_PAGE_CSS
     
     return content
 
@@ -268,7 +303,8 @@ permalink: /tags/{tag_slug}/
         # Add metadata line
         meta_parts = []
         if page['type']:
-            meta_parts.append(page['type'])
+            type_escaped = escape_html(page['type'])
+            meta_parts.append(type_escaped)
         if page['date']:
             if isinstance(page['date'], str):
                 meta_parts.append(page['date'])
@@ -279,48 +315,18 @@ permalink: /tags/{tag_slug}/
             content += f"    <span class=\"post-meta\">{' &middot; '.join(meta_parts)}</span>\n"
         
         # Add title (escape HTML entities)
-        title_escaped = page['title'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+        title_escaped = escape_html(page['title'])
         content += f"    <h4><a href=\"{page['url']}/\">{title_escaped}</a></h4>\n"
         
         # Add summary if available (escape HTML entities)
         if page['summary']:
-            summary_escaped = page['summary'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+            summary_escaped = escape_html(page['summary'])
             content += f"    <p class=\"post-summary\">{summary_escaped}</p>\n"
         
         content += "  </li>\n"
     
-    content += """</ul>
-
-<style>
-.post-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.post-list li {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.post-list li:last-child {
-  border-bottom: none;
-}
-
-.post-meta {
-  color: #828282;
-  font-size: 0.9em;
-}
-
-.post-list h4 {
-  margin: 5px 0;
-}
-
-.post-summary {
-  margin: 5px 0 15px 0;
-}
-</style>
-"""
+    content += "</ul>\n\n"
+    content += TAG_PAGE_CSS
     
     return content
 
@@ -375,7 +381,7 @@ def main():
     print("Tag pages are ready! You can now:")
     print("  1. Commit the generated files")
     print("  2. Push to GitHub")
-    print("  3. View the tags at https://danmartinez78.github.io/autonomy-systems-research/tags/")
+    print(f"  3. View the tags at {REPO_URL}/tags/")
     print()
 
 

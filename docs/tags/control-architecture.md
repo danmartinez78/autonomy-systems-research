@@ -22,7 +22,34 @@ permalink: /tags/control-architecture/
   </li>
 </ul>
 
+
 <style>
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.tag-item {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  padding: 15px;
+  min-width: 150px;
+  background: #fafafa;
+}
+
+.tag-item h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+}
+
+.tag-item p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
 .post-list {
   list-style: none;
   padding-left: 0;
