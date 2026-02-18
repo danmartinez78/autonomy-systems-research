@@ -63,6 +63,19 @@ This site is automatically published via GitHub Pages:
 
 No manual build or deployment steps required.
 
+### Initial GitHub Pages Setup
+
+To enable GitHub Pages for the first time:
+
+1. Go to repository Settings → Pages
+2. Under "Build and deployment":
+   - **Source**: Deploy from a branch
+   - **Branch**: `main`
+   - **Folder**: `/docs`
+3. Click "Save"
+
+GitHub will automatically build and deploy the site. The URL will be `https://[username].github.io/autonomy-systems-research`.
+
 ## Repository Structure
 
 ```
