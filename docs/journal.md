@@ -19,7 +19,7 @@ Entries are organized by date (YYYY/YYYY-MM-DD-title.md) and typically cover wee
   {% if post.title %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
 **Date**: {{ post.date | date: "%Y-%m-%d" }}  
-{% if post.summary %}{{ post.summary }}{% endif %}
+{% if post.summary %}{{ post.summary | escape }}{% endif %}
   {% endif %}
 {% endfor %}
 

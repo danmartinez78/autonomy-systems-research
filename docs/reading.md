@@ -25,7 +25,7 @@ Each reading note includes:
 ### [{{ post.title }}]({{ post.url | relative_url }})
 {% if post.authors %}**Authors**: {{ post.authors }}{% endif %}  
 {% if post.date_read %}**Date Read**: {{ post.date_read }}{% endif %}  
-{% if post.summary %}{{ post.summary }}{% endif %}
+{% if post.summary %}{{ post.summary | escape }}{% endif %}
   {% endif %}
 {% endfor %}
 
