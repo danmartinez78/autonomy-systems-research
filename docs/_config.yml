@@ -28,6 +28,7 @@ header_pages:
   - syntheses.md
   - knowledge-base.md
   - references.md
+  - tags.md
 
 # Exclude from processing
 exclude:
