@@ -1,5 +1,6 @@
 ---
 title: "Watchdog Timers in Autonomous Systems"
+date: 2026-02-18
 tags: [safety, reliability, system-architecture]
 summary: "Pattern for detecting and recovering from software failures in autonomous systems"
 ---
