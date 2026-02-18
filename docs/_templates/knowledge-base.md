@@ -1,7 +1,6 @@
 ---
 title: "Concept or Pattern Name"
 date: YYYY-MM-DD
-date: YYYY-MM-DD
 tags: [category, topic]
 summary: "One-sentence description of this entry"
 ---
