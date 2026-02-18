@@ -8,8 +8,9 @@ permalink: /tags/
 
 This page shows all tags used across the knowledge base. Click on a tag to see all pages with that tag.
 
-{% comment %}Collect all tags and calculate counts in a single pass{% endcomment %}
+{% comment %}Collect all tags and build tag-to-pages mapping in a single pass{% endcomment %}
 {% assign all_tags = "" | split: "" %}
+{% assign tag_pages = "" | split: "" %}
 
 {% for page_item in site.pages %}
   {% if page_item.tags %}
@@ -24,8 +25,7 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 {% comment %}Sort tags alphabetically{% endcomment %}
 {% assign sorted_tags = all_tags | sort %}
 
-{% comment %}Calculate counts for each tag{% endcomment %}
-{% assign tag_counts_array = "" | split: "" %}
+<div class="tag-cloud">
 {% for tag in sorted_tags %}
   {% assign tag_count = 0 %}
   {% for page_item in site.pages %}
@@ -33,12 +33,6 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
       {% assign tag_count = tag_count | plus: 1 %}
     {% endif %}
   {% endfor %}
-  {% assign tag_counts_array = tag_counts_array | push: tag_count %}
-{% endfor %}
-
-<div class="tag-cloud">
-{% for tag in sorted_tags %}
-  {% assign tag_count = tag_counts_array[forloop.index0] %}
   <div class="tag-item">
     <h3><a href="#{{ tag | slugify }}">{{ tag }}</a></h3>
     <p>{{ tag_count }} {% if tag_count == 1 %}page{% else %}pages{% endif %}</p>
@@ -66,11 +60,11 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
         &middot; {{ page_item.last_updated | date: "%b %-d, %Y" }}
       {% endif %}
     </span>
-    <h4 style="margin: 5px 0;">
+    <h4>
       <a href="{{ page_item.url | relative_url }}">{{ page_item.title | escape }}</a>
     </h4>
     {% if page_item.summary %}
-      <p style="margin: 5px 0 15px 0;">{{ page_item.summary | escape }}</p>
+      <p class="post-summary">{{ page_item.summary | escape }}</p>
     {% endif %}
   </li>
   {% endif %}
@@ -119,5 +113,13 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 .post-meta {
   color: #828282;
   font-size: 0.9em;
+}
+
+.post-list h4 {
+  margin: 5px 0;
+}
+
+.post-summary {
+  margin: 5px 0 15px 0;
 }
 </style>
