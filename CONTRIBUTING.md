@@ -70,25 +70,24 @@ summary: "What this synthesis covers"
 ---
 ```
 
-### 3. Journal Entries (`/docs/journal/YYYY/`)
+### 3. Journal (`/docs/journal/YYYY.md`)
 
-Dated entries documenting research progress, decisions, and next steps.
+Chronological log of research activities — lightweight breadcrumbs pointing to artifacts.
 
-**When to create**: Weekly (or as major milestones occur)
+**When to add**: When publishing a synthesis or significant milestone
 
-**File naming**: `YYYY-MM-DD-short-title.md`
+**Format**: Single file per year, prepend new entries
 
-**Template**: [journal-entry.md](docs/_templates/journal-entry.md)
+**Example**:
+```markdown
+## YYYY-MM-DD — Entry Title
 
-**Required front matter**:
-```yaml
----
-title: "Week of Month DD, YYYY"
-date: YYYY-MM-DD
-tags: [research-area]
-summary: "Brief summary"
----
+2-3 sentences describing what happened. Link to the actual artifact.
+
+[Read the synthesis](...) | [PR #N](...)
 ```
+
+No frontmatter, no tags — just dates and content.
 
 ### 4. Knowledge Base Pages (`/docs/knowledge-base/`)
 
