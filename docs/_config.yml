@@ -29,6 +29,7 @@ header_pages:
   - knowledge-base.md
   - references.md
   - tags.md
+  - search.md
 
 # Exclude from processing
 exclude:
