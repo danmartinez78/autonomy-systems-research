@@ -165,7 +165,9 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     
     for tag in sorted_tags:
         tag_slug = slugify(tag)
-        content += f"- [**{tag}**](/tags/{tag_slug}/) ({len(tag_pages[tag])} pages)\n"
+        page_count = len(tag_pages[tag])
+        plural = 'page' if page_count == 1 else 'pages'
+        content += f"- [**{tag}**](/tags/{tag_slug}/) ({page_count} {plural})\n"
     
     # Add CSS
     content += """

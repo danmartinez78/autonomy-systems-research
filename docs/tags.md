@@ -67,19 +67,19 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 
 ## All Tags (Alphabetical)
 
-- [**bayes-filter**](/tags/bayes-filter/) (1 pages)
-- [**behavior-trees**](/tags/behavior-trees/) (1 pages)
-- [**control-architecture**](/tags/control-architecture/) (1 pages)
-- [**decision-making**](/tags/decision-making/) (1 pages)
-- [**infrastructure**](/tags/infrastructure/) (1 pages)
+- [**bayes-filter**](/tags/bayes-filter/) (1 page)
+- [**behavior-trees**](/tags/behavior-trees/) (1 page)
+- [**control-architecture**](/tags/control-architecture/) (1 page)
+- [**decision-making**](/tags/decision-making/) (1 page)
+- [**infrastructure**](/tags/infrastructure/) (1 page)
 - [**localization**](/tags/localization/) (2 pages)
 - [**perception**](/tags/perception/) (2 pages)
-- [**planning**](/tags/planning/) (1 pages)
-- [**reliability**](/tags/reliability/) (1 pages)
-- [**safety**](/tags/safety/) (1 pages)
-- [**setup**](/tags/setup/) (1 pages)
+- [**planning**](/tags/planning/) (1 page)
+- [**reliability**](/tags/reliability/) (1 page)
+- [**safety**](/tags/safety/) (1 page)
+- [**setup**](/tags/setup/) (1 page)
 - [**state-estimation**](/tags/state-estimation/) (2 pages)
-- [**system-architecture**](/tags/system-architecture/) (1 pages)
+- [**system-architecture**](/tags/system-architecture/) (1 page)
 
 <style>
 .tag-cloud {
