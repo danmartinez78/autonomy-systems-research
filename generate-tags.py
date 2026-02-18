@@ -258,7 +258,7 @@ permalink: /tags/{tag_slug}/
     # Sort pages by date (newest first), then by title
     sorted_pages = sorted(
         pages,
-        key=lambda p: (p['date'] if p['date'] else datetime.min, p['title']),
+        key=lambda p: (p['date'] if p['date'] else datetime.max, p['title']),
         reverse=True
     )
     
