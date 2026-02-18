@@ -16,11 +16,11 @@ This knowledge base serves as a public repository for research artifacts, enabli
 
 The knowledge base is organized into several content types:
 
-- **[Reading Notes](https://danmartinez78.github.io/autonomy-systems-research/reading.html)**: Structured summaries and analysis of papers and articles
-- **[Syntheses](https://danmartinez78.github.io/autonomy-systems-research/syntheses.html)**: Topic-level consolidation of understanding across sources
-- **[Journal Entries](https://danmartinez78.github.io/autonomy-systems-research/journal.html)**: Chronological progress logs and research decisions
-- **[Knowledge Base](https://danmartinez78.github.io/autonomy-systems-research/knowledge-base.html)**: Evergreen reference pages on concepts and patterns
-- **[References](https://danmartinez78.github.io/autonomy-systems-research/references.html)**: Glossary, definitions, and canonical links
+- **[Reading Notes](https://danmartinez78.github.io/autonomy-systems-research/reading/)**: Structured summaries and analysis of papers and articles
+- **[Syntheses](https://danmartinez78.github.io/autonomy-systems-research/syntheses/)**: Topic-level consolidation of understanding across sources
+- **[Journal Entries](https://danmartinez78.github.io/autonomy-systems-research/journal/)**: Chronological progress logs and research decisions
+- **[Knowledge Base](https://danmartinez78.github.io/autonomy-systems-research/knowledge-base/)**: Evergreen reference pages on concepts and patterns
+- **[References](https://danmartinez78.github.io/autonomy-systems-research/references/)**: Glossary, definitions, and canonical links
 
 ## Quick Start
 
