@@ -104,6 +104,7 @@ Evergreen reference material on concepts, patterns, checklists, and gotchas.
 ```yaml
 ---
 title: "Concept Name"
+date: YYYY-MM-DD
 tags: [category, topic]
 summary: "Brief description"
 ---
