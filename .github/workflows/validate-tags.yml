@@ -42,19 +42,19 @@ jobs:
         run: |
           echo "Checking if tag pages are up-to-date..."
           
-          # Check git status
-          if ! git diff --quiet docs/tags/ docs/tags.md; then
+          # Check git status (includes untracked files)
+          if [[ -n "$(git status --porcelain -- docs/tags/ docs/tags.md)" ]]; then
             echo "❌ ERROR: Tag pages are out of date!"
             echo ""
-            echo "The following files have uncommitted changes:"
-            git diff --name-only docs/tags/ docs/tags.md
+            echo "The following files have uncommitted or untracked changes:"
+            git status --porcelain -- docs/tags/ docs/tags.md
             echo ""
             echo "To fix this:"
             echo "  1. Run: python3 generate-tags.py"
             echo "  2. Commit the updated tag pages"
             echo "  3. Push your changes"
             echo ""
-            echo "Detailed changes:"
+            echo "Detailed changes (tracked file diffs only):"
             git --no-pager diff docs/tags/ docs/tags.md
             exit 1
           else
