@@ -38,11 +38,11 @@ def normalize_date_for_sorting(d):
     """
     if d is None:
         return datetime.max
-    elif isinstance(d, date) and not isinstance(d, datetime):
-        # Convert date to datetime at midnight
-        return datetime.combine(d, datetime.min.time())
     elif isinstance(d, datetime):
         return d
+    elif isinstance(d, date):
+        # Convert date to datetime at midnight
+        return datetime.combine(d, datetime.min.time())
     else:
         return datetime.max
 
