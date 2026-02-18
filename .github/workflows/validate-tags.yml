@@ -1,0 +1,62 @@
+name: Validate Tag Pages
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+      - 'generate-tags.py'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**/*.md'
+      - 'generate-tags.py'
+
+jobs:
+  validate-tags:
+    runs-on: ubuntu-latest
+    name: Check Tag Pages are Up-to-Date
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+      
+      - name: Generate tag pages
+        run: |
+          echo "Running generate-tags.py..."
+          python3 generate-tags.py
+      
+      - name: Check for uncommitted changes
+        run: |
+          echo "Checking if tag pages are up-to-date..."
+          
+          # Check git status (includes untracked files)
+          if [[ -n "$(git status --porcelain -- docs/tags/ docs/tags.md)" ]]; then
+            echo "❌ ERROR: Tag pages are out of date!"
+            echo ""
+            echo "The following files have uncommitted or untracked changes:"
+            git status --porcelain -- docs/tags/ docs/tags.md
+            echo ""
+            echo "To fix this:"
+            echo "  1. Run: python3 generate-tags.py"
+            echo "  2. Commit the updated tag pages"
+            echo "  3. Push your changes"
+            echo ""
+            echo "Detailed changes (tracked file diffs only):"
+            git --no-pager diff docs/tags/ docs/tags.md
+            exit 1
+          else
+            echo "✓ Tag pages are up-to-date!"
+          fi

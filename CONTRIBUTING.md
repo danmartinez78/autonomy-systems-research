@@ -237,6 +237,8 @@ The repository includes a Python script that automatically generates:
 - When you introduce new tags that don't exist yet
 - Periodically to ensure tag pages are up-to-date
 
+**Note:** A CI workflow automatically checks that tag pages are up-to-date when you create a pull request. If the workflow fails, simply run `python3 generate-tags.py` and commit the updated files.
+
 **Requirements:**
 - Python 3.6 or higher
 - PyYAML library (`pip install pyyaml` if not already installed)
