@@ -383,22 +383,24 @@ def main():
     print("Checking for obsolete tag pages...")
     existing_tag_files = set(TAGS_DIR.glob("*.md"))
     obsolete_files = existing_tag_files - current_tag_files
-    obsolete_count = len(obsolete_files)
     
     if obsolete_files:
+        obsolete_count = len(obsolete_files)
         print(f"Found {obsolete_count} obsolete tag page(s) to delete:")
         for obsolete_file in sorted(obsolete_files):
             print(f"  ✗ Deleting {obsolete_file.name}")
             obsolete_file.unlink()
         print()
+        deleted_message = f"✓ Deleted {obsolete_count} obsolete tag pages"
     else:
         print("✓ No obsolete tag pages found")
         print()
+        deleted_message = None
     
     print("=" * 60)
     print(f"✓ Successfully generated {len(tag_pages)} tag pages")
-    if obsolete_count > 0:
-        print(f"✓ Deleted {obsolete_count} obsolete tag pages")
+    if deleted_message:
+        print(deleted_message)
     print("=" * 60)
     print()
     print("Tag pages are ready! You can now:")
