@@ -17,7 +17,7 @@ permalink: /tags/infrastructure/
 <ul class="post-list">
   <li>
     <span class="post-meta">Feb 18, 2026</span>
-    <h4><a href="{{ site.baseurl }}/journal/2026/2026-02-18-initial-setup/">Week of February 18, 2026</a></h4>
-    <p class="post-summary">Initial setup of knowledge base infrastructure and planning research directions</p>
+    <h4><a href="{{ site.baseurl }}/journal/2026/2026-02-18-initial-setup/">Initial Setup</a></h4>
+    <p class="post-summary">Set up Jekyll-based GitHub Pages site with knowledge base infrastructure</p>
   </li>
 </ul>
