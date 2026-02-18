@@ -55,7 +55,7 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 <h3 id="{{ tag | slugify }}">{{ tag }}</h3>
 <ul class="post-list">
 {% for page_item in site.pages %}
-  {% if page_item.tags contains tag and page_item.url != "/tags/" %}
+  {% if page_item.tags contains tag and page_item.url != page.url %}
   <li>
     <span class="post-meta">
       {% if page_item.type %}{{ page_item.type }}{% endif %}
