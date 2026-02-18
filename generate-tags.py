@@ -231,18 +231,20 @@ def generate_tag_page(tag, pages):
     """Generate an individual tag page."""
     
     tag_slug = slugify(tag)
+    # Escape HTML special characters in the tag name for safe insertion into YAML/HTML
+    escaped_tag = tag.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
     page_count = len(pages)
     plural = 'page' if page_count == 1 else 'pages'
     
     content = f"""---
 layout: page
-title: "Tag: {tag}"
+title: "Tag: {escaped_tag}"
 permalink: /tags/{tag_slug}/
 ---
 
-# Tag: {tag}
+# Tag: {escaped_tag}
 
-{page_count} {plural} tagged with **{tag}**
+{page_count} {plural} tagged with **{escaped_tag}**
 
 [← Back to all tags](/tags/)
 
