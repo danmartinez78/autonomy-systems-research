@@ -10,7 +10,6 @@ layout: null
       "summary": {{ page.summary | default: "" | jsonify }},
       "type": {{ page.type | default: "" | jsonify }},
       "tags": {{ page.tags | jsonify }},
-      "content": {{ page.content | strip_html | strip_newlines | jsonify }},
       "date": {% if page.date %}"{{ page.date | date: "%Y-%m-%d" }}"{% elsif page.date_read %}"{{ page.date_read | date: "%Y-%m-%d" }}"{% elsif page.last_updated %}"{{ page.last_updated | date: "%Y-%m-%d" }}"{% else %}""{% endif %}
     }{% unless forloop.last %},{% endunless %}
     {% endunless %}
