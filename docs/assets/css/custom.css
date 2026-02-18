@@ -38,6 +38,11 @@
   }
 }
 
+/* Tell browsers this page supports both light and dark color schemes */
+html {
+  color-scheme: light dark;
+}
+
 /* ===================================
    Global Layout Improvements
    =================================== */
