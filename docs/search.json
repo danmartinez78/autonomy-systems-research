@@ -3,7 +3,7 @@ layout: null
 ---
 [
   {% for page in site.pages %}
-    {% unless page.url contains "/tags/" or page.url contains "404" %}
+    {% unless page.url contains "/tags/" or page.url contains "/search/" or page.url contains "404" %}
     {
       "title": {{ page.title | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},

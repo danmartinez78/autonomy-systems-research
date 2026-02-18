@@ -8,10 +8,11 @@ permalink: /tags/
 
 This page shows all tags used across the knowledge base. Click on a tag to see all pages with that tag.
 
+{% comment %}Collect all tags and calculate counts in a single pass{% endcomment %}
 {% assign all_tags = "" | split: "" %}
 {% assign tag_counts = "" | split: "" %}
+{% assign tag_hash = "" %}
 
-{% comment %}Collect all tags from all pages{% endcomment %}
 {% for page_item in site.pages %}
   {% if page_item.tags %}
     {% for tag in page_item.tags %}
@@ -25,7 +26,8 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 {% comment %}Sort tags alphabetically{% endcomment %}
 {% assign sorted_tags = all_tags | sort %}
 
-<div class="tag-cloud">
+{% comment %}Calculate counts for each tag{% endcomment %}
+{% assign tag_counts_array = "" | split: "" %}
 {% for tag in sorted_tags %}
   {% assign tag_count = 0 %}
   {% for page_item in site.pages %}
@@ -33,6 +35,12 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
       {% assign tag_count = tag_count | plus: 1 %}
     {% endif %}
   {% endfor %}
+  {% assign tag_counts_array = tag_counts_array | push: tag_count %}
+{% endfor %}
+
+<div class="tag-cloud">
+{% for tag in sorted_tags %}
+  {% assign tag_count = tag_counts_array[forloop.index0] %}
   <div class="tag-item">
     <h3><a href="#{{ tag | slugify }}">{{ tag }}</a></h3>
     <p>{{ tag_count }} {% if tag_count == 1 %}page{% else %}pages{% endif %}</p>
