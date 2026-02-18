@@ -81,7 +81,7 @@ Cognitive science distinguishes several memory systems, each with robotics analo
 
 ### 1. MemoryVLA: Perceptual-Cognitive Memory Bank
 
-**Paper**: Shi et al., "MemoryVLA: Perceptual-Cognitive Memory in Vision-Language-Action Models for Robotic Manipulation" (arXiv:2508.19236, August 2025)
+**Paper**: Shi et al., "MemoryVLA: Perceptual-Cognitive Memory in Vision-Language-Action Models for Robotic Manipulation" ([arXiv:2508.19236](https://arxiv.org/abs/2508.19236), August 2025)
 
 **Core innovation**: Dual-stream memory inspired by hippocampal-cortical systems.
 
@@ -113,7 +113,7 @@ VLM Encoder → Working Memory (perceptual + cognitive tokens)
 
 ### 2. Mind Palace: Scene Graph World Instances
 
-**Paper**: Ginting et al., "Enter the Mind Palace: Reasoning and Planning for Long-term Active Embodied Question Answering" (arXiv:2507.12846, July 2025)
+**Paper**: Ginting et al., "Enter the Mind Palace: Reasoning and Planning for Long-term Active Embodied Question Answering" ([arXiv:2507.12846](https://arxiv.org/abs/2507.12846), July 2025)
 
 **Core innovation**: Hierarchical scene graphs organized by temporal episodes, inspired by the method of loci memory technique.
 
@@ -149,7 +149,7 @@ LLM-guided retrieval and planning
 
 ### 3. RoboMemory: Multi-Memory Agentic Framework
 
-**Paper**: "RoboMemory: A Brain-inspired Multi-memory Agentic Framework for Interactive Environmental Learning" (arXiv:2508.01415, October 2025)
+**Paper**: "RoboMemory: A Brain-inspired Multi-memory Agentic Framework for Interactive Environmental Learning" ([arXiv:2508.01415](https://arxiv.org/abs/2508.01415), August 2025)
 
 **Core innovation**: Explicit multi-memory architecture with metamemory governance.
 
@@ -368,19 +368,19 @@ Layers:
 
 ### Foundational Papers
 
-1. **MemoryVLA** (Shi et al., 2025) - arXiv:2508.19236
+1. **MemoryVLA** (Shi et al., 2025) - [arXiv:2508.19236](https://arxiv.org/abs/2508.19236)
    - Primary contribution: PCMB architecture, dual-stream memory
 
-2. **Mind Palace** (Ginting et al., 2025) - arXiv:2507.12846
+2. **Mind Palace** (Ginting et al., 2025) - [arXiv:2507.12846](https://arxiv.org/abs/2507.12846)
    - Primary contribution: Scene graph world instances, LA-EQA benchmark
 
-3. **RT-2** (Brohan et al., 2023) - arXiv:2307.15818
+3. **RT-2** (Brohan et al., 2023) - [arXiv:2307.15818](https://arxiv.org/abs/2307.15818)
    - VLA foundation, web knowledge transfer
 
-4. **OpenVLA** (Kim et al., 2024) - arXiv:2406.09246
+4. **OpenVLA** (Kim et al., 2024) - [arXiv:2406.09246](https://arxiv.org/abs/2406.09246)
    - Open-source VLA baseline
 
-5. **π₀** (Black et al., 2024) - arXiv:2410.24164
+5. **π₀** (Black et al., 2024) - [arXiv:2410.24164](https://arxiv.org/abs/2410.24164)
    - Diffusion-based VLA
 
 ### Knowledge Graph References
@@ -402,7 +402,7 @@ Layers:
 2. "Episodic Memory Banks for Lifelong Robot Learning" (OpenReview, 2024)
    - Long-term memory for continual learning
 
-3. "ReEXplore" (arXiv:2511.19033, 2025)
+3. "ReEXplore" ([arXiv:2511.19033](https://arxiv.org/abs/2511.19033), 2025)
    - Retrospective experience replay for embodied exploration
 
 ### Spatial Memory References
@@ -418,7 +418,7 @@ Layers:
 
 ### Procedural Memory References
 
-1. "Movement Primitives in Robotics: A Comprehensive Survey" (arXiv:2601.02379, 2025)
+1. "Movement Primitives in Robotics: A Comprehensive Survey" ([arXiv:2601.02379](https://arxiv.org/abs/2601.02379), 2026)
    - DMPs and skill transfer
 
 2. "Transfer Learning in Robotics" (arXiv:2311.18044, 2023)
