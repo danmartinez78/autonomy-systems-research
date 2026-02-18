@@ -4,6 +4,10 @@ description: A knowledge base for robotics and autonomy research - reading notes
 baseurl: ""
 url: "https://danmartinez78.github.io/autonomy-systems-research"
 
+# GitHub repository configuration
+github:
+  repository_nwo: danmartinez78/autonomy-systems-research
+
 # Build settings
 markdown: kramdown
 theme: minima

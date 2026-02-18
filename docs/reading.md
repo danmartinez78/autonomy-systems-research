@@ -19,7 +19,7 @@ Each reading note includes:
 
 ## Recent Reading
 
-{% assign reading_posts = site.pages | where_exp: "page", "page.path contains 'reading/'" | where_exp: "page", "page.title != nil" | sort: "date" | reverse %}
+{% assign reading_posts = site.pages | where_exp: "page", "page.path contains 'reading/'" | where_exp: "page", "page.title != nil" | sort: "date_read" | reverse %}
 {% for post in reading_posts limit:15 %}
   {% if post.title %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
@@ -30,7 +30,7 @@ Each reading note includes:
 {% endfor %}
 
 {% if reading_posts.size == 0 %}
-*No reading notes yet. [Add one using the template](https://github.com/danmartinez78/autonomy-systems-research/blob/main/docs/_templates/reading-note.md).*
+*No reading notes yet. [Add one using the template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/reading-note.md).*
 {% endif %}
 
 ---
@@ -38,11 +38,17 @@ Each reading note includes:
 ## By Topic
 
 Filter by tags:
-{% assign all_tags = reading_posts | map: "tags" | join: "," | split: "," | uniq | sort %}
+{% assign all_tags = "" | split: "" %}
+{% for post in reading_posts %}
+  {% if post.tags %}
+    {% assign all_tags = all_tags | concat: post.tags %}
+  {% endif %}
+{% endfor %}
+{% assign all_tags = all_tags | uniq | sort %}
 {% for tag in all_tags %}
   {% if tag != "" %}- {{ tag }}{% endif %}
 {% endfor %}
 
 ---
 
-*To add a new reading note, see the [reading note template](https://github.com/danmartinez78/autonomy-systems-research/blob/main/docs/_templates/reading-note.md).*
+*To add a new reading note, see the [reading note template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/reading-note.md).*

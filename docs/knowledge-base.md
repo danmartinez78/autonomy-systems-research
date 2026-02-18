@@ -28,7 +28,7 @@ Each knowledge base entry includes:
 {% endfor %}
 
 {% if kb_posts.size == 0 %}
-*No knowledge base entries yet. [Create one using the template](https://github.com/danmartinez78/autonomy-systems-research/blob/main/docs/_templates/knowledge-base.md).*
+*No knowledge base entries yet. [Create one using the template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/knowledge-base.md).*
 {% endif %}
 
 ---
@@ -42,4 +42,4 @@ Each knowledge base entry includes:
 
 ---
 
-*To add a new knowledge base entry, see the [knowledge base template](https://github.com/danmartinez78/autonomy-systems-research/blob/main/docs/_templates/knowledge-base.md).*
+*To add a new knowledge base entry, see the [knowledge base template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/knowledge-base.md).*

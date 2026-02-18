@@ -20,22 +20,22 @@ This knowledge base serves as a public repository for:
 
 The content is organized into several sections, accessible via the navigation menu:
 
-- **[Journal](/journal.html)**: Chronological entries documenting research progress
-- **[Reading Notes](/reading.html)**: Structured notes on papers and articles
-- **[Syntheses](/syntheses.html)**: Consolidated understanding of research topics
-- **[Knowledge Base](/knowledge-base.html)**: Evergreen reference material
-- **[References](/references.html)**: Glossary and canonical links
+- **[Journal]({{ "/journal/" | relative_url }})**: Chronological entries documenting research progress
+- **[Reading Notes]({{ "/reading/" | relative_url }})**: Structured notes on papers and articles
+- **[Syntheses]({{ "/syntheses/" | relative_url }})**: Consolidated understanding of research topics
+- **[Knowledge Base]({{ "/knowledge-base/" | relative_url }})**: Evergreen reference material
+- **[References]({{ "/references/" | relative_url }})**: Glossary and canonical links
 
 ## Contributing
 
-We welcome contributions! Please see our [CONTRIBUTING.md](https://github.com/danmartinez78/autonomy-systems-research/blob/main/CONTRIBUTING.md) for guidelines on how to add content.
+We welcome contributions! Please see our [CONTRIBUTING.md](https://github.com/{{ site.github.repository_nwo }}/blob/main/CONTRIBUTING.md) for guidelines on how to add content.
 
 ## Getting Started
 
 Browse the sections above or start with:
-- Recent [journal entries](/journal.html) for current research focus
-- [Reading notes](/reading.html) for summaries of key papers
-- [Knowledge base](/knowledge-base.html) for quick reference material
+- Recent [journal entries]({{ "/journal/" | relative_url }}) for current research focus
+- [Reading notes]({{ "/reading/" | relative_url }}) for summaries of key papers
+- [Knowledge base]({{ "/knowledge-base/" | relative_url }}) for quick reference material
 
 ---
 

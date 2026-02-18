@@ -32,4 +32,4 @@ Browse by year:
 
 ---
 
-*To add a new journal entry, see the [journal entry template](https://github.com/danmartinez78/autonomy-systems-research/blob/main/docs/_templates/journal-entry.md).*
+*To add a new journal entry, see the [journal entry template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/journal-entry.md).*

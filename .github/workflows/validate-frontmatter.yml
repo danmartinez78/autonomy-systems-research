@@ -50,12 +50,12 @@ jobs:
             echo "Checking: $file"
             
             # Check if file has front matter (starts with ---)
-            if ! head -n 1 "$file" | grep -q "^---$"; then
+            if ! head -n 1 "$file" | grep -q '^[[:space:]]*---[[:space:]]*$'; then
               echo "  ⚠️  WARNING: No front matter found"
               has_issue=true
             else
-              # Extract front matter
-              front_matter=$(sed -n '/^---$/,/^---$/p' "$file" | sed '1d;$d')
+              # Extract front matter (between first and second --- lines, allowing surrounding whitespace)
+              front_matter=$(sed -n '/^[[:space:]]*---[[:space:]]*$/,/^[[:space:]]*---[[:space:]]*$/p' "$file" | sed '1d;$d')
               
               # Check for required fields
               if ! echo "$front_matter" | grep -q "^title:"; then

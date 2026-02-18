@@ -95,7 +95,7 @@ Behavior trees are highly relevant for structuring high-level decision-making in
 - Brooks, 1986 - Subsumption architecture (earlier reactive approach)
 - Champandard, 2007 - BTs in game AI (origin domain)
 - Colledanchise & Ögren, 2018 - Book on behavior trees (more comprehensive treatment)
-- Related synthesis: [Control Architectures Comparison](../../syntheses/control-architectures.md) (to be created)
+- Related synthesis: [Control Architectures Comparison](../syntheses/control-architectures.md) (to be created)
 
 ---
 

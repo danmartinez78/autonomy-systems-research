@@ -29,7 +29,7 @@ Each synthesis includes:
 {% endfor %}
 
 {% if synthesis_posts.size == 0 %}
-*No syntheses yet. [Create one using the template](https://github.com/danmartinez78/autonomy-systems-research/blob/main/docs/_templates/synthesis.md).*
+*No syntheses yet. [Create one using the template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/synthesis.md).*
 {% endif %}
 
 ---
@@ -45,4 +45,4 @@ Syntheses organized by research area:
 
 ---
 
-*To create a new synthesis, see the [synthesis template](https://github.com/danmartinez78/autonomy-systems-research/blob/main/docs/_templates/synthesis.md).*
+*To create a new synthesis, see the [synthesis template](https://github.com/{{ site.github.repository_nwo }}/blob/main/docs/_templates/synthesis.md).*

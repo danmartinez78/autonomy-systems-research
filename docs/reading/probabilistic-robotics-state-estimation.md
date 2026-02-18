@@ -91,7 +91,7 @@ This provides essential theoretical foundation for understanding state estimatio
 
 - Kalman, 1960 - Original Kalman filter paper
 - Gordon et al., 1993 - Introduction of particle filters
-- See also: [State Estimation Synthesis](../../syntheses/state-estimation-approaches.md) (to be created)
+- See also: [State Estimation Synthesis](../syntheses/state-estimation-approaches.md)
 
 ---
 
