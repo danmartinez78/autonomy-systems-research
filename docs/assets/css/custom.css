@@ -38,6 +38,11 @@
   }
 }
 
+/* Tell browsers this page supports both light and dark color schemes */
+html {
+  color-scheme: light dark;
+}
+
 /* ===================================
    Global Layout Improvements
    =================================== */
@@ -104,6 +109,41 @@ pre code {
 .site-footer {
   background-color: var(--header-bg);
   border-top: 1px solid var(--border-color);
+}
+
+/* Navigation elements dark mode support */
+.site-header .site-title,
+.site-header .site-title:visited {
+  color: var(--text-color);
+}
+
+.site-header .site-title:hover {
+  text-decoration: none;
+}
+
+.site-nav {
+  background-color: var(--header-bg);
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+}
+
+.site-nav .page-link:hover {
+  color: var(--link-hover);
+}
+
+/* Mobile menu support - color overrides only */
+.site-nav .menu-icon > svg {
+  fill: var(--text-color);
+}
+
+.site-nav .menu-icon > svg path {
+  fill: var(--text-color);
+}
+
+.site-nav input:checked ~ .trigger {
+  background-color: var(--header-bg);
 }
 
 /* ===================================
