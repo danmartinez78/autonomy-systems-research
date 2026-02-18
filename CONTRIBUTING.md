@@ -206,6 +206,43 @@ Glossary, definitions, and canonical links. This is a single page that grows ove
 
 4. Submit PR for review
 
+### Regenerating Tag Pages
+
+After adding or updating content with new tags, you should regenerate the tag index and individual tag pages.
+
+The repository includes a Python script that automatically generates:
+- A tags index page at `/docs/tags.md`
+- Individual tag pages at `/docs/tags/<tag-name>.md`
+
+**To regenerate tag pages:**
+
+1. Run the generation script from the repository root:
+   ```bash
+   python3 generate-tags.py
+   ```
+
+2. The script will:
+   - Scan all markdown files in `docs/` for tags
+   - Update `/docs/tags.md` with the current list of all tags
+   - Create/update individual tag pages in `/docs/tags/`
+
+3. Commit the generated/updated files with your content changes:
+   ```bash
+   git add docs/tags.md docs/tags/
+   git commit -m "Regenerate tag pages"
+   ```
+
+**When to regenerate:**
+- After adding new content with tags
+- When you introduce new tags that don't exist yet
+- Periodically to ensure tag pages are up-to-date
+
+**Requirements:**
+- Python 3.6 or higher
+- PyYAML library (`pip install pyyaml` if not already installed)
+
+The script is idempotent - you can run it multiple times safely without causing issues.
+
 ## Style Guidelines
 
 ### Writing Style

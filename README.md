@@ -56,6 +56,19 @@ bundle exec jekyll serve
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions.
 
+## Maintenance Tasks
+
+### Regenerating Tag Pages
+
+After adding or modifying content with tags, regenerate the tag pages:
+
+```bash
+# From repository root
+python3 generate-tags.py
+```
+
+This updates `/docs/tags.md` and all individual tag pages in `/docs/tags/`. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
 ## Publishing
 
 This site is automatically published via GitHub Pages:
@@ -91,6 +104,9 @@ autonomy-systems-research/
 │   ├── syntheses.md              # Syntheses index page
 │   ├── knowledge-base.md         # Knowledge base index page
 │   ├── references.md             # References and glossary
+│   ├── tags.md                   # Tags index (generated)
+│   ├── tags/                     # Individual tag pages (generated)
+│   │   └── *.md
 │   ├── journal/                  # Journal entries by year
 │   │   └── 2026/
 │   │       └── 2026-02-18-*.md
@@ -108,6 +124,7 @@ autonomy-systems-research/
 │   │   └── knowledge-base.md
 │   └── _assets/                  # Images and media
 │       └── images/
+├── generate-tags.py              # Script to generate tag pages
 ├── .github/
 │   ├── PULL_REQUEST_TEMPLATE.md  # PR template
 │   └── ISSUE_TEMPLATE/           # Issue templates
