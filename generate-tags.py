@@ -54,9 +54,7 @@ TAGS_INDEX = DOCS_DIR / "tags.md"
 EXCLUDE_DIRS = ["_site", "_templates", ".jekyll-cache", "vendor", ".bundle"]
 REPO_URL = "https://danmartinez78.github.io/autonomy-systems-research"
 
-# Shared CSS for tag pages - now moved to /docs/assets/css/custom.css
-# This constant is kept empty for backward compatibility but is no longer used
-TAG_PAGE_CSS = ""
+# Tag page styles are now defined in /docs/assets/css/custom.css
 
 
 def slugify(text):
