@@ -23,7 +23,7 @@ Each knowledge base entry includes:
 {% for post in kb_posts %}
   {% if post.title %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
-{% if post.summary %}{{ post.summary }}{% endif %}
+{% if post.summary %}{{ post.summary | escape }}{% endif %}
   {% endif %}
 {% endfor %}
 

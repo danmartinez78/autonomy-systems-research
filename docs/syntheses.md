@@ -23,7 +23,7 @@ Each synthesis includes:
 {% for post in synthesis_posts %}
   {% if post.title %}
 ### [{{ post.title }}]({{ post.url | relative_url }})
-{% if post.summary %}{{ post.summary }}{% endif %}  
+{% if post.summary %}{{ post.summary | escape }}{% endif %}  
 {% if post.last_updated %}**Last Updated**: {{ post.last_updated }}{% endif %}
   {% endif %}
 {% endfor %}
