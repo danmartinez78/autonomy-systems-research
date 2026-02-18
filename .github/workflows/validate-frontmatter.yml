@@ -1,0 +1,115 @@
+name: Validate Front Matter
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**/*.md'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Check Markdown Front Matter
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Validate front matter
+        run: |
+          echo "Checking Markdown files for required front matter..."
+          
+          # Initialize counters
+          total_files=0
+          files_with_issues=0
+          
+          # Find all markdown files in docs (excluding templates and generated site)
+          while IFS= read -r file; do
+            # Skip template files and Jekyll generated files
+            if [[ "$file" == *"_templates"* ]] || [[ "$file" == *"_site"* ]]; then
+              continue
+            fi
+            
+            # Skip index pages and main navigation pages (they have different requirements)
+            if [[ "$file" == "docs/index.md" ]] || \
+               [[ "$file" == "docs/journal.md" ]] || \
+               [[ "$file" == "docs/reading.md" ]] || \
+               [[ "$file" == "docs/syntheses.md" ]] || \
+               [[ "$file" == "docs/knowledge-base.md" ]] || \
+               [[ "$file" == "docs/references.md" ]]; then
+              continue
+            fi
+            
+            total_files=$((total_files + 1))
+            has_issue=false
+            
+            echo "Checking: $file"
+            
+            # Check if file has front matter (starts with ---)
+            if ! head -n 1 "$file" | grep -q "^---$"; then
+              echo "  ⚠️  WARNING: No front matter found"
+              has_issue=true
+            else
+              # Extract front matter
+              front_matter=$(sed -n '/^---$/,/^---$/p' "$file" | sed '1d;$d')
+              
+              # Check for required fields
+              if ! echo "$front_matter" | grep -q "^title:"; then
+                echo "  ⚠️  WARNING: Missing 'title' field"
+                has_issue=true
+              fi
+              
+              if ! echo "$front_matter" | grep -q "^tags:"; then
+                echo "  ⚠️  WARNING: Missing 'tags' field"
+                has_issue=true
+              fi
+              
+              # Check for date-related fields (at least one should be present)
+              if ! echo "$front_matter" | grep -qE "^(date|date_read|last_updated):"; then
+                echo "  ⚠️  WARNING: Missing date field (date, date_read, or last_updated)"
+                has_issue=true
+              fi
+              
+              # Optional: check for summary (warning only, not required for all types)
+              if ! echo "$front_matter" | grep -q "^summary:"; then
+                echo "  ℹ️  INFO: No 'summary' field (recommended but not required)"
+              fi
+            fi
+            
+            if [ "$has_issue" = true ]; then
+              files_with_issues=$((files_with_issues + 1))
+            else
+              echo "  ✓ Front matter OK"
+            fi
+            
+            echo ""
+          done < <(find docs -name "*.md" -type f)
+          
+          # Summary
+          echo "========================================="
+          echo "Front Matter Validation Summary"
+          echo "========================================="
+          echo "Total files checked: $total_files"
+          echo "Files with issues: $files_with_issues"
+          echo ""
+          
+          if [ $files_with_issues -gt 0 ]; then
+            echo "⚠️  Some files are missing required front matter fields."
+            echo "This is a warning - the workflow will continue."
+            echo ""
+            echo "Required fields:"
+            echo "  - title: Page title"
+            echo "  - tags: Array of tags"
+            echo "  - date/date_read/last_updated: At least one date field"
+            echo ""
+            echo "See templates in docs/_templates/ for examples."
+          else
+            echo "✓ All files have required front matter!"
+          fi
+          
+          # Exit with success (warning only, not blocking)
+          exit 0
