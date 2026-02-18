@@ -4,7 +4,7 @@ layout: null
 [
   {% assign first_item = true %}
   {% for page in site.pages %}
-    {% unless page.url == "/tags/" or page.url contains "/search/" or page.url == "/search.json" or page.url contains "404" %}
+    {% unless page.url == "/tags/" or page.url contains "/tags/" or page.url contains "/search/" or page.url == "/search.json" or page.url contains "404" %}
     {% if first_item %}{% assign first_item = false %}{% else %},{% endif %}
     {
       "title": {{ page.title | jsonify }},

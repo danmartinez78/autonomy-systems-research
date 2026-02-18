@@ -54,64 +54,9 @@ TAGS_INDEX = DOCS_DIR / "tags.md"
 EXCLUDE_DIRS = ["_site", "_templates", ".jekyll-cache", "vendor", ".bundle"]
 REPO_URL = "https://danmartinez78.github.io/autonomy-systems-research"
 
-# Shared CSS for tag pages
-TAG_PAGE_CSS = """
-<style>
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin: 30px 0;
-}
-
-.tag-item {
-  border: 1px solid #e8e8e8;
-  border-radius: 4px;
-  padding: 15px;
-  min-width: 150px;
-  background: #fafafa;
-}
-
-.tag-item h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.1em;
-}
-
-.tag-item p {
-  margin: 0;
-  color: #666;
-  font-size: 0.9em;
-}
-
-.post-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.post-list li {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.post-list li:last-child {
-  border-bottom: none;
-}
-
-.post-meta {
-  color: #828282;
-  font-size: 0.9em;
-}
-
-.post-list h4 {
-  margin: 5px 0;
-}
-
-.post-summary {
-  margin: 5px 0 15px 0;
-}
-</style>
-"""
+# Shared CSS for tag pages - now moved to /docs/assets/css/custom.css
+# This constant is kept empty for backward compatibility but is no longer used
+TAG_PAGE_CSS = ""
 
 
 def slugify(text):
@@ -281,9 +226,6 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
         plural = 'page' if page_count == 1 else 'pages'
         content += f"- [**{tag_escaped}**]({{{{ site.baseurl }}}}/tags/{tag_slug}/) ({page_count} {plural})\n"
     
-    # Add CSS
-    content += TAG_PAGE_CSS
-    
     return content
 
 
@@ -350,8 +292,7 @@ permalink: /tags/{tag_slug}/
         
         content += "  </li>\n"
     
-    content += "</ul>\n\n"
-    content += TAG_PAGE_CSS
+    content += "</ul>\n"
     
     return content
 
