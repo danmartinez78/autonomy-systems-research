@@ -10,7 +10,6 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 
 {% comment %}Collect all tags and calculate counts in a single pass{% endcomment %}
 {% assign all_tags = "" | split: "" %}
-{% assign tag_counts = "" | split: "" %}
 {% assign tag_hash = "" %}
 
 {% for page_item in site.pages %}
