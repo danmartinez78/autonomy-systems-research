@@ -43,8 +43,9 @@ permalink: /search/
 }
 
 #search-input:focus {
-  outline: none;
-  border-color: #828282;
+  outline: 3px solid #2a7ae2;
+  outline-offset: 2px;
+  border-color: #2a7ae2;
 }
 
 #results-container {
