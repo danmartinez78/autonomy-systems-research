@@ -19,7 +19,32 @@ import re
 import yaml
 from pathlib import Path
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, date
+
+
+def normalize_date_for_sorting(d):
+    """
+    Normalize a date value to datetime for comparison.
+    
+    Converts datetime.date objects to datetime.datetime so they can be compared
+    with datetime.max (used for pages without dates). Python 3 raises TypeError
+    when comparing date and datetime objects directly.
+    
+    Args:
+        d: A datetime.date, datetime.datetime, or None
+        
+    Returns:
+        datetime.datetime: Normalized datetime value, or datetime.max if None
+    """
+    if d is None:
+        return datetime.max
+    elif isinstance(d, datetime):
+        return d
+    elif isinstance(d, date):
+        # Convert date to datetime at midnight
+        return datetime.combine(d, datetime.min.time())
+    else:
+        return datetime.max
 
 
 # Configuration
@@ -293,7 +318,7 @@ permalink: /tags/{tag_slug}/
     # Sort pages by date (newest first), then by title
     sorted_pages = sorted(
         pages,
-        key=lambda p: (p['date'] if p['date'] else datetime.max, p['title']),
+        key=lambda p: (normalize_date_for_sorting(p['date']), p['title']),
         reverse=True
     )
     
