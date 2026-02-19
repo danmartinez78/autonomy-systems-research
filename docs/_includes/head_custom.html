@@ -30,12 +30,24 @@ body{opacity:0}
     }
     theme = prefersLight ? LIGHT : DARK;
   }
+  function restoreBodyOpacity() {
+    if (document.body) {
+      document.body.style.opacity = '1';
+    } else {
+      document.addEventListener('DOMContentLoaded', function onReady() {
+        document.removeEventListener('DOMContentLoaded', onReady);
+        if (document.body) {
+          document.body.style.opacity = '1';
+        }
+      });
+    }
+  }
   var css = document.querySelector('link[rel="stylesheet"]');
   if (css) {
     css.setAttribute('href', '{{ "assets/css/just-the-docs-" | relative_url }}' + theme + '.css');
     // Fail-safe: restore visibility if stylesheet fails to load
-    css.onerror = function() { document.body.style.opacity = '1'; };
-    css.onload = function() { document.body.style.opacity = '1'; };
+    css.onerror = restoreBodyOpacity;
+    css.onload = restoreBodyOpacity;
   } else {
     var s = document.createElement('style');
     s.textContent = 'body{opacity:1}';
