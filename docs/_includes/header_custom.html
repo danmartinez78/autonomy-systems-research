@@ -48,7 +48,7 @@
         }
         try {
           if (window.localStorage) {
-            localStorage.setItem(STORAGE_KEY, next);
+            window.localStorage.setItem(STORAGE_KEY, next);
           }
         } catch (e) {}
         document.documentElement.setAttribute('data-theme', next === DARK ? 'dark' : 'light');
