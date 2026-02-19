@@ -11,19 +11,46 @@
   var LIGHT = 'research-light';
 
   function getPreferred() {
-    var stored = localStorage.getItem(STORAGE_KEY);
+    var stored = null;
+    try {
+      if (window.localStorage) {
+        stored = window.localStorage.getItem(STORAGE_KEY);
+      }
+    } catch (e) {
+      stored = null;
+    }
     if (stored === DARK || stored === LIGHT) return stored;
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? LIGHT : DARK;
+    if (window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? LIGHT : DARK;
+    }
+    return DARK;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
     var btn = document.getElementById('theme-toggle');
     if (btn) {
       btn.addEventListener('click', function() {
-        var current = localStorage.getItem(STORAGE_KEY) || getPreferred();
+        var current;
+        try {
+          current = window.localStorage ? window.localStorage.getItem(STORAGE_KEY) : null;
+        } catch (e) {
+          current = null;
+        }
+        current = current || getPreferred();
         var next = current === DARK ? LIGHT : DARK;
-        jtd.setTheme(next);
-        localStorage.setItem(STORAGE_KEY, next);
+        if (window.jtd && typeof jtd.setTheme === 'function') {
+          jtd.setTheme(next);
+        } else {
+          var css = document.querySelector('link[rel="stylesheet"]');
+          if (css) {
+            css.setAttribute('href', css.getAttribute('href').replace(/(research-dark|research-light)/, next));
+          }
+        }
+        try {
+          if (window.localStorage) {
+            window.localStorage.setItem(STORAGE_KEY, next);
+          }
+        } catch (e) {}
         document.documentElement.setAttribute('data-theme', next === DARK ? 'dark' : 'light');
       });
     }

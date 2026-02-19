@@ -4,6 +4,7 @@
 body{opacity:0}
 .d-none{display:none!important}
 </style>
+<noscript><style>body{opacity:1}</style></noscript>
 <script>
 // Swap to the correct color-scheme stylesheet BEFORE first paint
 // to prevent flash of unstyled/wrong-themed content (FOUC).
@@ -11,16 +12,46 @@ body{opacity:0}
   var STORAGE_KEY = 'jtd-theme';
   var DARK = 'research-dark';
   var LIGHT = 'research-light';
-  var stored = localStorage.getItem(STORAGE_KEY);
+  var stored = null;
+  try {
+    if (window.localStorage) {
+      stored = window.localStorage.getItem(STORAGE_KEY);
+    }
+  } catch (e) {
+    stored = null;
+  }
   var theme;
   if (stored === DARK || stored === LIGHT) {
     theme = stored;
   } else {
-    theme = window.matchMedia('(prefers-color-scheme: light)').matches ? LIGHT : DARK;
+    var prefersLight = false;
+    if (window.matchMedia) {
+      prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    }
+    theme = prefersLight ? LIGHT : DARK;
+  }
+  function restoreBodyOpacity() {
+    if (document.body) {
+      document.body.style.opacity = '1';
+    } else {
+      document.addEventListener('DOMContentLoaded', function onReady() {
+        document.removeEventListener('DOMContentLoaded', onReady);
+        if (document.body) {
+          document.body.style.opacity = '1';
+        }
+      });
+    }
   }
   var css = document.querySelector('link[rel="stylesheet"]');
   if (css) {
     css.setAttribute('href', '{{ "assets/css/just-the-docs-" | relative_url }}' + theme + '.css');
+    // Fail-safe: restore visibility if stylesheet fails to load
+    css.onerror = restoreBodyOpacity;
+    css.onload = restoreBodyOpacity;
+  } else {
+    var s = document.createElement('style');
+    s.textContent = 'body{opacity:1}';
+    document.head.appendChild(s);
   }
   document.documentElement.setAttribute('data-theme', theme === DARK ? 'dark' : 'light');
 })();

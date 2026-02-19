@@ -8,6 +8,6 @@ search_exclude: true
 
 # Search
 
-Use the search bar in the sidebar (or press <kbd>Ctrl</kbd>+<kbd>K</kbd>) to search across all content in the knowledge base.
+Use the search bar in the sidebar (or press <kbd>Ctrl</kbd>+<kbd>K</kbd> on Windows/Linux, <kbd>Cmd</kbd>+<kbd>K</kbd> on macOS) to search across all content in the knowledge base.
 
 The search indexes all page titles, headings, and content automatically.
