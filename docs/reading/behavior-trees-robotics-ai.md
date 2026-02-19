@@ -1,5 +1,6 @@
 ---
 title: "Behavior Trees in Robotics and AI"
+parent: Reading Notes
 date_read: 2026-02-10
 authors: "Michele Colledanchise, Petter Ögren"
 link: "https://arxiv.org/abs/1709.00084"

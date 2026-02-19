@@ -54,7 +54,7 @@ TAGS_INDEX = DOCS_DIR / "tags.md"
 EXCLUDE_DIRS = ["_site", "_templates", ".jekyll-cache", "vendor", ".bundle"]
 REPO_URL = "https://danmartinez78.github.io/autonomy-systems-research"
 
-# Tag page styles are now defined in /docs/assets/css/custom.css
+# Tag page styles are now defined in /docs/_sass/custom/custom.scss
 
 
 def slugify(text):
@@ -184,9 +184,12 @@ def generate_tag_index(tag_pages):
     
     # Generate content
     content = f"""---
-layout: page
+layout: default
 title: Tags
+nav_order: 7
 permalink: /tags/
+nav_exclude: false
+search_exclude: false
 ---
 
 # Browse by Tag
@@ -236,9 +239,11 @@ def generate_tag_page(tag, pages):
     plural = 'page' if page_count == 1 else 'pages'
     
     content = f"""---
-layout: page
+layout: default
 title: "Tag: {escaped_tag}"
 permalink: /tags/{tag_slug}/
+nav_exclude: true
+search_exclude: true
 ---
 
 # Tag: {escaped_tag}

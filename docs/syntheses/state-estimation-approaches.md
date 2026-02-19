@@ -1,11 +1,21 @@
 ---
 title: "State Estimation Approaches for Mobile Robots"
+parent: Syntheses
 last_updated: 2026-02-18
 tags: [perception, state-estimation, localization]
 summary: "Comparison of different approaches to state estimation in mobile robotics"
 ---
 
 # Synthesis: State Estimation Approaches for Mobile Robots
+
+<details class="toc-wrapper" open markdown="block">
+<summary>Table of Contents</summary>
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+</details>
 
 ## Problem Statement
 

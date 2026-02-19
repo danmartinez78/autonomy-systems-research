@@ -1,0 +1,155 @@
+---
+layout: default
+---
+
+<div class="hero">
+  {{ content }}
+</div>
+
+{% comment %} Stats cards - count actual content {% endcomment %}
+{% assign reading_count = 0 %}
+{% assign synthesis_count = 0 %}
+{% assign kb_count = 0 %}
+{% assign all_tags = "" | split: "" %}
+
+{% for p in site.pages %}
+  {% if p.path contains 'reading/' and p.title %}
+    {% assign reading_count = reading_count | plus: 1 %}
+  {% endif %}
+  {% if p.path contains 'syntheses/' and p.title %}
+    {% assign synthesis_count = synthesis_count | plus: 1 %}
+  {% endif %}
+  {% if p.path contains 'knowledge-base/' and p.title %}
+    {% assign kb_count = kb_count | plus: 1 %}
+  {% endif %}
+  {% if p.tags %}
+    {% assign all_tags = all_tags | concat: p.tags %}
+  {% endif %}
+{% endfor %}
+{% assign tag_count = all_tags | uniq | size %}
+
+<div class="stats-row">
+  <div class="stat-card">
+    <span class="stat-card__number">{{ reading_count }}</span>
+    <span class="stat-card__label">Reading Notes</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-card__number">{{ synthesis_count }}</span>
+    <span class="stat-card__label">Syntheses</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-card__number">{{ kb_count }}</span>
+    <span class="stat-card__label">KB Entries</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-card__number">{{ tag_count }}</span>
+    <span class="stat-card__label">Topics</span>
+  </div>
+</div>
+
+{% comment %} Section navigation cards {% endcomment %}
+<h2>Explore</h2>
+<div class="section-cards">
+  <a href="{{ '/reading/' | relative_url }}" class="section-card">
+    <span class="section-card__icon">📖</span>
+    <span class="section-card__title">Reading Notes</span>
+    <span class="section-card__desc">Structured notes on papers, articles, and technical reports</span>
+    <span class="section-card__count">{{ reading_count }} notes</span>
+  </a>
+  <a href="{{ '/syntheses/' | relative_url }}" class="section-card">
+    <span class="section-card__icon">🔬</span>
+    <span class="section-card__title">Syntheses</span>
+    <span class="section-card__desc">Topic-level living documents consolidating understanding across sources</span>
+    <span class="section-card__count">{{ synthesis_count }} syntheses</span>
+  </a>
+  <a href="{{ '/knowledge-base/' | relative_url }}" class="section-card">
+    <span class="section-card__icon">📚</span>
+    <span class="section-card__title">Knowledge Base</span>
+    <span class="section-card__desc">Evergreen reference pages on concepts, patterns, and checklists</span>
+    <span class="section-card__count">{{ kb_count }} entries</span>
+  </a>
+  <a href="{{ '/journal/' | relative_url }}" class="section-card">
+    <span class="section-card__icon">📓</span>
+    <span class="section-card__title">Journal</span>
+    <span class="section-card__desc">Chronological log of research activities and decisions</span>
+  </a>
+  <a href="{{ '/references/' | relative_url }}" class="section-card">
+    <span class="section-card__icon">🔗</span>
+    <span class="section-card__title">References</span>
+    <span class="section-card__desc">Glossary, definitions, and canonical links</span>
+  </a>
+  <a href="{{ '/tags/' | relative_url }}" class="section-card">
+    <span class="section-card__icon">🏷️</span>
+    <span class="section-card__title">Tags</span>
+    <span class="section-card__desc">Browse all content by topic tags</span>
+    <span class="section-card__count">{{ tag_count }} tags</span>
+  </a>
+</div>
+
+{% comment %} Recent activity - collect pages from each content type sorted by their date field {% endcomment %}
+{% assign reading_pages = site.pages | where_exp: "p", "p.path contains 'reading/' and p.title" | sort: "date_read" | reverse %}
+{% assign synthesis_pages = site.pages | where_exp: "p", "p.path contains 'syntheses/' and p.title" | sort: "last_updated" | reverse %}
+{% assign kb_pages = site.pages | where_exp: "p", "p.path contains 'knowledge-base/' and p.title" | sort: "date" | reverse %}
+
+{% comment %} Merge into one list ordered newest-first across all types {% endcomment %}
+{% assign ri = 0 %}{% assign si = 0 %}{% assign ki = 0 %}
+{% assign recent_count = 0 %}
+{% assign recent_limit = 5 %}
+
+{% assign has_content = false %}
+{% if reading_pages.size > 0 or synthesis_pages.size > 0 or kb_pages.size > 0 %}
+  {% assign has_content = true %}
+{% endif %}
+
+{% if has_content %}
+<h2>Recent Activity</h2>
+<ul class="recent-list">
+  {% for i in (1..5) %}
+    {% comment %} Find the newest unprocessed page across all three lists {% endcomment %}
+    {% assign best_date = "0000-00-00" %}
+    {% assign best_source = "" %}
+
+    {% if ri < reading_pages.size %}
+      {% assign rp = reading_pages[ri] %}
+      {% assign rd = rp.date_read | date: "%Y-%m-%d" | default: "0000-00-00" %}
+      {% if rd > best_date %}{% assign best_date = rd %}{% assign best_source = "reading" %}{% endif %}
+    {% endif %}
+    {% if si < synthesis_pages.size %}
+      {% assign sp = synthesis_pages[si] %}
+      {% assign sd = sp.last_updated | date: "%Y-%m-%d" | default: "0000-00-00" %}
+      {% if sd > best_date %}{% assign best_date = sd %}{% assign best_source = "synthesis" %}{% endif %}
+    {% endif %}
+    {% if ki < kb_pages.size %}
+      {% assign kp = kb_pages[ki] %}
+      {% assign kd = kp.date | date: "%Y-%m-%d" | default: "0000-00-00" %}
+      {% if kd > best_date %}{% assign best_date = kd %}{% assign best_source = "kb" %}{% endif %}
+    {% endif %}
+
+    {% if best_source == "reading" %}
+      {% assign page_item = reading_pages[ri] %}
+      {% assign ri = ri | plus: 1 %}
+  <li>
+    <span class="recent-list__date">{{ page_item.date_read }}</span>
+    <span class="recent-list__title"><a href="{{ page_item.url | relative_url }}">{{ page_item.title }}</a></span>
+    <span class="recent-list__type">{{ page_item.type | default: "" }}</span>
+  </li>
+    {% elsif best_source == "synthesis" %}
+      {% assign page_item = synthesis_pages[si] %}
+      {% assign si = si | plus: 1 %}
+  <li>
+    <span class="recent-list__date">{{ page_item.last_updated }}</span>
+    <span class="recent-list__title"><a href="{{ page_item.url | relative_url }}">{{ page_item.title }}</a></span>
+    <span class="recent-list__type">{{ page_item.type | default: "" }}</span>
+  </li>
+    {% elsif best_source == "kb" %}
+      {% assign page_item = kb_pages[ki] %}
+      {% assign ki = ki | plus: 1 %}
+  <li>
+    <span class="recent-list__date">{{ page_item.date | date: "%Y-%m-%d" }}</span>
+    <span class="recent-list__title"><a href="{{ page_item.url | relative_url }}">{{ page_item.title }}</a></span>
+    <span class="recent-list__type">{{ page_item.type | default: "" }}</span>
+  </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

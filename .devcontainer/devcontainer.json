@@ -1,0 +1,14 @@
+{
+  "name": "Jekyll Dev",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.3",
+  "postCreateCommand": "cd docs && bundle install",
+  "forwardPorts": [4000],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "shopify.ruby-lsp"
+      ]
+    }
+  }
+}

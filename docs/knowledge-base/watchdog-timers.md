@@ -1,11 +1,21 @@
 ---
 title: "Watchdog Timers in Autonomous Systems"
+parent: Knowledge Base
 date: 2026-02-18
 tags: [safety, reliability, system-architecture]
 summary: "Pattern for detecting and recovering from software failures in autonomous systems"
 ---
 
 # Knowledge Base: Watchdog Timers
+
+<details class="toc-wrapper" open markdown="block">
+<summary>Table of Contents</summary>
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+</details>
 
 ## Definition
 

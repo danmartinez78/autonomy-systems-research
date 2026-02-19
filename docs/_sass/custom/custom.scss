@@ -1,0 +1,505 @@
+// ==============================================
+// Custom styles for Autonomy Systems Research
+// ==============================================
+
+// Reveal body once this CSS loads (hidden by critical inline style in head)
+body {
+  opacity: 1 !important;
+}
+
+// --- Layout: Sidebar fits its content, main takes the rest ---
+// md breakpoint: sidebar fixed at theme default 15.5rem
+// lg breakpoint: lock at 16.5rem instead of theme's growing calc()
+@media (min-width: 50rem) {
+  .side-bar {
+    width: 15.5rem;
+  }
+
+  .side-bar + .main {
+    margin-left: 15.5rem;
+  }
+
+  .main {
+    max-width: none;
+  }
+}
+
+@media (min-width: 66.5rem) {
+  .side-bar {
+    width: 16.5rem;
+    min-width: 16.5rem;
+  }
+
+  .side-bar + .main {
+    margin-left: 16.5rem;
+  }
+}
+
+// Center prose within the expanded main area for readability
+.main-content-wrap {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+// Give the sidebar header more breathing room
+// Theme hard-clamps at 3.75rem with max-height — override it
+@media (min-width: 50rem) {
+  .site-header {
+    height: auto;
+    max-height: none;
+  }
+}
+
+.site-title {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+// --- Theme Toggle Button ---
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: $body-text-color;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: $base-button-color;
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+// Show/hide sun vs moon icon based on data-theme
+[data-theme="dark"] .theme-icon-dark { display: none; }
+[data-theme="dark"] .theme-icon-light { display: block; }
+[data-theme="light"] .theme-icon-dark { display: block; }
+[data-theme="light"] .theme-icon-light { display: none; }
+
+// Default: hide light icon (dark is default)
+.theme-icon-light { display: none; }
+
+// --- Typography Enhancements ---
+.main-content {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+    line-height: 1.3;
+  }
+
+  h1:first-child,
+  h2:first-child,
+  h3:first-child {
+    margin-top: 0;
+  }
+
+  // Improve paragraph readability
+  p {
+    line-height: 1.7;
+  }
+
+  // Better list spacing
+  ul, ol {
+    line-height: 1.7;
+  }
+}
+
+// --- Tag Cloud (Cards Grid) ---
+.tag-cloud {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.tag-item {
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  background: $table-background-color;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.4;
+
+    a {
+      text-decoration: none;
+      color: $link-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    color: $feedback-color;
+    font-size: 0.85rem;
+  }
+}
+
+// --- Post/Content List (Card Style) ---
+.post-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+
+  // Ensure nested lists inside cards have proper spacing
+  ul, ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+}
+
+.post-list li {
+  margin-bottom: 1rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background: $table-background-color;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.post-meta {
+  color: $feedback-color;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.post-list h4 {
+  margin: 0.25rem 0 0.5rem 0;
+  font-size: 1.1rem;
+
+  a {
+    text-decoration: none;
+    color: $body-heading-color;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+}
+
+.post-summary {
+  margin: 0.5rem 0 0 0;
+  color: $feedback-color;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+// --- Content Type Badges ---
+.content-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.content-badge--reading {
+  background-color: rgba(229, 192, 123, 0.15);
+  color: $link-color;
+  border: 1px solid rgba(229, 192, 123, 0.3);
+}
+
+.content-badge--synthesis {
+  background-color: rgba(46, 160, 67, 0.15);
+  color: #3fb950;
+  border: 1px solid rgba(46, 160, 67, 0.3);
+}
+
+.content-badge--knowledge-base {
+  background-color: rgba(210, 153, 34, 0.15);
+  color: #d29922;
+  border: 1px solid rgba(210, 153, 34, 0.3);
+}
+
+.content-badge--journal {
+  background-color: rgba(139, 148, 158, 0.15);
+  color: $feedback-color;
+  border: 1px solid rgba(139, 148, 158, 0.3);
+}
+
+// --- Section Cards (Home Page) ---
+.section-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.section-card {
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  background: $table-background-color;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: $body-text-color;
+  display: block;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border-color: $link-color;
+    text-decoration: none;
+    color: $body-text-color;
+  }
+
+  .section-card__icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-card__title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $body-heading-color;
+    margin-bottom: 0.4rem;
+  }
+
+  .section-card__desc {
+    font-size: 0.85rem;
+    color: $feedback-color;
+    line-height: 1.5;
+  }
+
+  .section-card__count {
+    font-size: 0.75rem;
+    color: $nav-child-link-color;
+    margin-top: 0.75rem;
+    display: block;
+  }
+}
+
+// --- Stats Row (Home Page) ---
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background: $table-background-color;
+
+  .stat-card__number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $link-color;
+    display: block;
+    line-height: 1.2;
+  }
+
+  .stat-card__label {
+    font-size: 0.75rem;
+    color: $feedback-color;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+    display: block;
+  }
+}
+
+// --- Hero Section (Home Page) ---
+.hero {
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid $border-color;
+
+  .hero__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $body-heading-color;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .hero__tagline {
+    font-size: 1.1rem;
+    color: $feedback-color;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// --- Recent Activity List ---
+.recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.recent-list__date {
+  font-size: 0.8rem;
+  color: $feedback-color;
+  white-space: nowrap;
+  min-width: 5rem;
+}
+
+.recent-list__title a {
+  text-decoration: none;
+  color: $body-heading-color;
+  font-weight: 500;
+
+  &:hover {
+    color: $link-color;
+  }
+}
+
+.recent-list__type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $feedback-color;
+}
+
+// --- Responsive Tables ---
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+}
+
+// --- In-Page TOC Styling ---
+.toc-wrapper {
+  background: $table-background-color;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: $body-heading-color;
+  }
+
+  ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+
+// --- Sidebar: kill all ugly gradient hovers ---
+.nav-list .nav-list-item .nav-list-link {
+  &:hover,
+  &.active {
+    color: $body-heading-color;
+    background-image: none;
+    background-color: rgba($border-color, 0.4);
+  }
+
+  &.active {
+    font-weight: 600;
+  }
+}
+
+.nav-list .nav-list-item .nav-list-expander:hover {
+  background-image: none;
+  background-color: rgba($border-color, 0.4);
+}
+
+.site-title:hover {
+  background-image: none;
+}
+
+.site-button:hover {
+  background-image: none;
+}
+
+// --- "View all…" sidebar links: subtle, deemphasized ---
+a.nav-list-link[href*="/view-all"] {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: $feedback-color;
+  letter-spacing: 0.01em;
+
+  &:hover {
+    color: $link-color;
+  }
+}
+
+// --- Better spacing for main content lists ---
+.main-content {
+  ul, ol {
+    padding-left: 1.75rem;
+  }
+}
+
+// --- Mobile Responsiveness ---
+@media (max-width: 50rem) {
+  .tag-cloud {
+    grid-template-columns: 1fr;
+  }
+
+  .section-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero .hero__title {
+    font-size: 1.6rem;
+  }
+
+  .recent-list li {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .recent-list__date {
+    min-width: unset;
+  }
+}

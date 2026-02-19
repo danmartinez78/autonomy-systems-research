@@ -13,7 +13,13 @@ Thank you for contributing to the Autonomy Systems Research knowledge base! This
 
 ## Getting Started
 
-This knowledge base is built with Jekyll and hosted on GitHub Pages. Content is written in Markdown and organized into different types of artifacts.
+This knowledge base is built with Jekyll 4 and the **just-the-docs** theme, hosted on GitHub Pages via GitHub Actions. Content is written in Markdown and organized into different types of artifacts.
+
+The site features:
+- **Sidebar navigation** with hierarchical page structure
+- **Built-in search** (Ctrl+K) powered by lunr.js
+- **Dark/light mode** toggle with OS preference detection
+- **Dashboard home page** with stats and recent activity
 
 ### Quick Start
 
@@ -42,6 +48,7 @@ Structured notes on papers, articles, and technical reports.
 ```yaml
 ---
 title: "Paper Title"
+parent: Reading Notes
 date_read: YYYY-MM-DD
 authors: "Author names"
 link: "URL to paper"
@@ -64,6 +71,7 @@ Topic-level living documents that consolidate understanding across multiple sour
 ```yaml
 ---
 title: "Synthesis Title"
+parent: Syntheses
 last_updated: YYYY-MM-DD
 tags: [topic-area]
 summary: "What this synthesis covers"
@@ -103,6 +111,7 @@ Evergreen reference material on concepts, patterns, checklists, and gotchas.
 ```yaml
 ---
 title: "Concept Name"
+parent: Knowledge Base
 date: YYYY-MM-DD
 tags: [category, topic]
 summary: "Brief description"
@@ -155,25 +164,39 @@ Glossary, definitions, and canonical links. This is a single page that grows ove
 
 ### Adding a Journal Entry
 
-1. Create directory for current year if needed:
-   ```bash
-   mkdir -p docs/journal/2026
+1. Open (or create) the file for the current year:
+   ```
+   docs/journal/YYYY.md
    ```
 
-2. Copy the template:
-   ```bash
-   cp docs/_templates/journal-entry.md docs/journal/2026/2026-02-18-descriptive-title.md
+   If the year file doesn't exist yet, create it with this front matter:
+   ```yaml
+   ---
+   layout: default
+   title: "YYYY"
+   parent: Journal
+   permalink: /journal/YYYY/
+   ---
+
+   # Research Journal — YYYY
+
+   Chronological log of research activities, decisions, and published artifacts.
+
+   ---
    ```
 
-3. Fill in the sections:
-   - What changed (understanding, implementation, direction)
-   - Decisions made (with rationale)
-   - Blockers and challenges
-   - Next steps
+2. **Prepend** a new entry at the top of the file (below the header):
+   ```markdown
+   ## YYYY-MM-DD — Entry Title
 
-4. Link to relevant reading notes and syntheses
+   2-3 sentences describing what happened. Link to the actual artifact.
 
-5. Journal entries are less formal - submit PR directly
+   [Read the synthesis](...) | [PR #N](...)
+   ```
+
+3. Link to relevant reading notes and syntheses
+
+4. Journal entries are less formal - submit PR directly
 
 ### Adding a Knowledge Base Entry
 
@@ -271,10 +294,11 @@ The script is idempotent - you can run it multiple times safely without causing 
 
 All content pages must include YAML front matter with at minimum:
 - `title`: Page title
+- `parent`: Parent section name (e.g., `Reading Notes`, `Syntheses`, `Knowledge Base`)
 - `tags`: Array of relevant tags
 - `summary`: One-sentence description
 
-Additional fields depend on content type (see templates).
+The `parent` field controls where the page appears in the sidebar navigation.
 
 ### Links
 
@@ -288,6 +312,34 @@ Use consistent, descriptive tags:
 - Lowercase
 - Hyphenated for multi-word tags
 - Common tags: `perception`, `planning`, `control`, `learning`, `state-estimation`, `localization`, `safety`, `architecture`
+
+### Sidebar Navigation Convention
+
+To keep the sidebar clean and scannable, each section shows **at most 5 child pages** — the most recent entries. When a section grows beyond 5 entries:
+
+1. **Hide older entries** by adding `nav_exclude: true` to their front matter (the page is still accessible via its URL; it just won't appear in the sidebar).
+
+2. **Add a "View all…" page** as the last dropdown item so visitors know more content exists. Copy the template and fill in section-specific values:
+
+   ```bash
+   cp docs/_templates/view-all.md docs/<section>/view-all.md
+   ```
+
+   Then replace the three placeholders:
+   - `SECTION_NAME` → the parent page's title (e.g., `Reading Notes`)
+   - `SECTION_SLUG` → the parent page's permalink slug (e.g., `reading`)
+
+   This creates a sidebar link that redirects to the parent page, which already lists all entries.
+
+   **Example** (`docs/reading/view-all.md`):
+   ```yaml
+   ---
+   title: "View all…"
+   parent: Reading Notes
+   nav_order: 999
+   permalink: /reading/view-all/
+   ---
+   ```
 
 ## Pull Request Process
 
@@ -333,7 +385,7 @@ cd docs
 bundle exec jekyll serve
 ```
 
-Then open http://localhost:4000 in your browser.
+Then open http://localhost:4000/autonomy-systems-research/ in your browser.
 
 Changes to Markdown files will be reflected automatically (refresh browser).
 

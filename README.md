@@ -51,7 +51,7 @@ bundle install
 # Run local server
 bundle exec jekyll serve
 
-# Open http://localhost:4000 in browser
+# Open http://localhost:4000/autonomy-systems-research/ in browser
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions.
@@ -71,34 +71,49 @@ This updates `/docs/tags.md` and all individual tag pages in `/docs/tags/`. See 
 
 ## Publishing
 
-This site is automatically published via GitHub Pages:
+This site is built with **Jekyll 4** using the **just-the-docs** theme and deployed via **GitHub Actions**:
 - **Source**: `/docs` directory on `main` branch
 - **URL**: https://danmartinez78.github.io/autonomy-systems-research
-- **Updates**: Automatically deployed when changes are pushed to `main`
+- **Theme**: [just-the-docs](https://just-the-docs.com/) — sidebar navigation, built-in search, dark/light mode
+- **Build**: Automated via `.github/workflows/pages.yml` on every push to `main`
 
 No manual build or deployment steps required.
 
-### Initial GitHub Pages Setup
+### GitHub Pages Setup
 
-To enable GitHub Pages for the first time:
+To enable GitHub Pages:
 
 1. Go to repository Settings → Pages
 2. Under "Build and deployment":
-   - **Source**: Deploy from a branch
-   - **Branch**: `main`
-   - **Folder**: `/docs`
-3. Click "Save"
-
-GitHub will automatically build and deploy the site. The URL will be `https://[username].github.io/autonomy-systems-research`.
+   - **Source**: GitHub Actions
+3. The workflow in `.github/workflows/pages.yml` handles the rest
 
 ## Repository Structure
 
 ```
 autonomy-systems-research/
 ├── docs/                          # Jekyll site source (GitHub Pages)
-│   ├── _config.yml               # Jekyll configuration
-│   ├── Gemfile                   # Ruby dependencies
-│   ├── index.md                  # Landing page
+│   ├── _config.yml               # Jekyll configuration (just-the-docs theme)
+│   ├── Gemfile                   # Ruby dependencies (Jekyll 4 + just-the-docs)
+│   ├── _layouts/                 # Custom layouts
+│   │   └── home.html             # Dashboard-style home page
+│   ├── _includes/                # Custom includes
+│   │   ├── head_custom.html      # Critical CSS, favicon, theme-swap script
+│   │   └── header_custom.html    # Dark/light theme toggle button
+│   ├── _sass/                    # Custom SCSS
+│   │   ├── color_schemes/        # Dark and light color schemes
+│   │   │   ├── research-dark.scss
+│   │   │   └── research-light.scss
+│   │   └── custom/
+│   │       ├── custom.scss       # All custom component styles
+│   │       └── setup.scss        # Pre-theme variable overrides
+│   ├── assets/
+│   │   ├── css/                  # Theme stylesheet variants
+│   │   │   ├── just-the-docs-research-dark.scss
+│   │   │   └── just-the-docs-research-light.scss
+│   │   └── images/
+│   │       └── favicon.svg       # Site favicon
+│   ├── index.md                  # Landing page (dashboard)
 │   ├── journal.md                # Journal index page
 │   ├── reading.md                # Reading notes index page
 │   ├── syntheses.md              # Syntheses index page
@@ -108,24 +123,23 @@ autonomy-systems-research/
 │   ├── tags/                     # Individual tag pages (generated)
 │   │   └── *.md
 │   ├── journal/                  # Journal entries by year
-│   │   └── 2026/
-│   │       └── 2026-02-18-*.md
+│   │   └── 2026.md
 │   ├── reading/                  # Reading notes
 │   │   └── *.md
 │   ├── syntheses/                # Synthesis documents
 │   │   └── *.md
 │   ├── knowledge-base/           # Evergreen reference pages
 │   │   └── *.md
-│   ├── references/               # (Reserved for future structure)
-│   ├── _templates/               # Content templates (not published)
-│   │   ├── reading-note.md
-│   │   ├── synthesis.md
-│   │   ├── journal-entry.md
-│   │   └── knowledge-base.md
-│   └── _assets/                  # Images and media
-│       └── images/
+│   └── _templates/               # Content templates (not published)
+│       ├── reading-note.md
+│       ├── synthesis.md
+│       ├── journal-entry.md
+│       ├── knowledge-base.md
+│       └── view-all.md           # Sidebar "View all…" redirect
 ├── generate-tags.py              # Script to generate tag pages
 ├── .github/
+│   ├── workflows/
+│   │   └── pages.yml             # GitHub Actions: build & deploy
 │   ├── PULL_REQUEST_TEMPLATE.md  # PR template
 │   └── ISSUE_TEMPLATE/           # Issue templates
 │       ├── reading-to-ingest.md

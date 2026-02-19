@@ -1,5 +1,6 @@
 ---
 title: "Probabilistic Robotics - State Estimation Chapter"
+parent: Reading Notes
 date_read: 2026-02-15
 authors: "Sebastian Thrun, Wolfram Burgard, Dieter Fox"
 link: "https://mitpress.mit.edu/books/probabilistic-robotics"

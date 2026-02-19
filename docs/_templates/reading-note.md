@@ -1,5 +1,6 @@
 ---
 title: "Paper Title Here"
+parent: Reading Notes
 date_read: YYYY-MM-DD
 authors: "Author1, Author2, Author3"
 link: "https://doi.org/..."
