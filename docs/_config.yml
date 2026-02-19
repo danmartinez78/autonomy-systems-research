@@ -1,6 +1,6 @@
 # Jekyll configuration for Autonomy Systems Research Knowledge Base
 title: Autonomy Systems Research
-description: A knowledge base for robotics and autonomy research - reading notes, syntheses, and structured knowledge.
+description: A knowledge base for robotics and autonomy research — reading notes, syntheses, and structured knowledge.
 baseurl: "/autonomy-systems-research"
 url: "https://danmartinez78.github.io"
 
@@ -10,26 +10,64 @@ github:
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: just-the-docs
+
+# Color scheme (custom dark scheme with light toggle)
+color_scheme: research-dark
+
+# Search
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  rel_url: true
+  button: false
+  focus_shortcut_key: "k"
+
+# Navigation
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Aux links (top-right corner)
+aux_links:
+  "GitHub":
+    - "https://github.com/danmartinez78/autonomy-systems-research"
+aux_links_new_tab: true
+
+# Footer
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/danmartinez78/autonomy-systems-research"
+gh_edit_branch: "main"
+gh_edit_source: "docs"
+gh_edit_view_mode: "tree"
+
+# Callouts for content types
+callouts:
+  reading:
+    title: Reading Note
+    color: blue
+  synthesis:
+    title: Synthesis
+    color: green
+  knowledge-base:
+    title: Knowledge Base
+    color: yellow
+  journal:
+    title: Journal
+    color: grey-dk
+
+# Plugins
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
 
 # Collections
 collections:
   templates:
     output: false
-
-# Navigation
-header_pages:
-  - index.md
-  - journal.md
-  - reading.md
-  - syntheses.md
-  - knowledge-base.md
-  - references.md
-  - tags.md
-  - search.md
 
 # Exclude from processing
 exclude:
@@ -41,27 +79,31 @@ exclude:
 # Front matter defaults
 defaults:
   - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
       path: "journal"
     values:
-      layout: "post"
       type: "journal"
   - scope:
       path: "reading"
     values:
-      layout: "post"
       type: "reading"
   - scope:
       path: "syntheses"
     values:
-      layout: "page"
       type: "synthesis"
   - scope:
       path: "knowledge-base"
     values:
-      layout: "page"
       type: "knowledge-base"
   - scope:
       path: "references"
     values:
-      layout: "page"
       type: "reference"
+  - scope:
+      path: "tags"
+    values:
+      nav_exclude: true
+      search_exclude: true

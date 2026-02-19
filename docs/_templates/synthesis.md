@@ -1,5 +1,6 @@
 ---
 title: "Synthesis Topic Title"
+parent: Syntheses
 last_updated: YYYY-MM-DD
 tags: [topic-area, subtopic]
 summary: "One-sentence description of what this synthesis covers"
