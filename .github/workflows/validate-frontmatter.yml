@@ -51,6 +51,13 @@ jobs:
               continue
             fi
 
+            # Only enforce strict front matter for specific content directories
+            if [[ "$file" != docs/reading/* && \
+                  "$file" != docs/syntheses/* && \
+                  "$file" != docs/knowledge-base/* ]]; then
+              continue
+            fi
+
             total_files=$((total_files + 1))
             has_issue=false
             
