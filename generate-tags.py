@@ -278,7 +278,7 @@ search_exclude: true
             if isinstance(page['date'], str):
                 meta_parts.append(page['date'])
             else:
-                meta_parts.append(page['date'].strftime('%b %-d, %Y'))
+                meta_parts.append(page['date'].strftime('%b %d, %Y').replace(' 0', ' '))
         
         if meta_parts:
             content += f"    <span class=\"post-meta\">{' &middot; '.join(meta_parts)}</span>\n"

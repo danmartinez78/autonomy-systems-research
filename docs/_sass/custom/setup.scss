@@ -1,5 +1,7 @@
-// Layout overrides — loaded before all other theme SCSS via Just the Docs pipeline
-// These must be set here (before support/_variables.scss evaluates !default)
-// Note: setup.scss actually loads AFTER support, so we can only override
-// variables that are used lazily. For eagerly-computed values like $media-queries,
-// we use CSS overrides in custom.scss instead.
+// Layout-related customizations.
+// Note: setup.scss is loaded after the core Just the Docs "support" layer,
+// including support/_variables.scss. As a result, we cannot rely on SCSS
+// variable overrides here for values that are eagerly computed in support
+// (for example, $media-queries); for those, use CSS overrides in custom.scss
+// instead. Variables that are only read later in the pipeline can still be
+// safely overridden here.
