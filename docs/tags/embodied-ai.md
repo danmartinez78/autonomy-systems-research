@@ -8,7 +8,7 @@ search_exclude: true
 
 # Tag: embodied-ai
 
-1 page tagged with **embodied-ai**
+2 pages tagged with **embodied-ai**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -17,6 +17,10 @@ search_exclude: true
 ---
 
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Feb 19, 2026</span>
+    <h4><a href="{{ site.baseurl }}/survey/2026-02-19-go2-embodied-ai-stack/">Unitree GO2 Pro Embodied AI Stack Survey</a></h4>
+  </li>
   <li>
     <span class="post-meta">Feb 18, 2026</span>
     <h4><a href="{{ site.baseurl }}/syntheses/memory-systems-vla-robots/">Memory Systems for Autonomous Robots with VLA Architectures</a></h4>
