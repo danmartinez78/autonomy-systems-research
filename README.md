@@ -20,6 +20,7 @@ The knowledge base is organized into several content types:
 - **[Syntheses](https://danmartinez78.github.io/autonomy-systems-research/syntheses/)**: Topic-level consolidation of understanding across sources
 - **[Journal Entries](https://danmartinez78.github.io/autonomy-systems-research/journal/)**: Chronological progress logs and research decisions
 - **[Knowledge Base](https://danmartinez78.github.io/autonomy-systems-research/knowledge-base/)**: Evergreen reference pages on concepts and patterns
+- **[Backlog of the Strange](https://danmartinez78.github.io/autonomy-systems-research/strange/)**: Deliberately weird research seeds—captured before they evaporate
 - **[References](https://danmartinez78.github.io/autonomy-systems-research/references/)**: Glossary, definitions, and canonical links
 - **[Tags](https://danmartinez78.github.io/autonomy-systems-research/tags/)**: Browse content by topic tags
 - **[Search](https://danmartinez78.github.io/autonomy-systems-research/search/)**: Full-text search across all content
@@ -119,8 +120,11 @@ autonomy-systems-research/
 │   ├── syntheses.md              # Syntheses index page
 │   ├── knowledge-base.md         # Knowledge base index page
 │   ├── references.md             # References and glossary
+│   ├── strange.md                # Backlog of the Strange index
 │   ├── tags.md                   # Tags index (generated)
 │   ├── tags/                     # Individual tag pages (generated)
+│   │   └── *.md
+│   ├── strange/                  # Backlog of the Strange entries
 │   │   └── *.md
 │   ├── journal/                  # Journal entries by year
 │   │   └── 2026.md
