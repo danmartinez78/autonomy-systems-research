@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Syntheses
-nav_order: 4
+nav_order: 3
 has_children: true
 permalink: /syntheses/
 has_toc: false
