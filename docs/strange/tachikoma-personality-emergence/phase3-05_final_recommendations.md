@@ -33,7 +33,7 @@ summary: "Tachikoma fleet research packet (phase3): 05_final_recommendations."
 - Tier 2: 8-12 weeks (production-ready)
 - Tier 3: 16-24 weeks (research-grade)
 
-**Total research output:** 427.1KB (15 major syntheses)
+**Total research output:** see "Personality Emergence Research Plan" for the current, repo-specific size breakdown (varies with formatting and file set).
 
 ---
 

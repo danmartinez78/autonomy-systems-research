@@ -11,7 +11,9 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 
 **Created:** 2026-02-18 20:35 CST
 **Status:** ✅ RESEARCH COMPLETE - All Phases Complete
-**Total Output:** Phase 1 ✅ (159.3KB) + Phase 2 ✅ (102.6KB) + Phase 3 ✅ (89.8KB) = **451.5KB total research synthesis**
+**Total Output (this packet, current repo):** Phase 1 (≈173.9KB) + Phase 2 (≈102.0KB) + Phase 3 (≈188.7KB) = **≈464.6KB** (markdown bytes, excludes tag pages)
+
+*(Note: earlier totals in the original workspace notes were approximate and used a different file set; these numbers reflect the actual files under `docs/strange/tachikoma-personality-emergence/`.)*
 **Research Complete:** YES - All 15 subtasks completed successfully
 **Next:** Implementation planning and deployment
 
@@ -59,7 +61,7 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 - [x] 1.7: Academic Sources Mining (NeurIPS, ICLR, ACL, AAMAS, CogSci)
 - [x] 1.8: Phase 1 Synthesis — Cross-area patterns
 
-**Output:** `research/2026-02-18-tachikoma-fleet/phase1/XX_TOPIC_NAME.md`
+**Output (in this repo):** `docs/strange/tachikoma-personality-emergence/phase1-*.md`
 **Status:** ✅ Complete (159.3KB total)
 
 ---
@@ -75,7 +77,7 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 - [x] 2.4: Deep dive #4 (Social Norm Emergence)
 - [x] 2.5: Deep dive #5 (Stress Response Mechanisms)
 
-**Output:** `research/2026-02-18-tachikoma-fleet/phase2/XX_DEEP_DIVE_NAME.md`
+**Output (in this repo):** `docs/strange/tachikoma-personality-emergence/phase2-*.md`
 **Status:** ✅ Complete (102.6KB total)
 
 ---
@@ -91,7 +93,7 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 - [x] 3.4: SOUL.md Governance Design — Policy update mechanisms
 - [x] 3.5: Final Recommendations — What we should implement
 
-**Output:** `research/2026-02-18-tachikoma-fleet/phase3/XX_META_NAME.md`
+**Output (in this repo):** `docs/strange/tachikoma-personality-emergence/phase3-*.md`
 **Status:** ✅ Complete (89.8KB total)
 
 ---
