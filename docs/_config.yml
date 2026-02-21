@@ -62,6 +62,9 @@ callouts:
   strange:
     title: Strange Seed
     color: purple
+  survey:
+    title: Survey
+    color: teal
 
 # Plugins
 plugins:
@@ -101,6 +104,10 @@ defaults:
       path: "knowledge-base"
     values:
       type: "knowledge-base"
+  - scope:
+      path: "survey"
+    values:
+      type: "survey"
   - scope:
       path: "strange"
     values:
