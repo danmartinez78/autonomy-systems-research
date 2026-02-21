@@ -32,10 +32,14 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/embodied-ai/">embodied-ai</a></h3>
-    <p>2 pages</p>
+    <p>23 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/groot/">groot</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/identity/">identity</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
@@ -48,7 +52,11 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/memory-systems/">memory-systems</a></h3>
-    <p>1 page</p>
+    <p>21 pages</p>
+  </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/multi-agent/">multi-agent</a></h3>
+    <p>19 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/nvidia-isaac/">nvidia-isaac</a></h3>
@@ -87,12 +95,16 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <p>1 page</p>
   </div>
   <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/soul/">soul</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/state-estimation/">state-estimation</a></h3>
     <p>3 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/strange/">strange</a></h3>
-    <p>2 pages</p>
+    <p>23 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/system-architecture/">system-architecture</a></h3>
@@ -118,11 +130,13 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**behavior-trees**]({{ site.baseurl }}/tags/behavior-trees/) (1 page)
 - [**control-architecture**]({{ site.baseurl }}/tags/control-architecture/) (1 page)
 - [**decision-making**]({{ site.baseurl }}/tags/decision-making/) (1 page)
-- [**embodied-ai**]({{ site.baseurl }}/tags/embodied-ai/) (2 pages)
+- [**embodied-ai**]({{ site.baseurl }}/tags/embodied-ai/) (23 pages)
 - [**groot**]({{ site.baseurl }}/tags/groot/) (1 page)
+- [**identity**]({{ site.baseurl }}/tags/identity/) (1 page)
 - [**knowledge-graphs**]({{ site.baseurl }}/tags/knowledge-graphs/) (1 page)
 - [**localization**]({{ site.baseurl }}/tags/localization/) (2 pages)
-- [**memory-systems**]({{ site.baseurl }}/tags/memory-systems/) (1 page)
+- [**memory-systems**]({{ site.baseurl }}/tags/memory-systems/) (21 pages)
+- [**multi-agent**]({{ site.baseurl }}/tags/multi-agent/) (19 pages)
 - [**nvidia-isaac**]({{ site.baseurl }}/tags/nvidia-isaac/) (1 page)
 - [**perception**]({{ site.baseurl }}/tags/perception/) (3 pages)
 - [**planning**]({{ site.baseurl }}/tags/planning/) (1 page)
@@ -132,8 +146,9 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**ros2**]({{ site.baseurl }}/tags/ros2/) (1 page)
 - [**safety**]({{ site.baseurl }}/tags/safety/) (1 page)
 - [**semantic-memory**]({{ site.baseurl }}/tags/semantic-memory/) (1 page)
+- [**soul**]({{ site.baseurl }}/tags/soul/) (1 page)
 - [**state-estimation**]({{ site.baseurl }}/tags/state-estimation/) (3 pages)
-- [**strange**]({{ site.baseurl }}/tags/strange/) (2 pages)
+- [**strange**]({{ site.baseurl }}/tags/strange/) (23 pages)
 - [**system-architecture**]({{ site.baseurl }}/tags/system-architecture/) (1 page)
 - [**unitree-go2**]({{ site.baseurl }}/tags/unitree-go2/) (1 page)
 - [**vla**]({{ site.baseurl }}/tags/vla/) (2 pages)

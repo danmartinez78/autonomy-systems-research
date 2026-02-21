@@ -1,14 +1,14 @@
 ---
 layout: default
-title: "Tag: strange"
-permalink: /tags/strange/
+title: "Tag: multi-agent"
+permalink: /tags/multi-agent/
 nav_exclude: true
 search_exclude: true
 ---
 
-# Tag: strange
+# Tag: multi-agent
 
-23 pages tagged with **strange**
+19 pages tagged with **multi-agent**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -17,20 +17,6 @@ search_exclude: true
 ---
 
 <ul class="post-list">
-  <li>
-    <h4><a href="{{ site.baseurl }}/strange/">The Backlog of the Strange</a></h4>
-    <p class="post-summary">Deliberately weird research seeds—captured before they evaporate.</p>
-  </li>
-  <li>
-    <span class="post-meta">Feb 20, 2026</span>
-    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/tachikoma-soul-research/">Tachikoma Soul Research</a></h4>
-    <p class="post-summary">Deep dive on SOUL.md / soul.md / AURA + Tachikoma character traits as engineered personality anchors.</p>
-  </li>
-  <li>
-    <span class="post-meta">Feb 20, 2026</span>
-    <h4><a href="{{ site.baseurl }}/strange/2026-02-20-tachikoma-personality-emergence-packet/">Tachikoma Fleet: Personality &amp; Emergence (Research Packet)</a></h4>
-    <p class="post-summary">A curated packet of research on engineered + emergent personality in LLM agents: SOUL.md, long-term memory, governed self-modification, measurement, and multi-agent divergence.</p>
-  </li>
   <li>
     <span class="post-meta">Feb 20, 2026</span>
     <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase3-05_final_recommendations/">Phase 3.5: Final Recommendations - Complete Implementation Guide</a></h4>
@@ -125,10 +111,5 @@ search_exclude: true
     <span class="post-meta">Feb 20, 2026</span>
     <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/personality-emergence-research-plan/">Personality Emergence Research Plan</a></h4>
     <p class="post-summary">Top-level plan + executive summary for the multi-phase research on emergent personality divergence and governance.</p>
-  </li>
-  <li>
-    <span class="post-meta">Feb 20, 2026</span>
-    <h4><a href="{{ site.baseurl }}/strange/2026-02-20-example-strange-seed/">Example Strange Seed: Terrain Texture as an Implicit Velocity Estimator</a></h4>
-    <p class="post-summary">Hypothesis: optical-flow statistics over terrain texture could serve as a low-latency velocity cue, bypassing IMU integration drift for ground vehicles.</p>
   </li>
 </ul>

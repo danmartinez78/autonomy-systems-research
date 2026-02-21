@@ -8,7 +8,7 @@ search_exclude: true
 
 # Tag: memory-systems
 
-1 page tagged with **memory-systems**
+21 pages tagged with **memory-systems**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -17,6 +17,106 @@ search_exclude: true
 ---
 
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/2026-02-20-tachikoma-personality-emergence-packet/">Tachikoma Fleet: Personality &amp; Emergence (Research Packet)</a></h4>
+    <p class="post-summary">A curated packet of research on engineered + emergent personality in LLM agents: SOUL.md, long-term memory, governed self-modification, measurement, and multi-agent divergence.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase3-05_final_recommendations/">Phase 3.5: Final Recommendations - Complete Implementation Guide</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase3): 05_final_recommendations.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase3-04_soul_governance_design/">Phase 3.4: SOUL.md Governance Design - Policy Update Mechanisms</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase3): 04_soul_governance_design.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase3-03_measurement_framework/">Phase 3.3: Measurement Framework - How to Evaluate Emergence</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase3): 03_measurement_framework.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase3-02_architecture_options/">Phase 3.2: Architecture Options - Concrete Implementation Approaches</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase3): 02_architecture_options.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase3-01_research_synthesis/">Phase 3.1: Meta-Synthesis — What the Research Tells Us</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase3): 01_research_synthesis.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase2-05_stress_response_mechanisms/">Phase 2.5: Stress Response Mechanisms - Depth Dive</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase2): 05_stress_response_mechanisms.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase2-04_social_norm_emergence/">Phase 2.4: Social Norm Emergence - Depth Dive</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase2): 04_social_norm_emergence.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase2-03_longitudinal_personality_measurement/">Phase 2.3: Longitudinal Personality Measurement - Depth Dive</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase2): 03_longitudinal_personality_measurement.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase2-02_governed_self_modification/">Phase 2.2: Governed Self-Modification - Depth Dive</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase2): 02_governed_self_modification.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase2-01_multiagent_memory_evolution/">Phase 2.1: Multi-agent Memory Evolution - Depth Dive</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase2): 01_multiagent_memory_evolution.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-08_phase1_synthesis/">Phase 1.8: Phase 1 Synthesis - Cross-Area Patterns and Recommendations</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 08_phase1_synthesis.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-07_academic_sources/">Phase 1.7: Academic Sources Mining</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 07_academic_sources.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-06_behavioral_science/">Phase 1.6: Behavioral Science Insights Survey</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 06_behavioral_science.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-05_selfmodeling_governance/">Phase 1.5: Self-modeling &amp; Identity Governance Survey</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 05_selfmodeling_governance.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-04_multiagent_emergence/">Phase 1.4: Multi-agent Emergence Survey</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 04_multiagent_emergence.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-03_multiturn_longitudinal/">Phase 1.3: Multi-turn / Longitudinal Dynamics Survey</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 03_multiturn_longitudinal.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-02_long_term_memory/">Phase 1.2: Long-term Memory for Agents Survey</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 02_long_term_memory.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase1-01_llm_agents_tool_use/">Phase 1.1: LLM Agents &amp; Tool Use Survey</a></h4>
+    <p class="post-summary">Tachikoma fleet research packet (phase1): 01_llm_agents_tool_use.</p>
+  </li>
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/personality-emergence-research-plan/">Personality Emergence Research Plan</a></h4>
+    <p class="post-summary">Top-level plan + executive summary for the multi-phase research on emergent personality divergence and governance.</p>
+  </li>
   <li>
     <span class="post-meta">Feb 18, 2026</span>
     <h4><a href="{{ site.baseurl }}/syntheses/memory-systems-vla-robots/">Memory Systems for Autonomous Robots with VLA Architectures</a></h4>
