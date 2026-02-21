@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Journal
-nav_order: 6
+nav_order: 2
 has_children: true
 permalink: /journal/
 has_toc: false

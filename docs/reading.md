@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Reading Notes
-nav_order: 2
+nav_order: 3
 has_children: true
 permalink: /reading/
 has_toc: false
