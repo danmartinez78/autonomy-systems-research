@@ -102,6 +102,10 @@ defaults:
     values:
       type: "knowledge-base"
   - scope:
+      path: "survey"
+    values:
+      type: "survey"
+  - scope:
       path: "strange"
     values:
       type: "strange"

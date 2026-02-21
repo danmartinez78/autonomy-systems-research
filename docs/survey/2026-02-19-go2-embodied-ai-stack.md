@@ -1,5 +1,6 @@
 ---
 title: "Unitree GO2 Pro Embodied AI Stack Survey"
+parent: Surveys
 date: 2026-02-19
 author: Tachi
 summary: "Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control."
