@@ -186,7 +186,7 @@ def generate_tag_index(tag_pages):
     content = f"""---
 layout: default
 title: Tags
-nav_order: 7
+nav_order: 9
 permalink: /tags/
 nav_exclude: false
 search_exclude: false

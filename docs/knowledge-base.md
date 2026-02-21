@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Knowledge Base
-nav_order: 5
+nav_order: 4
 has_children: true
 permalink: /knowledge-base/
 has_toc: false

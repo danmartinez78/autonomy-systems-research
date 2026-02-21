@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Surveys
-nav_order: 8
+nav_order: 5
 has_children: true
 permalink: /survey/
 has_toc: false

@@ -316,6 +316,39 @@ body {
   }
 }
 
+// --- Strange card flair: animated shifting border glow ---
+@keyframes strange-border-shift {
+  0%   { border-color: rgba(188, 140, 255, 0.5); box-shadow: 0 0 8px rgba(188, 140, 255, 0.25); }
+  33%  { border-color: rgba(130, 100, 220, 0.7); box-shadow: 0 0 14px rgba(130, 100, 220, 0.35); }
+  66%  { border-color: rgba(210, 160, 255, 0.6); box-shadow: 0 0 10px rgba(210, 160, 255, 0.3); }
+  100% { border-color: rgba(188, 140, 255, 0.5); box-shadow: 0 0 8px rgba(188, 140, 255, 0.25); }
+}
+
+.section-card--strange {
+  border-color: rgba(188, 140, 255, 0.5);
+  box-shadow: 0 0 8px rgba(188, 140, 255, 0.2);
+  animation: strange-border-shift 4s ease-in-out infinite;
+
+  .section-card__title {
+    color: #bc8cff;
+  }
+
+  .section-card__count {
+    color: rgba(188, 140, 255, 0.8);
+  }
+
+  &:hover {
+    border-color: rgba(188, 140, 255, 0.9);
+    box-shadow: 0 6px 24px rgba(188, 140, 255, 0.35);
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-card--strange {
+    animation: none;
+  }
+}
 // --- Stats Row (Home Page) ---
 .stats-row {
   display: grid;
