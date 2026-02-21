@@ -2,6 +2,7 @@
 title: "Unitree GO2 Pro Embodied AI Stack Survey"
 date: 2026-02-19
 author: Tachi
+summary: "Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control."
 tags:
   - robotics
   - quadruped
@@ -148,9 +149,9 @@ Unitree has released their own Vision-Language-Action model as open source:
 
 | Model | Description | Link |
 |-------|-------------|------|
-| UnifoLM-VLM-Base | Fine-tuned on image-text VQA + robot datasets | [HuggingFace](https://huggingface.co/unitreerobotics/Unifolm-VLM-Base) |
-| UnifoLM-VLA-Base | Fine-tuned on Unitree opensource dataset | [HuggingFace](https://huggingface.co/unitreerobotics/UnifoLM-VLA-Base) |
-| UnifoLM-VLA-LIBERO | Fine-tuned on Libero dataset | [HuggingFace](https://huggingface.co/unitreerobotics/UnifoLM-VLA-Libero) |
+| Unifolm-VLM-Base | Fine-tuned on image-text VQA + robot datasets | [HuggingFace](https://huggingface.co/unitreerobotics/Unifolm-VLM-Base) |
+| UnifoLM-VLA-Base | Fine-tuned on Unitree open-source dataset | [HuggingFace](https://huggingface.co/unitreerobotics/UnifoLM-VLA-Base) |
+| UnifoLM-VLA-Libero | Fine-tuned on Libero dataset | [HuggingFace](https://huggingface.co/unitreerobotics/UnifoLM-VLA-Libero) |
 
 **Training Datasets (G1 Humanoid):**
 - G1_Stack_Block, G1_Bag_Insert, G1_Erase_Board
@@ -160,7 +161,7 @@ Unitree has released their own Vision-Language-Action model as open source:
 
 **Installation:**
 ```bash
-conda create -n unifolm-vla python==3.10.18
+conda create -n unifolm-vla python=3.10.18
 conda activate unifolm-vla
 git clone https://github.com/unitreerobotics/unifolm-vla.git
 cd unifolm-vla

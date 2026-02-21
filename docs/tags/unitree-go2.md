@@ -20,5 +20,6 @@ search_exclude: true
   <li>
     <span class="post-meta">Feb 19, 2026</span>
     <h4><a href="{{ site.baseurl }}/survey/2026-02-19-go2-embodied-ai-stack/">Unitree GO2 Pro Embodied AI Stack Survey</a></h4>
+    <p class="post-summary">Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control.</p>
   </li>
 </ul>
