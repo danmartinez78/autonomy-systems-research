@@ -11,9 +11,11 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 
 **Created:** 2026-02-18 20:35 CST
 **Status:** ✅ RESEARCH COMPLETE - All Phases Complete
-**Total Output (this packet, current repo):** Phase 1 (≈173.9KB) + Phase 2 (≈102.0KB) + Phase 3 (≈188.7KB) = **≈464.6KB** (markdown bytes, excludes tag pages)
+**Total output (this packet):** 18 core research pages across three phases (8 + 5 + 5), plus 2 overview pages:
+- `personality-emergence-research-plan.md` (this page)
+- `tachikoma-soul-research.md` (engineered personality anchors)
 
-*(Note: earlier totals in the original workspace notes were approximate and used a different file set; these numbers reflect the actual files under `docs/strange/tachikoma-personality-emergence/`.)*
+*(We intentionally avoid exact KB totals here; they change with formatting and drift out of sync.)*
 **Research Complete:** YES - All 15 subtasks completed successfully
 **Next:** Implementation planning and deployment
 
@@ -21,7 +23,7 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 
 ## Executive Summary
 
-**Research complete!** 451.5KB of comprehensive research synthesis across 15 major domains, answering the north-star question:
+**Research complete!** Comprehensive synthesis across 15 major domains, answering the north-star question:
 
 > "Given identical base LLMs, what mechanisms cause reliable behavioral divergence over time—via memory, interaction history, social feedback, and controlled SOUL.md self-editing—and how do we measure stability vs drift?"
 
@@ -62,7 +64,7 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 - [x] 1.8: Phase 1 Synthesis — Cross-area patterns
 
 **Output (in this repo):** `docs/strange/tachikoma-personality-emergence/phase1-*.md`
-**Status:** ✅ Complete (159.3KB total)
+**Status:** ✅ Complete
 
 ---
 
@@ -78,7 +80,7 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 - [x] 2.5: Deep dive #5 (Stress Response Mechanisms)
 
 **Output (in this repo):** `docs/strange/tachikoma-personality-emergence/phase2-*.md`
-**Status:** ✅ Complete (102.6KB total)
+**Status:** ✅ Complete
 
 ---
 
@@ -94,7 +96,7 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 - [x] 3.5: Final Recommendations — What we should implement
 
 **Output (in this repo):** `docs/strange/tachikoma-personality-emergence/phase3-*.md`
-**Status:** ✅ Complete (89.8KB total)
+**Status:** ✅ Complete
 
 ---
 
@@ -233,28 +235,28 @@ research/2026-02-18-tachikoma-fleet/
 | Time (CST) | Phase | Subtask | Status | Notes |
 |------------|-------|---------|--------|-------|
 | 20:35 | 1 | Setup | ✅ Complete | Research plan created |
-| 21:00 | 1 | 1.1 | ✅ Complete | LLM Agents & Tool Use survey (15KB synthesis) |
-| 21:10 | 1 | 1.2 | ✅ Complete | Long-term Memory survey (16.7KB synthesis) |
-| 21:25 | 1 | 1.3 | ✅ Complete | Multi-turn / Longitudinal Dynamics (17.4KB synthesis) |
-| 21:45 | 1 | 1.4 | ✅ Complete | Multi-agent Emergence (26.8KB synthesis) |
-| 22:10 | 1 | 1.5 | ✅ Complete | Self-modeling & Governance (28.1KB synthesis) |
-| 22:35 | 1 | 1.6 | ✅ Complete | Behavioral Science Insights (28.9KB synthesis) |
-| 23:20 | 1 | 1.7 | ✅ Complete | Academic Sources Mining (17.8KB synthesis) |
-| 23:50 | 1 | 1.8 | ✅ Complete | Phase 1 Synthesis (24.5KB synthesis) |
-| | | **Phase 1** | ✅ COMPLETE | 159.3KB total research |
-| 00:05 | 2 | 2.1 | ✅ Complete | Multi-agent Memory Evolution (19.9KB depth dive) |
-| 00:35 | 2 | 2.2 | ✅ Complete | Governed Self-Modification (28.0KB depth dive) |
-| 01:05 | 2 | 2.3 | ✅ Complete | Longitudinal Personality Measurement (23.1KB depth dive) |
-| 01:35 | 2 | 2.4 | ✅ Complete | Social Norm Emergence (16.4KB depth dive) |
-| 01:45 | 2 | 2.5 | ✅ Complete | Stress Response Mechanisms (15.2KB depth dive) |
-| | | **Phase 2** | ✅ COMPLETE | 102.6KB total depth research |
-| 02:00 | 3 | 3.1 | ✅ Complete | Meta-Synthesis (49.4KB research synthesis) |
-| 02:10 | 3 | 3.2 | ✅ Complete | Architecture Options (40.4KB implementation approaches) |
-| 02:20 | 3 | 3.3 | ✅ Complete | Measurement Framework (35.5KB measurement protocols) |
-| 02:25 | 3 | 3.4 | ✅ Complete | SOUL.md Governance Design (39.9KB policy update mechanisms) |
-| 02:35 | 3 | 3.5 | ✅ Complete | Final Recommendations (24.4KB complete implementation guide) |
-| | | **Phase 3** | ✅ COMPLETE | 89.8KB total meta-research |
-| | | **RESEARCH** | ✅ COMPLETE | **451.5KB total research synthesis** |
+| 21:00 | 1 | 1.1 | ✅ Complete | LLM Agents & Tool Use survey  |
+| 21:10 | 1 | 1.2 | ✅ Complete | Long-term Memory survey  |
+| 21:25 | 1 | 1.3 | ✅ Complete | Multi-turn / Longitudinal Dynamics  |
+| 21:45 | 1 | 1.4 | ✅ Complete | Multi-agent Emergence  |
+| 22:10 | 1 | 1.5 | ✅ Complete | Self-modeling & Governance  |
+| 22:35 | 1 | 1.6 | ✅ Complete | Behavioral Science Insights  |
+| 23:20 | 1 | 1.7 | ✅ Complete | Academic Sources Mining  |
+| 23:50 | 1 | 1.8 | ✅ Complete | Phase 1 Synthesis  |
+| | | **Phase 1** | ✅ COMPLETE | 8 docs |
+| 00:05 | 2 | 2.1 | ✅ Complete | Multi-agent Memory Evolution  |
+| 00:35 | 2 | 2.2 | ✅ Complete | Governed Self-Modification  |
+| 01:05 | 2 | 2.3 | ✅ Complete | Longitudinal Personality Measurement  |
+| 01:35 | 2 | 2.4 | ✅ Complete | Social Norm Emergence  |
+| 01:45 | 2 | 2.5 | ✅ Complete | Stress Response Mechanisms  |
+| | | **Phase 2** | ✅ COMPLETE | 5 docs |
+| 02:00 | 3 | 3.1 | ✅ Complete | Meta-Synthesis  |
+| 02:10 | 3 | 3.2 | ✅ Complete | Architecture Options  |
+| 02:20 | 3 | 3.3 | ✅ Complete | Measurement Framework  |
+| 02:25 | 3 | 3.4 | ✅ Complete | SOUL.md Governance Design  |
+| 02:35 | 3 | 3.5 | ✅ Complete | Final Recommendations  |
+| | | **Phase 3** | ✅ COMPLETE | 5 docs |
+| | | **RESEARCH** | ✅ COMPLETE | **15 deliverables (8+5+5)** |
 
 ---
 

@@ -31,7 +31,7 @@ summary: "Tachikoma fleet research packet (phase3): 01_research_synthesis."
 - **Personality evolution** is controlled, defensible, and measurable
 - **Fleet culture** emerges organically while maintaining safety and alignment
 
-**Research magnitude:** 261.9KB across 15 major syntheses (8 breadth + 5 depth + 2 future phases), with **cross-area patterns identified** that reveal the core mechanisms driving personality emergence.
+**Research scope:** 15 major syntheses across three phases, with cross-area patterns identified that reveal the core mechanisms driving personality emergence.
 
 ---
 
@@ -53,7 +53,7 @@ summary: "Tachikoma fleet research packet (phase3): 01_research_synthesis."
 
 This research has produced **15 major syntheses** organized into three phases:
 
-**Phase 1: Breadth Survey (159.3KB)**
+**Phase 1: Breadth Survey (8 docs)**
 - LLM agents & tool use
 - Long-term memory for agents
 - Multi-turn / longitudinal dynamics
@@ -63,14 +63,14 @@ This research has produced **15 major syntheses** organized into three phases:
 - Academic sources mining (NeurIPS/ICLR/ACL/AAMAS/CoSci)
 - Cross-area pattern synthesis
 
-**Phase 2: Depth Dives (102.6KB)**
-- Multi-agent memory evolution (19.9KB)
-- Governed self-modification (28.0KB)
-- Longitudinal personality measurement (23.1KB)
-- Social norm emergence (16.4KB)
-- Stress response mechanisms (15.2KB)
+**Phase 2: Depth Dives (5 docs)**
+- Multi-agent memory evolution
+- Governed self-modification
+- Longitudinal personality measurement
+- Social norm emergence
+- Stress response mechanisms
 
-**Phase 3 (Future): Meta-Synthesis**
+**Phase 3: Meta-Synthesis (5 docs)**
 - Architecture options
 - Measurement framework
 - SOUL.md governance design
@@ -277,8 +277,8 @@ Behavior (how it's expressed)
 - Memory contamination → unwanted behavior drift
 
 **Evidence from research:**
-- Phase 1.2 (Long-term Memory): 16.7KB synthesis, 7 refs
-- Phase 2.1 (Multi-agent Memory Evolution): 19.9KB depth dive, 13 refs
+- Phase 1.2 (Long-term Memory):  synthesis, 7 refs
+- Phase 2.1 (Multi-agent Memory Evolution):  depth dive, 13 refs
 - Cross-area pattern 1: Experience → Memory → Behavior is universal
 
 **Practical implementation:**
@@ -305,8 +305,8 @@ Behavior (how it's expressed)
 - With governance, self-modification enables intentional evolution
 
 **Evidence from research:**
-- Phase 1.5 (Self-modeling & Identity Governance): 28.1KB synthesis
-- Phase 2.2 (Governed Self-Modification): 28.0KB depth dive
+- Phase 1.5 (Self-modeling & Identity Governance):  synthesis
+- Phase 2.2 (Governed Self-Modification):  depth dive
 - Cross-area pattern 3: Governance is essential
 
 **Practical implementation:**
@@ -333,8 +333,8 @@ Behavior (how it's expressed)
 - Culture is a major factor in personality divergence
 
 **Evidence from research:**
-- Phase 1.4 (Multi-agent Emergence): 26.8KB synthesis
-- Phase 2.4 (Social Norm Emergence): 16.4KB depth dive
+- Phase 1.4 (Multi-agent Emergence):  synthesis
+- Phase 2.4 (Social Norm Emergence):  depth dive
 - Cross-area pattern 2: Norm formation is a core mechanism
 
 **Practical implementation:**
@@ -361,9 +361,9 @@ Behavior (how it's expressed)
 - Measurement enables optimization and debugging
 
 **Evidence from research:**
-- Phase 1.3 (Multi-turn / Longitudinal Dynamics): 17.4KB synthesis
-- Phase 1.6 (Behavioral Science Insights): 28.9KB synthesis
-- Phase 2.3 (Longitudinal Personality Measurement): 23.1KB depth dive
+- Phase 1.3 (Multi-turn / Longitudinal Dynamics):  synthesis
+- Phase 1.6 (Behavioral Science Insights):  synthesis
+- Phase 2.3 (Longitudinal Personality Measurement):  depth dive
 - Cross-area pattern 2: Stability vs Drift Measurement is universal
 
 **Practical implementation:**
@@ -391,7 +391,7 @@ Behavior (how it's expressed)
 
 **Evidence from research:**
 - Phase 1.6 (Behavioral Science Insights): Stress response literature
-- Phase 2.5 (Stress Response Mechanisms): 15.2KB depth dive
+- Phase 2.5 (Stress Response Mechanisms):  depth dive
 - Cross-area pattern 2: Stress measurement is essential
 
 **Practical implementation:**
@@ -1304,7 +1304,7 @@ Agent: "SOUL.md updated. My default behavior for situation X
 
 ## 14. Final Thoughts
 
-**The research is complete.** 261.9KB of synthesis, across 15 major domains, covering:
+**The research is complete.**  of synthesis, across 15 major domains, covering:
 - **Breadth:** LLM agents, memory, dynamics, emergence, self-modeling, behavioral science, academic sources
 - **Depth:** Memory evolution, governed self-modification, personality measurement, social norms, stress response
 - **Patterns:** Cross-area patterns, highest-impact areas, complete emergence framework

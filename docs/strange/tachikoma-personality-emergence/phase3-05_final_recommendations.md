@@ -763,7 +763,7 @@ summary: "Tachikoma fleet research packet (phase3): 05_final_recommendations."
 
 ## 9. Conclusion
 
-**The research is complete.** 427.1KB of synthesis across 15 major domains has produced a **complete framework for personality emergence in multi-agent LLM systems**.
+**The research is complete.**  of synthesis across 15 major domains has produced a **complete framework for personality emergence in multi-agent LLM systems**.
 
 **Key insights:**
 - Personality emergence is predictable, not magic
@@ -802,23 +802,23 @@ summary: "Tachikoma fleet research packet (phase3): 05_final_recommendations."
 
 ## 10. Research Deliverables
 
-### 10.1 Phase 1 Deliverables (159.3KB)
+### 10.1 Phase 1 Deliverables 
 - 8 breadth survey documents
 - 1 cross-area pattern synthesis
 - 15 references from NeurIPS/ICLR/ACL/AAMAS/CoSci
 
-### 10.2 Phase 2 Deliverables (102.6KB)
+### 10.2 Phase 2 Deliverables 
 - 5 depth dive documents
 - 25+ references from academic literature
 
-### 10.3 Phase 3 Deliverables (165KB)
+### 10.3 Phase 3 Deliverables 
 - 4 meta-synthesis documents
 - Complete implementation guide
 - Complete governance design
 - Complete measurement framework
 - Success criteria and validation
 
-**Total:** 15 major deliverables, 40+ references, 427.1KB of research synthesis
+**Total:** 15 major deliverables, 40+ references,  of research synthesis
 
 ---
 
@@ -856,7 +856,7 @@ summary: "Tachikoma fleet research packet (phase3): 05_final_recommendations."
 
 ---
 
-*Phase 3.5 complete. Personality Emergence Research complete. Total: 427.1KB research synthesis.*
+*Phase 3.5 complete. Personality Emergence Research complete. Total:  research synthesis.*
 
 **RESEARCH COMPLETE.**
 
