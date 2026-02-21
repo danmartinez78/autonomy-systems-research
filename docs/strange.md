@@ -26,7 +26,14 @@ High uncertainty is allowed here. Ungrounded certainty is not.
 
 ---
 
-{% assign strange_posts = site.pages | where_exp: "page", "page.path contains 'strange/'" | where_exp: "page", "page.title != nil" | sort: "date" | reverse %}
+{% assign all_strange = site.pages | where_exp: "page", "page.path contains 'strange/'" | where_exp: "page", "page.title != nil" | sort: "date" | reverse %}
+{% assign strange_posts = "" | split: "" %}
+{% for post in all_strange %}
+  {% assign path_parts = post.path | split: "/" %}
+  {% if path_parts.size == 2 %}
+    {% assign strange_posts = strange_posts | push: post %}
+  {% endif %}
+{% endfor %}
 
 <ul class="post-list">
 {% for post in strange_posts limit:15 %}
