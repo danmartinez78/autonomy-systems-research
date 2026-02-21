@@ -8,7 +8,7 @@ search_exclude: true
 
 # Tag: state-estimation
 
-2 pages tagged with **state-estimation**
+3 pages tagged with **state-estimation**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -17,6 +17,11 @@ search_exclude: true
 ---
 
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Feb 20, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/2026-02-20-example-strange-seed/">Example Strange Seed: Terrain Texture as an Implicit Velocity Estimator</a></h4>
+    <p class="post-summary">Hypothesis: optical-flow statistics over terrain texture could serve as a low-latency velocity cue, bypassing IMU integration drift for ground vehicles.</p>
+  </li>
   <li>
     <span class="post-meta">Feb 18, 2026</span>
     <h4><a href="{{ site.baseurl }}/syntheses/state-estimation-approaches/">State Estimation Approaches for Mobile Robots</a></h4>
