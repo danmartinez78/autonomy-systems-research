@@ -256,6 +256,12 @@ body {
   border: 1px solid rgba(188, 140, 255, 0.3);
 }
 
+.content-badge--survey {
+  background-color: rgba(56, 189, 193, 0.15);
+  color: #38bdc1;
+  border: 1px solid rgba(56, 189, 193, 0.3);
+}
+
 // --- Section Cards (Home Page) ---
 .section-cards {
   display: grid;

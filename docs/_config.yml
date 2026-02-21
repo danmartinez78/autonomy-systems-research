@@ -62,6 +62,9 @@ callouts:
   strange:
     title: Strange Seed
     color: purple
+  survey:
+    title: Survey
+    color: teal
 
 # Plugins
 plugins:

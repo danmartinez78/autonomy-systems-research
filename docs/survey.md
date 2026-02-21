@@ -20,6 +20,7 @@ Comprehensive surveys of software stacks, research ecosystems, and tooling for s
 {% for post in survey_posts limit:15 %}
   {% if post.title %}
   <li>
+    <span class="content-badge content-badge--survey">Survey</span>
     {% if post.date %}<span class="post-meta">{{ post.date }}</span>{% endif %}
     <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
     {% if post.summary %}<p class="post-summary">{{ post.summary | escape }}</p>{% endif %}
