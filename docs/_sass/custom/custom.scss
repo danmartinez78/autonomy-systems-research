@@ -344,6 +344,11 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .section-card--strange {
+    animation: none;
+  }
+}
 // --- Stats Row (Home Page) ---
 .stats-row {
   display: grid;
