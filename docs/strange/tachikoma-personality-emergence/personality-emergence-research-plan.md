@@ -194,31 +194,32 @@ summary: "Top-level plan + executive summary for the multi-phase research on eme
 
 ## File Structure
 
+This packet lives in the docs site under:
+
 ```
-research/2026-02-18-tachikoma-fleet/
-├── PERSONALITY_EMERGENCE.md (ideation captured)
-├── PERSONALITY_EMERGENCE_RESEARCH_PLAN.md (this file)
-├── phase1/
-│   ├── 01_llm_agents_tool_use.md
-│   ├── 02_long_term_memory.md
-│   ├── 03_multiturn_longitudinal.md
-│   ├── 04_multiagent_emergence.md
-│   ├── 05_selfmodeling_governance.md
-│   ├── 06_behavioral_science.md
-│   ├── 07_academic_sources.md
-│   └── 08_phase1_synthesis.md
-├── phase2/
-│   ├── 01_multiagent_memory_evolution.md
-│   ├── 02_governed_self_modification.md
-│   ├── 03_longitudinal_personality_measurement.md
-│   ├── 04_social_norm_emergence.md
-│   └── 05_stress_response_mechanisms.md
-└── phase3/
-    ├── 01_research_synthesis.md
-    ├── 02_architecture_options.md
-    ├── 03_measurement_framework.md
-    ├── 04_soul_governance_design.md
-    └── 05_final_recommendations.md
+docs/strange/
+├── 2026-02-20-tachikoma-personality-emergence-packet.md  # index
+└── tachikoma-personality-emergence/
+    ├── personality-emergence-research-plan.md           # this page
+    ├── tachikoma-soul-research.md
+    ├── phase1-01_llm_agents_tool_use.md
+    ├── phase1-02_long_term_memory.md
+    ├── phase1-03_multiturn_longitudinal.md
+    ├── phase1-04_multiagent_emergence.md
+    ├── phase1-05_selfmodeling_governance.md
+    ├── phase1-06_behavioral_science.md
+    ├── phase1-07_academic_sources.md
+    ├── phase1-08_phase1_synthesis.md
+    ├── phase2-01_multiagent_memory_evolution.md
+    ├── phase2-02_governed_self_modification.md
+    ├── phase2-03_longitudinal_personality_measurement.md
+    ├── phase2-04_social_norm_emergence.md
+    ├── phase2-05_stress_response_mechanisms.md
+    ├── phase3-01_research_synthesis.md
+    ├── phase3-02_architecture_options.md
+    ├── phase3-03_measurement_framework.md
+    ├── phase3-04_soul_governance_design.md
+    └── phase3-05_final_recommendations.md
 ```
 
 ---

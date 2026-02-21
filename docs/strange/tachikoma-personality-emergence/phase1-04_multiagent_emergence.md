@@ -489,7 +489,7 @@ Multi-agent systems are where personality **collides and evolves**. Agents inter
 
 ### 4.3 Specialization Mechanisms
 
-**Source:** Multi-agent surveys; AgentVerse; preprint 202511.1370
+**Source:** Multi-agent surveys; AgentVerse; internal notes (non-arXiv)
 
 **How specialization emerges:**
 
