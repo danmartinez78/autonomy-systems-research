@@ -32,7 +32,7 @@ The site features:
 
 ## Content Types
 
-We organize content into five main types:
+We organize content into six main types:
 
 ### 1. Reading Notes (`/docs/reading/`)
 
@@ -123,6 +123,28 @@ summary: "Brief description"
 Glossary, definitions, and canonical links. This is a single page that grows over time.
 
 **When to update**: When adding new terminology or canonical resources
+
+### 6. Surveys (`/docs/survey/`)
+
+Comprehensive surveys of software stacks, research ecosystems, and tooling for specific platforms or topics.
+
+**When to create**: When exploring a new hardware platform, software ecosystem, or research area and want to catalog available resources, frameworks, and integration paths
+
+**File naming**: `YYYY-MM-DD-descriptive-title.md`
+
+**Template**: [survey.md](docs/_templates/survey.md)
+
+**Required front matter**:
+```yaml
+---
+title: "Survey Title"
+parent: Surveys
+date: YYYY-MM-DD
+author: "Your name"
+tags: [tag1, tag2]
+summary: "One-sentence description of what this survey covers"
+---
+```
 
 ## Adding Content
 
@@ -227,6 +249,23 @@ Glossary, definitions, and canonical links. This is a single page that grows ove
 3. Keep definitions brief (1-2 sentences)
 
 4. Submit PR for review
+
+### Adding a Survey
+
+1. Copy the template:
+   ```bash
+   cp docs/_templates/survey.md docs/survey/YYYY-MM-DD-your-topic.md
+   ```
+
+2. Fill in all sections:
+   - Executive summary of key findings
+   - Organize by major topic areas (ROS integration, simulation, etc.)
+   - Include repository links and key details for each resource
+   - Add a recommended stack or quick-start path if applicable
+
+3. Add tags that describe the platform and technologies covered
+
+4. Submit a pull request for review
 
 ### Regenerating Tag Pages
 

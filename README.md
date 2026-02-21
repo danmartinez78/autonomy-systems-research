@@ -18,6 +18,7 @@ The knowledge base is organized into several content types:
 
 - **[Reading Notes](https://danmartinez78.github.io/autonomy-systems-research/reading/)**: Structured summaries and analysis of papers and articles
 - **[Syntheses](https://danmartinez78.github.io/autonomy-systems-research/syntheses/)**: Topic-level consolidation of understanding across sources
+- **[Surveys](https://danmartinez78.github.io/autonomy-systems-research/survey/)**: Comprehensive surveys of software stacks, ecosystems, and tooling for specific platforms
 - **[Journal Entries](https://danmartinez78.github.io/autonomy-systems-research/journal/)**: Chronological progress logs and research decisions
 - **[Knowledge Base](https://danmartinez78.github.io/autonomy-systems-research/knowledge-base/)**: Evergreen reference pages on concepts and patterns
 - **[References](https://danmartinez78.github.io/autonomy-systems-research/references/)**: Glossary, definitions, and canonical links
@@ -117,6 +118,7 @@ autonomy-systems-research/
 │   ├── journal.md                # Journal index page
 │   ├── reading.md                # Reading notes index page
 │   ├── syntheses.md              # Syntheses index page
+│   ├── survey.md                 # Surveys index page
 │   ├── knowledge-base.md         # Knowledge base index page
 │   ├── references.md             # References and glossary
 │   ├── tags.md                   # Tags index (generated)
@@ -128,11 +130,14 @@ autonomy-systems-research/
 │   │   └── *.md
 │   ├── syntheses/                # Synthesis documents
 │   │   └── *.md
+│   ├── survey/                   # Survey documents
+│   │   └── *.md
 │   ├── knowledge-base/           # Evergreen reference pages
 │   │   └── *.md
 │   └── _templates/               # Content templates (not published)
 │       ├── reading-note.md
 │       ├── synthesis.md
+│       ├── survey.md
 │       ├── journal-entry.md
 │       ├── knowledge-base.md
 │       └── view-all.md           # Sidebar "View all…" redirect
