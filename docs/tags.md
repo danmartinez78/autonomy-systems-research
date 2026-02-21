@@ -56,7 +56,7 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/perception/">perception</a></h3>
-    <p>2 pages</p>
+    <p>3 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/planning/">planning</a></h3>
@@ -88,6 +88,10 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/state-estimation/">state-estimation</a></h3>
+    <p>3 pages</p>
+  </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/strange/">strange</a></h3>
     <p>2 pages</p>
   </div>
   <div class="tag-item">
@@ -120,7 +124,7 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**localization**]({{ site.baseurl }}/tags/localization/) (2 pages)
 - [**memory-systems**]({{ site.baseurl }}/tags/memory-systems/) (1 page)
 - [**nvidia-isaac**]({{ site.baseurl }}/tags/nvidia-isaac/) (1 page)
-- [**perception**]({{ site.baseurl }}/tags/perception/) (2 pages)
+- [**perception**]({{ site.baseurl }}/tags/perception/) (3 pages)
 - [**planning**]({{ site.baseurl }}/tags/planning/) (1 page)
 - [**quadruped**]({{ site.baseurl }}/tags/quadruped/) (1 page)
 - [**reliability**]({{ site.baseurl }}/tags/reliability/) (1 page)
@@ -128,7 +132,8 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**ros2**]({{ site.baseurl }}/tags/ros2/) (1 page)
 - [**safety**]({{ site.baseurl }}/tags/safety/) (1 page)
 - [**semantic-memory**]({{ site.baseurl }}/tags/semantic-memory/) (1 page)
-- [**state-estimation**]({{ site.baseurl }}/tags/state-estimation/) (2 pages)
+- [**state-estimation**]({{ site.baseurl }}/tags/state-estimation/) (3 pages)
+- [**strange**]({{ site.baseurl }}/tags/strange/) (2 pages)
 - [**system-architecture**]({{ site.baseurl }}/tags/system-architecture/) (1 page)
 - [**unitree-go2**]({{ site.baseurl }}/tags/unitree-go2/) (1 page)
 - [**vla**]({{ site.baseurl }}/tags/vla/) (2 pages)

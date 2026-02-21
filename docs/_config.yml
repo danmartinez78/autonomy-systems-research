@@ -59,6 +59,9 @@ callouts:
   journal:
     title: Journal
     color: grey-dk
+  strange:
+    title: Strange Seed
+    color: purple
 
 # Plugins
 plugins:
@@ -98,6 +101,10 @@ defaults:
       path: "knowledge-base"
     values:
       type: "knowledge-base"
+  - scope:
+      path: "strange"
+    values:
+      type: "strange"
   - scope:
       path: "references"
     values:
