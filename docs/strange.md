@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "The Backlog of the Strange"
-nav_order: 6
+nav_order: 7
 has_children: true
 permalink: /strange/
 has_toc: false
