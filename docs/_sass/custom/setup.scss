@@ -5,3 +5,10 @@
 // (for example, $media-queries); for those, use CSS overrides in custom.scss
 // instead. Variables that are only read later in the pipeline can still be
 // safely overridden here.
+
+// Teal color scale — not included in just-the-docs 0.12.0's default palette,
+// but required by the "survey" callout (color: teal) in _config.yml.
+$teal-000: #e2f8f5 !default;
+$teal-100: #aaeae7 !default;
+$teal-200: #38bdc1 !default;
+$teal-300: #1a8a8e !default;
