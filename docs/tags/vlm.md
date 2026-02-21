@@ -1,14 +1,14 @@
 ---
 layout: default
-title: "Tag: embodied-ai"
-permalink: /tags/embodied-ai/
+title: "Tag: vlm"
+permalink: /tags/vlm/
 nav_exclude: true
 search_exclude: true
 ---
 
-# Tag: embodied-ai
+# Tag: vlm
 
-2 pages tagged with **embodied-ai**
+1 page tagged with **vlm**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -21,10 +21,5 @@ search_exclude: true
     <span class="post-meta">Feb 19, 2026</span>
     <h4><a href="{{ site.baseurl }}/survey/2026-02-19-go2-embodied-ai-stack/">Unitree GO2 Pro Embodied AI Stack Survey</a></h4>
     <p class="post-summary">Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control.</p>
-  </li>
-  <li>
-    <span class="post-meta">Feb 18, 2026</span>
-    <h4><a href="{{ site.baseurl }}/syntheses/memory-systems-vla-robots/">Memory Systems for Autonomous Robots with VLA Architectures</a></h4>
-    <p class="post-summary">A synthesis of memory architectures for Vision-Language-Action models and autonomous robotic systems, covering working, episodic, semantic, and procedural memory approaches.</p>
   </li>
 </ul>

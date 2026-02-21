@@ -8,7 +8,7 @@ search_exclude: true
 
 # Tag: robotics
 
-1 page tagged with **robotics**
+2 pages tagged with **robotics**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -17,6 +17,11 @@ search_exclude: true
 ---
 
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Feb 19, 2026</span>
+    <h4><a href="{{ site.baseurl }}/survey/2026-02-19-go2-embodied-ai-stack/">Unitree GO2 Pro Embodied AI Stack Survey</a></h4>
+    <p class="post-summary">Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control.</p>
+  </li>
   <li>
     <span class="post-meta">Feb 18, 2026</span>
     <h4><a href="{{ site.baseurl }}/syntheses/memory-systems-vla-robots/">Memory Systems for Autonomous Robots with VLA Architectures</a></h4>
