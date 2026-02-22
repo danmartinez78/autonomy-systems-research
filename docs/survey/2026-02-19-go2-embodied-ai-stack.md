@@ -539,3 +539,79 @@ That aligns *perfectly* with what Dan wants for the GO2 — natural language con
 These are worth exploring. The project is explicitly alpha (as of Feb 2026), so expect rough edges. But the direction — agent-native robotics with MCP — is exactly where we want to go.
 
 **Bottom line:** Keep an eye on this one. The Roboverse announcement dropped today, and if the community adopts it, this could become the standard way to connect LLMs to Unitree robots.
+
+---
+
+## 7. Dimensional (dim.os) — Technical Deep Dive {#dimos-technical}
+
+*This section added 2026-02-21 based on source code analysis.*
+
+### Architecture Overview
+
+Dimensional is a Python-native robotics framework (Python 3.12 required) that positions itself as "the agentive operating system for generalist robotics." It abstracts away ROS complexity while maintaining interoperability.
+
+### MCP Integration
+
+Dimensional exposes robot capabilities via MCP (Model Context Protocol):
+
+| Component | Details |
+|-----------|---------|
+| MCP Server Port | 9990 (default) |
+| Protocol | JSON-RPC 2.0 |
+| Tool Format | `tools/list`, `tools/call` |
+| Skill Discovery | Auto-discovers skills from modules |
+
+**Connection Pattern:**
+```
+OpenClaw → MCP (HTTP) → Dimensional → Unitree SDK → GO2 Hardware
+```
+
+### Skills Available via MCP
+
+| Skill | Description |
+|-------|-------------|
+| `UnitreeSpeak` | TTS through robot speakers (uses OpenAI TTS API) |
+| `FollowHuman` | Visual servoing to follow a person |
+| `NavigateTo` | Point-to-point navigation |
+| (custom skills) | Users can register additional skills |
+
+### Navigation & SLAM
+
+- **Frontier Exploration** — Autonomous map building
+- **A* Replanning** — Dynamic path replanning
+- **Costmapper** — Occupancy grid cost maps
+- **Visual Servoing** — Image-based control
+- **ROS Nav2 Integration** — Can leverage ROS navigation stack
+
+### Perception Stack
+
+- Object detection (2D/3D)
+- Object tracking (2D/3D)
+- Spatial perception / point clouds
+- Person tracking
+- Object-scene registration
+
+### Key Dependencies
+
+| Library | Purpose |
+|---------|---------|
+| **Pinocchio** | Inverse kinematics for legged robots |
+| **OpenCV, Open3D** | Computer vision and 3D processing |
+| **ReactiveX** | Async stream processing |
+| **Numba** | JIT compilation for occupancy mapping |
+| **rerun-sdk** | Visualization (required) |
+| **dimos-lcm** | LCM transport protocol |
+
+### System Requirements
+
+- **OS**: Ubuntu 22.04/24.04 (NixOS also supported)
+- **Python**: 3.12+
+- **Hardware Access**: WebRTC for remote, direct for local
+- **Simulation**: MuJoCo support built-in (no hardware needed for testing)
+
+### Open Questions
+
+- Stability of WebRTC for real-time control latency
+- Comparison to direct ROS/DDS for low-latency applications
+- Production readiness (project is explicitly alpha)
+- Low-level joint control parity with Unitree's official SDK
