@@ -30,3 +30,8 @@ __pycache__/
 *$py.class
 *.so
 .Python
+
+# Node
+node_modules/
+package-lock.json
+package.json

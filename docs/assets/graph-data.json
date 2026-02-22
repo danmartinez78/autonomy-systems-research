@@ -1,0 +1,372 @@
+{
+  "nodes": [
+    {
+      "id": "journal/2026",
+      "label": "2026",
+      "type": "journal",
+      "tags": []
+    },
+    {
+      "id": "knowledge-base/watchdog-timers",
+      "label": "Watchdog Timers in Autonomous Systems",
+      "type": "knowledge-base",
+      "tags": [
+        "safety",
+        "reliability",
+        "system-architecture"
+      ]
+    },
+    {
+      "id": "reading/behavior-trees-robotics-ai",
+      "label": "Behavior Trees in Robotics and AI",
+      "type": "reading",
+      "tags": [
+        "planning",
+        "behavior-trees",
+        "control-architecture",
+        "decision-making"
+      ]
+    },
+    {
+      "id": "reading/probabilistic-robotics-state-estimation",
+      "label": "Probabilistic Robotics - State Estimation Chapter",
+      "type": "reading",
+      "tags": [
+        "perception",
+        "state-estimation",
+        "localization",
+        "bayes-filter"
+      ]
+    },
+    {
+      "id": "references",
+      "label": "References",
+      "type": "reference",
+      "tags": []
+    },
+    {
+      "id": "strange/2026-02-20-example-strange-seed",
+      "label": "Example Strange Seed: Terrain Texture as an Implicit Velocity Estimator",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "state-estimation",
+        "perception"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/personality-emergence-research-plan",
+      "label": "Personality Emergence Research Plan",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "memory-systems",
+        "multi-agent"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-01_llm_agents_tool_use",
+      "label": "Phase 1.1: LLM Agents & Tool Use Survey",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-02_long_term_memory",
+      "label": "Phase 1.2: Long-term Memory for Agents Survey",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-03_multiturn_longitudinal",
+      "label": "Phase 1.3: Multi-turn / Longitudinal Dynamics Survey",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-04_multiagent_emergence",
+      "label": "Phase 1.4: Multi-agent Emergence Survey",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-05_selfmodeling_governance",
+      "label": "Phase 1.5: Self-modeling & Identity Governance Survey",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-06_behavioral_science",
+      "label": "Phase 1.6: Behavioral Science Insights Survey",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-07_academic_sources",
+      "label": "Phase 1.7: Academic Sources Mining",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase1-08_phase1_synthesis",
+      "label": "Phase 1.8: Phase 1 Synthesis - Cross-Area Patterns and Recommendations",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase2-01_multiagent_memory_evolution",
+      "label": "Phase 2.1: Multi-agent Memory Evolution - Depth Dive",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase2-02_governed_self_modification",
+      "label": "Phase 2.2: Governed Self-Modification - Depth Dive",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase2-03_longitudinal_personality_measurement",
+      "label": "Phase 2.3: Longitudinal Personality Measurement - Depth Dive",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase2-04_social_norm_emergence",
+      "label": "Phase 2.4: Social Norm Emergence - Depth Dive",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase2-05_stress_response_mechanisms",
+      "label": "Phase 2.5: Stress Response Mechanisms - Depth Dive",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase3-01_research_synthesis",
+      "label": "Phase 3.1: Meta-Synthesis \u2014 What the Research Tells Us",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase3-02_architecture_options",
+      "label": "Phase 3.2: Architecture Options - Concrete Implementation Approaches",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase3-03_measurement_framework",
+      "label": "Phase 3.3: Measurement Framework - How to Evaluate Emergence",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase3-04_soul_governance_design",
+      "label": "Phase 3.4: SOUL.md Governance Design - Policy Update Mechanisms",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/phase3-05_final_recommendations",
+      "label": "Phase 3.5: Final Recommendations - Complete Implementation Guide",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "multi-agent",
+        "memory-systems"
+      ]
+    },
+    {
+      "id": "strange/tachikoma-personality-emergence/tachikoma-soul-research",
+      "label": "Tachikoma Soul Research",
+      "type": "strange",
+      "tags": [
+        "strange",
+        "embodied-ai",
+        "soul",
+        "identity"
+      ]
+    },
+    {
+      "id": "survey/2026-02-19-go2-embodied-ai-stack",
+      "label": "Unitree GO2 Pro Embodied AI Stack Survey",
+      "type": "survey",
+      "tags": [
+        "robotics",
+        "quadruped",
+        "unitree-go2",
+        "ros2",
+        "vla",
+        "vlm",
+        "embodied-ai",
+        "nvidia-isaac",
+        "groot",
+        "dimos"
+      ]
+    },
+    {
+      "id": "syntheses/memory-systems-vla-robots",
+      "label": "Memory Systems for Autonomous Robots with VLA Architectures",
+      "type": "synthesis",
+      "tags": [
+        "robotics",
+        "vla",
+        "memory-systems",
+        "semantic-memory",
+        "knowledge-graphs",
+        "embodied-ai"
+      ]
+    },
+    {
+      "id": "syntheses/state-estimation-approaches",
+      "label": "State Estimation Approaches for Mobile Robots",
+      "type": "synthesis",
+      "tags": [
+        "perception",
+        "state-estimation",
+        "localization"
+      ]
+    },
+    {
+      "id": "timeline",
+      "label": "Timeline",
+      "type": "other",
+      "tags": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "reading/probabilistic-robotics-state-estimation",
+      "target": "strange/2026-02-20-example-strange-seed",
+      "type": "shared-tag",
+      "tags": [
+        "perception",
+        "state-estimation"
+      ],
+      "tag_count": 2
+    },
+    {
+      "source": "reading/probabilistic-robotics-state-estimation",
+      "target": "syntheses/state-estimation-approaches",
+      "type": "shared-tag",
+      "tags": [
+        "localization",
+        "perception",
+        "state-estimation"
+      ],
+      "tag_count": 3
+    },
+    {
+      "source": "strange/2026-02-20-example-strange-seed",
+      "target": "syntheses/state-estimation-approaches",
+      "type": "shared-tag",
+      "tags": [
+        "perception",
+        "state-estimation"
+      ],
+      "tag_count": 2
+    },
+    {
+      "source": "survey/2026-02-19-go2-embodied-ai-stack",
+      "target": "syntheses/memory-systems-vla-robots",
+      "type": "shared-tag",
+      "tags": [
+        "robotics",
+        "vla"
+      ],
+      "tag_count": 2
+    },
+    {
+      "source": "reading/probabilistic-robotics-state-estimation",
+      "target": "syntheses/state-estimation-approaches",
+      "type": "internal-link"
+    }
+  ]
+}
