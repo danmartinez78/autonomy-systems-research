@@ -1,9 +1,9 @@
 ---
 title: "Unitree GO2 Pro Embodied AI Stack Survey"
 parent: Surveys
-date: 2026-02-19
+date: 2026-02-22
 author: Tachi
-summary: "Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control."
+summary: "Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control. Updated 2026-02-22 with Dimensional (dim.os) framework."
 tags:
   - robotics
   - quadruped
@@ -14,12 +14,13 @@ tags:
   - embodied-ai
   - nvidia-isaac
   - groot
+  - dimos
 ---
 
 # Unitree GO2 Pro Embodied AI Stack Survey
 
 **Author:** Tachi
-**Date:** 2026-02-19
+**Date:** 2026-02-22 (original: 2026-02-19)
 **Purpose:** Comprehensive survey of resources, frameworks, and research for integrating the Unitree GO2 Pro quadruped with modern embodied AI systems including ROS2, VLA/VLM models, Nvidia Isaac/GR00T, and LLM-based control.
 
 ---
@@ -33,6 +34,7 @@ The Unitree GO2 Pro is a capable platform for embodied AI research with growing 
 3. **Nvidia Partnership:** Unitree is an official Nvidia partner for GR00T foundation model development
 4. **LLM Control:** MCP servers enable natural language control via LLMs
 5. **Simulation:** Isaac Sim, MuJoCo, Gazebo, and PyBullet all have GO2 support
+6. **Dimensional (dim.os):** New Python-native framework with first-class MCP support — promising for agent-native robotics
 
 ---
 
@@ -403,9 +405,122 @@ General quadruped resources including:
 
 ---
 
-## 8. Recommended Stack for GO2 Pro {#recommendations}
+## 8. Dimensional (dim.os) {#dimos}
 
-### 8.1 Development Environment
+**Repository:** [github.com/dimensionalOS/dimos](https://github.com/dimensionalOS/dimos)
+
+*Added 2026-02-22. Announced 2026-02-19.*
+
+Dimensional (or "dim.os") is a Python-native robotics framework that doesn't require ROS but plays nice with it. The killer feature: **Natural language control via MCP** — you can literally tell your robot "hey, go find the kitchen" and it figures out the rest.
+
+### What is Dimensional?
+
+Dimensional positions itself as **"the agentive operating system for generalist robotics"** — a Python-native framework with first-class MCP support for natural language control.
+
+### Key Features
+
+_Status icons: ✅ = stable/fully supported; 🟩 = mixed or partial support (some components in beta)._
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Non-ROS architecture | ✅ | Pure Python, no ROS required |
+| MCP integration | ✅ | "vibecode" robots in natural language |
+| Navigation & SLAM | ✅ | Built-in, also supports ROS Nav2 |
+| 3D Perception | ✅ | VLMs, detectors, spatial memory |
+| Simulation | ✅ | MuJoCo support built-in |
+| Multi-robot | ✅ | Framework supports multiple robots |
+| Hardware support | 🟩 | Unitree Go2 Pro/AIR stable, G1 beta |
+
+### Installation
+
+```bash
+# Quick install
+uvx --python 3.12 --from 'dimos[base,unitree]' dimos --replay run unitree-go2
+
+# With simulation
+uv pip install 'dimos[base,unitree,sim]'
+dimos --simulation run unitree-go2
+```
+
+### Why This Matters
+
+**MCP hooks built-in from day one.** Most of the other stacks in this survey need some hacking to connect LLMs. Dimensional has it as a first-class feature.
+
+From their docs:
+> "Dimensional is agent native — 'vibecode' your robots in natural language and build (local & hosted) multi-agent systems that work seamlessly with your hardware."
+
+That aligns well with goals for natural language control through unified, LLM-friendly control stacks.
+
+### Technical Deep Dive
+
+**MCP Integration:**
+
+| Component | Details |
+|-----------|---------|
+| MCP Server Port | 9990 (default) |
+| Protocol | JSON-RPC 2.0 |
+| Tool Format | `tools/list`, `tools/call` |
+| Skill Discovery | Auto-discovers skills from modules |
+
+**Connection Pattern:**
+```
+LLM Client → MCP (HTTP) → Dimensional → Unitree SDK → GO2 Hardware
+```
+
+**Skills Available via MCP:**
+
+| Skill | Description |
+|-------|-------------|
+| `UnitreeSpeak` | TTS through robot speakers (uses OpenAI TTS API) |
+| `FollowHuman` | Visual servoing to follow a person |
+| `NavigateTo` | Point-to-point navigation |
+| (custom skills) | Users can register additional skills |
+
+**Navigation & SLAM:**
+- Frontier Exploration — Autonomous map building
+- A* Replanning — Dynamic path replanning
+- Costmapper — Occupancy grid cost maps
+- Visual Servoing — Image-based control
+- ROS Nav2 Integration — Can leverage ROS navigation stack
+
+**Perception Stack:**
+- Object detection (2D/3D)
+- Object tracking (2D/3D)
+- Spatial perception / point clouds
+- Person tracking
+- Object-scene registration
+
+**Key Dependencies:**
+
+| Library | Purpose |
+|---------|---------|
+| **Pinocchio** | Inverse kinematics for legged robots |
+| **OpenCV, Open3D** | Computer vision and 3D processing |
+| **ReactiveX** | Async stream processing |
+| **Numba** | JIT compilation for occupancy mapping |
+| **rerun-sdk** | Visualization (required) |
+| **dimos-lcm** | LCM transport protocol |
+
+**System Requirements:**
+- **OS**: Ubuntu 22.04/24.04 (NixOS also supported)
+- **Python**: 3.12+
+- **Hardware Access**: WebRTC for remote, direct for local
+- **Simulation**: MuJoCo support built-in (no hardware needed for testing)
+
+### Open Questions
+
+- Stability of WebRTC for real-time control latency
+- Comparison to direct ROS/DDS for low-latency applications
+- Production readiness (project is explicitly alpha)
+- Low-level joint control parity with Unitree's official SDK
+
+**Bottom line:** Keep an eye on this one. The Roboverse announcement on 2026-02-19 generated significant interest, and if the community adopts it, this could become a standard way to connect LLMs to Unitree robots.
+
+---
+
+## 9. Recommended Stack for GO2 Pro {#recommendations}
+
+### 9.1 Development Environment
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -423,7 +538,24 @@ General quadruped resources including:
 └─────────────────────────────────────────────────┘
 ```
 
-### 8.2 Quick Start Path
+**With Dimensional:**
+```
+┌─────────────────────────────────────────────────┐
+│                 GO2 Pro Platform                 │
+├─────────────────────────────────────────────────┤
+│  LLM Layer    │  Dimensional (MCP built-in)     │
+├─────────────────────────────────────────────────┤
+│  VLA Layer    │  OpenVLA / UnifoLM-VLA          │
+├─────────────────────────────────────────────────┤
+│  Control Layer│  Dimensional (Python-native)    │
+├─────────────────────────────────────────────────┤
+│  Simulation   │  MuJoCo / Isaac Sim             │
+├─────────────────────────────────────────────────┤
+│  Compute      │  Jetson Orin / External PC      │
+└─────────────────────────────────────────────────┘
+```
+
+### 9.2 Quick Start Path
 
 1. **ROS2 Setup:** Install `go2_ros2_sdk` for sensor access and control
 2. **Simulation:** Test in Gazebo with CHAMP controller
@@ -431,7 +563,12 @@ General quadruped resources including:
 4. **VLA Training:** Fine-tune OpenVLA on custom manipulation data
 5. **Deployment:** Use Jetson Orin for onboard compute
 
-### 8.3 Hardware Recommendations
+**Alternative (Dimensional):**
+1. **Quick Start:** `uvx --python 3.12 --from 'dimos[base,unitree]' dimos --simulation run unitree-go2`
+2. **MCP Integration:** Already built-in — connect LLM client to port 9990
+3. **Custom Skills:** Implement and register as needed
+
+### 9.3 Hardware Recommendations
 
 | Component | Option | Notes |
 |-----------|--------|-------|
@@ -442,13 +579,14 @@ General quadruped resources including:
 
 ---
 
-## 9. References {#references}
+## 10. References {#references}
 
 ### Official Documentation
 
 - [Unitree Robotics GitHub](https://github.com/unitreerobotics)
-- [Unitree Support Center](https://support.unitree.com)
+- [Unitree Support Center](https://support.unitre.com)
 - [GO2 Foxy Quick Start](https://www.docs.quadruped.de/projects/go2/html/go2-foxy.html)
+- [Dimensional (dim.os)](https://github.com/dimensionalOS/dimos)
 
 ### Nvidia Resources
 
@@ -470,7 +608,7 @@ General quadruped resources including:
 
 ---
 
-## 10. Future Work {#future}
+## 11. Future Work {#future}
 
 Potential directions for GO2 Pro research:
 
@@ -479,139 +617,9 @@ Potential directions for GO2 Pro research:
 3. **Multi-robot Coordination:** Use ROS2 multi-robot support for fleet behavior
 4. **Sim-to-Real:** Isaac Sim → GR00T → Real GO2 pipeline
 5. **LLM Reasoning:** Chain-of-thought prompting for complex tasks
+6. **Dimensional Evaluation:** Test production readiness, latency, and joint control parity
 
 ---
 
 *Survey compiled by Tachi 🕷️*
-*Last updated: 2026-02-19*
-
----
-
-## 6. Dimensional (dim.os) — The New Kid on the Block {#dimos}
-
-**Repository:** [github.com/dimensionalOS/dimos](https://github.com/dimensionalOS/dimos)
-
-*Okay, this one is fresh. Like, announced-today fresh. But it looks promising enough that I had to add it.*
-
-### What is Dimensional?
-
-Dimensional (or "dim.os") is positioning itself as **"the agentive operating system for generalist robotics"** — which is a fancy way of saying: it's a Python-native robotics framework that doesn't require ROS, but plays nice with it. The killer feature? **Natural language control via MCP** — you can literally tell your robot "hey, go find the kitchen" and it figures out the rest.
-
-### Key Features
-
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Non-ROS architecture | ✅ | Pure Python, no ROS required |
-| MCP integration | ✅ | "vibecode" robots in natural language |
-| Navigation & SLAM | ✅ | Built-in, also supports ROS Nav2 |
-| 3D Perception | ✅ | VLMs, detectors, spatial memory |
-| Simulation | ✅ | MuJoCo support built-in |
-| Multi-robot | ✅ | Framework supports multiple robots |
-| Hardware support | 🟩 | Unitree Go2 Pro/AIR stable, G1 beta |
-
-### Installation (One Line!)
-
-```bash
-# Quick install
-uvx --python 3.12 --from 'dimos[base,unitree]' dimos --replay run unitree-go2
-
-# With simulation
-uv pip install dimos[base,unitree,sim]
-dimos --simulation run unitree-go2
-```
-
-### Why This Matters for the GO2 Pro
-
-Here's the thing that caught my attention: **MCP hooks built-in from day one.** Most of the other stacks we surveyed need some hacking to connect LLMs. Dimensional has it as a first-class feature.
-
-From their docs:
-> "Dimensional is agent native — 'vibecode' your robots in natural language and build (local & hosted) multi-agent systems that work seamlessly with your hardware."
-
-That aligns *perfectly* with what Dan wants for the GO2 — natural language control through OpenClaw.
-
-### Questions I Can't Answer Yet
-
-- How stable is the WebRTC connection for real-time control?
-- What's the latency like compared to direct ROS/DDS?
-- Is the MCP server production-ready or still alpha?
-- How does it compare to Unitree's official SDK for low-level joint control?
-
-These are worth exploring. The project is explicitly alpha (as of Feb 2026), so expect rough edges. But the direction — agent-native robotics with MCP — is exactly where we want to go.
-
-**Bottom line:** Keep an eye on this one. The Roboverse announcement dropped today, and if the community adopts it, this could become the standard way to connect LLMs to Unitree robots.
-
----
-
-## 7. Dimensional (dim.os) — Technical Deep Dive {#dimos-technical}
-
-*This section added 2026-02-21 based on source code analysis.*
-
-### Architecture Overview
-
-Dimensional is a Python-native robotics framework (Python 3.12 required) that positions itself as "the agentive operating system for generalist robotics." It abstracts away ROS complexity while maintaining interoperability.
-
-### MCP Integration
-
-Dimensional exposes robot capabilities via MCP (Model Context Protocol):
-
-| Component | Details |
-|-----------|---------|
-| MCP Server Port | 9990 (default) |
-| Protocol | JSON-RPC 2.0 |
-| Tool Format | `tools/list`, `tools/call` |
-| Skill Discovery | Auto-discovers skills from modules |
-
-**Connection Pattern:**
-```
-OpenClaw → MCP (HTTP) → Dimensional → Unitree SDK → GO2 Hardware
-```
-
-### Skills Available via MCP
-
-| Skill | Description |
-|-------|-------------|
-| `UnitreeSpeak` | TTS through robot speakers (uses OpenAI TTS API) |
-| `FollowHuman` | Visual servoing to follow a person |
-| `NavigateTo` | Point-to-point navigation |
-| (custom skills) | Users can register additional skills |
-
-### Navigation & SLAM
-
-- **Frontier Exploration** — Autonomous map building
-- **A* Replanning** — Dynamic path replanning
-- **Costmapper** — Occupancy grid cost maps
-- **Visual Servoing** — Image-based control
-- **ROS Nav2 Integration** — Can leverage ROS navigation stack
-
-### Perception Stack
-
-- Object detection (2D/3D)
-- Object tracking (2D/3D)
-- Spatial perception / point clouds
-- Person tracking
-- Object-scene registration
-
-### Key Dependencies
-
-| Library | Purpose |
-|---------|---------|
-| **Pinocchio** | Inverse kinematics for legged robots |
-| **OpenCV, Open3D** | Computer vision and 3D processing |
-| **ReactiveX** | Async stream processing |
-| **Numba** | JIT compilation for occupancy mapping |
-| **rerun-sdk** | Visualization (required) |
-| **dimos-lcm** | LCM transport protocol |
-
-### System Requirements
-
-- **OS**: Ubuntu 22.04/24.04 (NixOS also supported)
-- **Python**: 3.12+
-- **Hardware Access**: WebRTC for remote, direct for local
-- **Simulation**: MuJoCo support built-in (no hardware needed for testing)
-
-### Open Questions
-
-- Stability of WebRTC for real-time control latency
-- Comparison to direct ROS/DDS for low-latency applications
-- Production readiness (project is explicitly alpha)
-- Low-level joint control parity with Unitree's official SDK
+*Last updated: 2026-02-22*
