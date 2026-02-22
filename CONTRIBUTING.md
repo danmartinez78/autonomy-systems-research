@@ -359,6 +359,26 @@ All content pages must include YAML front matter with at minimum:
 
 The `parent` field controls where the page appears in the sidebar navigation.
 
+#### Optional: `review_questions`
+
+Any page (reading note, synthesis, knowledge base entry, etc.) may include a `review_questions:` list in its front matter. These questions are surfaced on the [/review/](/review/) page for spaced repetition and long-term retention.
+
+**Format:**
+
+```yaml
+review_questions:
+  - "What problem does this paper solve?"
+  - "What is the key algorithm or technique introduced?"
+  - "What are the main limitations of this approach?"
+```
+
+**Guidelines:**
+- Questions should be open-ended and test understanding, not just recall of facts.
+- Aim for 3–5 questions per note (more can reduce focus).
+- Omitting `review_questions` entirely is fine — pages without it are ignored by the review page.
+
+The review page at `/review/` supports filtering by content type and tag, so questions from related notes can be browsed together.
+
 ### Links
 
 - Use relative links for internal pages: `[Link text](../path/to/page.md)`

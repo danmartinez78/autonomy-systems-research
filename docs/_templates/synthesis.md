@@ -4,7 +4,10 @@ parent: Syntheses
 last_updated: YYYY-MM-DD
 tags: [topic-area, subtopic]
 summary: "One-sentence description of what this synthesis covers"
-# Overall confidence in this synthesis; valid values: high, med, low
+# Optional: add questions to surface on the /review/ page for spaced repetition
+# review_questions:
+#   - "Question 1?"
+#   - "Question 2?"
 # Confidence in this synthesis; valid values: high, med, low (omit to show as unknown)
 confidence: med
 ---
