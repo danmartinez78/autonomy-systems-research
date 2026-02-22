@@ -1,10 +1,13 @@
-.PHONY: tags graph serve build
+.PHONY: tags graph serve build validate-sidebar
 
 tags:
 	python3 generate-tags.py
 
 graph:
 	python3 generate-graph.py
+
+validate-sidebar:
+	python3 validate-sidebar.py --cap 5 --docs-dir docs
 
 serve:
 	cd docs && bundle exec jekyll serve --livereload

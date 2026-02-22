@@ -1,0 +1,78 @@
+{% comment %}
+  Related Content — shown at the bottom of reading, synthesis, and knowledge-base pages.
+
+  Algorithm: multi-pass tag intersection (highest overlap first).
+  For each pass N (from page.tags.size down to 1) we collect candidate pages
+  that share exactly N tags with the current page, until we have up to 5 results.
+  Pages are de-duplicated by URL. Templates, index pages, and the current page
+  are excluded.
+
+  A multi-pass approach is used because Liquid cannot sort arrays by computed
+  values. This is the idiomatic Liquid pattern for priority-ordered collection
+  without JavaScript. Site content counts are small (tens of pages), so the
+  O(N × T × passes) cost is negligible at build time.
+{% endcomment %}
+
+{% assign _rc_allowed = "reading,synthesis,knowledge-base" | split: "," %}
+
+{% if _rc_allowed contains page.type and page.tags and page.tags.size > 0 %}
+
+  {% assign _rc_related = "" | split: "" %}
+  {% assign _rc_seen    = "" | split: "" %}
+  {% assign _rc_max     = 5 %}
+  {% assign _rc_ntags   = page.tags | size %}
+
+  {% for _rc_n in (1.._rc_ntags) reversed %}
+    {% if _rc_related.size >= _rc_max %}{% break %}{% endif %}
+
+    {% for _rc_p in site.pages %}
+      {% if _rc_related.size >= _rc_max %}{% break %}{% endif %}
+
+      {% comment %} Skip: current page {% endcomment %}
+      {% if _rc_p.url == page.url %}{% continue %}{% endif %}
+
+      {% comment %} Skip: no title (index / utility pages) {% endcomment %}
+      {% unless _rc_p.title %}{% continue %}{% endunless %}
+
+      {% comment %} Skip: no tags {% endcomment %}
+      {% unless _rc_p.tags and _rc_p.tags.size > 0 %}{% continue %}{% endunless %}
+
+      {% comment %} Skip: wrong content type {% endcomment %}
+      {% unless _rc_allowed contains _rc_p.type %}{% continue %}{% endunless %}
+
+      {% comment %} Skip: already included in a previous pass {% endcomment %}
+      {% if _rc_seen contains _rc_p.url %}{% continue %}{% endif %}
+
+      {% comment %} Count shared tags {% endcomment %}
+      {% assign _rc_shared = 0 %}
+      {% for _rc_tag in page.tags %}
+        {% if _rc_p.tags contains _rc_tag %}
+          {% assign _rc_shared = _rc_shared | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% if _rc_shared == _rc_n %}
+        {% assign _rc_related = _rc_related | push: _rc_p %}
+        {% assign _rc_seen    = _rc_seen    | push: _rc_p.url %}
+      {% endif %}
+
+    {% endfor %}
+  {% endfor %}
+
+  {% if _rc_related.size > 0 %}
+<hr class="related-content__divider">
+<section class="related-content" aria-labelledby="related-content-heading">
+  <h2 class="related-content__heading" id="related-content-heading">Related Content</h2>
+  <ul class="related-content__list">
+    {% for _rc_p in _rc_related %}
+    <li class="related-content__item">
+      <span class="content-badge content-badge--{{ _rc_p.type }}">{{ _rc_p.type | replace: "-", " " }}</span>
+      <a class="related-content__title" href="{{ _rc_p.url | relative_url }}">{{ _rc_p.title }}</a>
+      {% if _rc_p.summary %}<p class="related-content__summary">{{ _rc_p.summary }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+  {% endif %}
+
+{% endif %}

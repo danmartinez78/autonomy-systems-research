@@ -15,6 +15,18 @@ Click a node to open its page. Drag to rearrange. Scroll to zoom.
 <script>
 var GRAPH_DATA_URL = '{{ "/assets/graph-data.json" | relative_url }}';
 var SITE_BASEURL = '{{ site.baseurl }}';
+
+function normalizeBaseUrl(base) {
+  var val = (base || '').trim();
+  if (!val) return '';
+  if (val === '/') return '';
+  return val.replace(/\/+$/, '');
+}
+
+function toPageUrl(pageId) {
+  var base = normalizeBaseUrl(SITE_BASEURL);
+  return base + '/' + String(pageId).replace(/^\/+/, '').replace(/\/+$/, '') + '/';
+}
 </script>
 
 <div id="graph-controls" style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;align-items:center;margin-bottom:0.75rem;font-size:0.875rem;">
@@ -63,9 +75,12 @@ var SITE_BASEURL = '{{ site.baseurl }}';
 .legend-dot[data-type="other"]          { background: #6b7280; }
 </style>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
 <script>
 (function () {
+    var measureCanvas = document.createElement('canvas');
+    var measureCtx = measureCanvas.getContext('2d');
+
   var TYPE_COLOR = {
     'reading':        '#4a9eff',
     'synthesis':      '#4ade80',
@@ -101,7 +116,8 @@ var SITE_BASEURL = '{{ site.baseurl }}';
   svg.call(zoom);
 
   // --- Arrow marker for link edges ---
-  svg.append('defs').append('marker')
+  var defs = svg.append('defs');
+  defs.append('marker')
     .attr('id', 'arrow')
     .attr('viewBox', '0 -4 8 8')
     .attr('refX', 16)
@@ -115,8 +131,9 @@ var SITE_BASEURL = '{{ site.baseurl }}';
     .attr('opacity', 0.7);
 
   // --- Force simulation ---
+  var linkForce = d3.forceLink().id(function (d) { return d.id; }).distance(120).strength(0.4);
   var simulation = d3.forceSimulation()
-    .force('link',    d3.forceLink().id(function (d) { return d.id; }).distance(120).strength(0.4))
+    .force('link',    linkForce)
     .force('charge',  d3.forceManyBody().strength(-220))
     .force('center',  d3.forceCenter(W / 2, H / 2))
     .force('collide', d3.forceCollide(22));
@@ -132,6 +149,9 @@ var SITE_BASEURL = '{{ site.baseurl }}';
   fetch(GRAPH_DATA_URL)
     .then(function (r) { return r.json(); })
     .then(function (data) {
+      if (!isValidGraphData(data)) {
+        throw new Error('graph-data.json has invalid structure');
+      }
       loadingEl.style.display = 'none';
       allNodes = data.nodes;
       allEdges = data.edges;
@@ -197,6 +217,11 @@ var SITE_BASEURL = '{{ site.baseurl }}';
       .data(nodes)
       .join('g')
       .attr('cursor', 'pointer')
+      .attr('tabindex', 0)
+      .attr('role', 'link')
+      .attr('aria-label', function (d) {
+        return 'Open ' + d.label + ' (' + (d.type || 'other') + ')';
+      })
       .call(
         d3.drag()
           .on('start', function (event, d) {
@@ -213,7 +238,13 @@ var SITE_BASEURL = '{{ site.baseurl }}';
       )
       .on('click', function (event, d) {
         event.stopPropagation();
-        window.location.href = SITE_BASEURL + '/' + d.id + '/';
+        window.location.href = toPageUrl(d.id);
+      })
+      .on('keydown', function (event, d) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          window.location.href = toPageUrl(d.id);
+        }
       })
       .on('mouseover', function (event, d) {
         var tags = (d.tags || []).join(', ') || '—';
@@ -227,9 +258,13 @@ var SITE_BASEURL = '{{ site.baseurl }}';
         var rect = container.getBoundingClientRect();
         var x = event.clientX - rect.left + 12;
         var y = event.clientY - rect.top  - 10;
+        var tipW = tooltip.offsetWidth || 240;
+        var tipH = tooltip.offsetHeight || 80;
         // Keep inside container
-        if (x + 250 > rect.width)  x = event.clientX - rect.left - 260;
-        if (y + 80  > rect.height) y = event.clientY - rect.top  - 80;
+        if (x + tipW + 10 > rect.width)  x = event.clientX - rect.left - tipW - 10;
+        if (y + tipH + 10 > rect.height) y = event.clientY - rect.top  - tipH - 10;
+        if (x < 8) x = 8;
+        if (y < 8) y = 8;
         tooltip.style.left = x + 'px';
         tooltip.style.top  = y + 'px';
       })
@@ -251,16 +286,13 @@ var SITE_BASEURL = '{{ site.baseurl }}';
       .attr('fill', 'currentColor')
       .attr('pointer-events', 'none')
       .text(function (d) {
-        return d.label.length > 32 ? d.label.slice(0, 30) + '…' : d.label;
+        return truncateLabel(d.label, 180, '10px sans-serif');
       });
 
     // Wire simulation
     simulation
       .nodes(nodes)
-      .force('link', d3.forceLink(edges).id(function (d) { return d.id; }).distance(120).strength(0.4))
-      .force('charge', d3.forceManyBody().strength(-220))
-      .force('center', d3.forceCenter(W / 2, H / 2))
-      .force('collide', d3.forceCollide(22))
+      .force('link', linkForce.links(edges))
       .alpha(0.8)
       .restart()
       .on('tick', function () {
@@ -303,6 +335,33 @@ var SITE_BASEURL = '{{ site.baseurl }}';
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  function isValidGraphData(data) {
+    if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.edges)) return false;
+    for (var i = 0; i < data.nodes.length; i++) {
+      var n = data.nodes[i];
+      if (!n || typeof n.id !== 'string' || typeof n.label !== 'string') return false;
+    }
+    for (var j = 0; j < data.edges.length; j++) {
+      var e = data.edges[j];
+      if (!e || typeof e.source !== 'string' || typeof e.target !== 'string' || typeof e.type !== 'string') return false;
+    }
+    return true;
+  }
+
+  function truncateLabel(text, maxPx, font) {
+    var value = String(text || '');
+    if (!measureCtx) {
+      return value.length > 32 ? value.slice(0, 30) + '…' : value;
+    }
+    measureCtx.font = font || '10px sans-serif';
+    if (measureCtx.measureText(value).width <= maxPx) return value;
+    var out = value;
+    while (out.length > 1 && measureCtx.measureText(out + '…').width > maxPx) {
+      out = out.slice(0, -1);
+    }
+    return out + '…';
   }
 })();
 </script>

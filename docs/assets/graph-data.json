@@ -287,7 +287,8 @@
         "vlm",
         "embodied-ai",
         "nvidia-isaac",
-        "groot"
+        "groot",
+        "dimos"
       ]
     },
     {
@@ -312,6 +313,12 @@
         "state-estimation",
         "localization"
       ]
+    },
+    {
+      "id": "timeline",
+      "label": "Timeline",
+      "type": "other",
+      "tags": []
     }
   ],
   "edges": [
@@ -319,25 +326,47 @@
       "source": "reading/probabilistic-robotics-state-estimation",
       "target": "strange/2026-02-20-example-strange-seed",
       "type": "shared-tag",
-      "tag": "perception"
+      "tags": [
+        "perception",
+        "state-estimation"
+      ],
+      "tag_count": 2
     },
     {
       "source": "reading/probabilistic-robotics-state-estimation",
       "target": "syntheses/state-estimation-approaches",
       "type": "shared-tag",
-      "tag": "perception"
+      "tags": [
+        "localization",
+        "perception",
+        "state-estimation"
+      ],
+      "tag_count": 3
     },
     {
       "source": "strange/2026-02-20-example-strange-seed",
       "target": "syntheses/state-estimation-approaches",
       "type": "shared-tag",
-      "tag": "perception"
+      "tags": [
+        "perception",
+        "state-estimation"
+      ],
+      "tag_count": 2
     },
     {
       "source": "survey/2026-02-19-go2-embodied-ai-stack",
       "target": "syntheses/memory-systems-vla-robots",
       "type": "shared-tag",
-      "tag": "robotics"
+      "tags": [
+        "robotics",
+        "vla"
+      ],
+      "tag_count": 2
+    },
+    {
+      "source": "reading/probabilistic-robotics-state-estimation",
+      "target": "syntheses/state-estimation-approaches",
+      "type": "internal-link"
     }
   ]
 }

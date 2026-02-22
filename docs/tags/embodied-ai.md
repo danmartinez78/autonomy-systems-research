@@ -18,6 +18,11 @@ search_exclude: true
 
 <ul class="post-list">
   <li>
+    <span class="post-meta">Feb 22, 2026</span>
+    <h4><a href="{{ site.baseurl }}/survey/2026-02-19-go2-embodied-ai-stack/">Unitree GO2 Pro Embodied AI Stack Survey</a></h4>
+    <p class="post-summary">Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control. Updated 2026-02-22 with Dimensional (dim.os) framework.</p>
+  </li>
+  <li>
     <span class="post-meta">Feb 20, 2026</span>
     <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/tachikoma-soul-research/">Tachikoma Soul Research</a></h4>
     <p class="post-summary">Deep dive on SOUL.md / soul.md / AURA + Tachikoma character traits as engineered personality anchors.</p>
@@ -121,11 +126,6 @@ search_exclude: true
     <span class="post-meta">Feb 20, 2026</span>
     <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/personality-emergence-research-plan/">Personality Emergence Research Plan</a></h4>
     <p class="post-summary">Top-level plan + executive summary for the multi-phase research on emergent personality divergence and governance.</p>
-  </li>
-  <li>
-    <span class="post-meta">Feb 19, 2026</span>
-    <h4><a href="{{ site.baseurl }}/survey/2026-02-19-go2-embodied-ai-stack/">Unitree GO2 Pro Embodied AI Stack Survey</a></h4>
-    <p class="post-summary">Survey of software stacks and research resources for integrating the Unitree GO2 Pro with ROS2, VLA/VLMs, Isaac/GR00T, and LLM-based control.</p>
   </li>
   <li>
     <span class="post-meta">Feb 18, 2026</span>

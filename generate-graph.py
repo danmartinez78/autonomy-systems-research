@@ -16,6 +16,7 @@ Usage:
 import json
 import os
 import re
+from itertools import combinations
 import yaml
 from pathlib import Path
 
@@ -113,11 +114,51 @@ def resolve_link(href, source_id):
 def extract_links(body, source_id):
     """Return list of resolved page IDs linked from the markdown body."""
     links = []
-    for match in re.finditer(r"\[([^\]]*)\]\(([^)]+)\)", body):
-        resolved = resolve_link(match.group(2), source_id)
-        if resolved:
-            links.append(resolved)
-    return links
+    i = 0
+    while i < len(body):
+        start = body.find("[", i)
+        if start == -1:
+            break
+        end_text = body.find("]", start + 1)
+        if end_text == -1 or end_text + 1 >= len(body) or body[end_text + 1] != "(":
+            i = start + 1
+            continue
+
+        # Parse href with balanced parentheses to handle links like (foo(bar).md)
+        j = end_text + 2
+        depth = 1
+        href_chars = []
+        while j < len(body) and depth > 0:
+            ch = body[j]
+            if ch == "(":
+                depth += 1
+                href_chars.append(ch)
+            elif ch == ")":
+                depth -= 1
+                if depth > 0:
+                    href_chars.append(ch)
+            else:
+                href_chars.append(ch)
+            j += 1
+
+        if depth == 0:
+            href = "".join(href_chars)
+            resolved = resolve_link(href, source_id)
+            if resolved:
+                links.append(resolved)
+            i = j
+        else:
+            i = start + 1
+
+    # De-duplicate while preserving first-seen order
+    seen = set()
+    unique = []
+    for link in links:
+        if link not in seen:
+            seen.add(link)
+            unique.append(link)
+
+    return unique
 
 
 def collect_pages():
@@ -165,8 +206,10 @@ def build_edges(pages):
     """
     page_ids = {p["id"] for p in pages}
     edges = []
-    # Use frozensets so (A,B) and (B,A) map to the same key
-    edge_set = set()
+    # Separate sets so shared-tag edges are undirected, while internal-link
+    # edges are directed (A -> B distinct from B -> A).
+    shared_edge_set = set()
+    link_edge_set = set()
 
     # --- shared-tag edges ---
     tag_to_ids = {}
@@ -174,28 +217,37 @@ def build_edges(pages):
         for tag in page["tags"]:
             tag_to_ids.setdefault(tag, []).append(page["id"])
 
+    shared_pair_tags = {}
     for tag, ids in tag_to_ids.items():
         # Skip hub/category tags that appear on many pages — they would
         # create O(n²) edges that add noise without topical signal.
         if len(ids) > MAX_SHARED_TAG_PAGES:
             continue
-        for i in range(len(ids)):
-            for j in range(i + 1, len(ids)):
-                a, b = ids[i], ids[j]
-                key = frozenset((a, b))
-                if key not in edge_set:
-                    edge_set.add(key)
-                    edges.append(
-                        {"source": a, "target": b, "type": "shared-tag", "tag": tag}
-                    )
+        unique_ids = sorted(set(ids))
+        for a, b in combinations(unique_ids, 2):
+            key = tuple(sorted((a, b)))
+            shared_edge_set.add(key)
+            shared_pair_tags.setdefault(key, set()).add(tag)
+
+    for a, b in sorted(shared_edge_set):
+        tags = sorted(shared_pair_tags.get((a, b), set()))
+        edges.append(
+            {
+                "source": a,
+                "target": b,
+                "type": "shared-tag",
+                "tags": tags,
+                "tag_count": len(tags),
+            }
+        )
 
     # --- internal-link edges ---
     for page in pages:
         for target in page["links"]:
             if target in page_ids and target != page["id"]:
-                key = frozenset((page["id"], target))
-                if key not in edge_set:
-                    edge_set.add(key)
+                key = (page["id"], target)
+                if key not in link_edge_set:
+                    link_edge_set.add(key)
                     edges.append(
                         {
                             "source": page["id"],
