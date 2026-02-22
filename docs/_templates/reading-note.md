@@ -6,6 +6,10 @@ authors: "Author1, Author2, Author3"
 link: "https://doi.org/..."
 tags: [tag1, tag2, tag3]
 summary: "One-sentence summary of the paper"
+# Optional: add questions to surface on the /review/ page for spaced repetition
+# review_questions:
+#   - "Question 1?"
+#   - "Question 2?"
 ---
 
 # Reading Note: [Paper Title]

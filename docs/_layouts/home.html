@@ -104,6 +104,11 @@ layout: default
     <span class="section-card__desc">Browse all content by topic tags</span>
     <span class="section-card__count">{{ tag_count }} tags</span>
   </a>
+  <a href="{{ '/review/' | relative_url }}" class="section-card">
+    <span class="section-card__icon">🔁</span>
+    <span class="section-card__title">Review</span>
+    <span class="section-card__desc">Spaced review prompts from notes across the knowledge base</span>
+  </a>
 </div>
 
 {% comment %} Recent activity - collect pages from each content type sorted by their date field {% endcomment %}

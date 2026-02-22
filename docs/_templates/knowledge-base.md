@@ -4,6 +4,10 @@ parent: Knowledge Base
 date: YYYY-MM-DD
 tags: [category, topic]
 summary: "One-sentence description of this entry"
+# Optional: add questions to surface on the /review/ page for spaced repetition
+# review_questions:
+#   - "Question 1?"
+#   - "Question 2?"
 ---
 
 # Knowledge Base: [Concept/Pattern Name]

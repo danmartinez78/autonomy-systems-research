@@ -6,6 +6,12 @@ authors: "Michele Colledanchise, Petter Ögren"
 link: "https://arxiv.org/abs/1709.00084"
 tags: [planning, behavior-trees, control-architecture, decision-making]
 summary: "Survey paper on behavior trees as modular and reactive control architecture for autonomous systems"
+review_questions:
+  - "What is the core execution model of a behavior tree, and how does it differ from a finite state machine?"
+  - "What are the three main node types in a behavior tree, and what does each return?"
+  - "Why are behavior trees considered more modular than FSMs for complex robot behaviors?"
+  - "How does the tick-based traversal from root support reactive behavior?"
+  - "What are the main limitations of behavior trees identified in the paper?"
 ---
 
 # Reading Note: Behavior Trees in Robotics and AI
