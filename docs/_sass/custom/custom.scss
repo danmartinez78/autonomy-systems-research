@@ -540,6 +540,18 @@ a.nav-list-link[href*="/view-all"] {
   }
 }
 
+.review-controls__label--spaced {
+  margin-left: 1rem;
+}
+
+.review-empty-msg {
+  display: none;
+
+  &--visible {
+    display: block;
+  }
+}
+
 .review-entry {
   border: 1px solid $border-color;
   border-radius: 6px;
@@ -582,5 +594,23 @@ a.nav-list-link[href*="/view-all"] {
 
   .recent-list__date {
     min-width: unset;
+  }
+
+  .review-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label, select {
+      width: 100%;
+    }
+
+    select {
+      margin-left: 0; // override desktop 0.25rem left margin set in .review-controls select
+    }
+  }
+
+  .review-controls__label--spaced {
+    margin-left: 0;
   }
 }

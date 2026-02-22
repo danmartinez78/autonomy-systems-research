@@ -19,18 +19,20 @@ Review prompts drawn from notes across the knowledge base. Use these to reinforc
 *No review prompts yet. Add a `review_questions:` list to any note's front matter to have it appear here.*
 {% else %}
 
-<div class="review-controls">
+<div class="review-controls" role="search" aria-label="Filter review prompts">
   <label for="review-filter-type"><strong>Filter by type:</strong></label>
-  <select id="review-filter-type" onchange="applyReviewFilter()">
+  <select id="review-filter-type" onchange="applyReviewFilter()" aria-controls="review-list review-empty-msg">
     <option value="">All types</option>
     <option value="reading">Reading Notes</option>
     <option value="synthesis">Syntheses</option>
     <option value="knowledge-base">Knowledge Base</option>
     <option value="survey">Surveys</option>
+    <option value="journal">Journal</option>
+    <option value="strange">Backlog of the Strange</option>
   </select>
 
-  <label for="review-filter-tag" style="margin-left:1rem;"><strong>Filter by tag:</strong></label>
-  <select id="review-filter-tag" onchange="applyReviewFilter()">
+  <label for="review-filter-tag" class="review-controls__label--spaced"><strong>Filter by tag:</strong></label>
+  <select id="review-filter-tag" onchange="applyReviewFilter()" aria-controls="review-list review-empty-msg">
     <option value="">All tags</option>
     {% assign all_review_tags = "" | split: "" %}
     {% for p in review_pages %}
@@ -45,28 +47,41 @@ Review prompts drawn from notes across the knowledge base. Use these to reinforc
   </select>
 </div>
 
-<div id="review-list">
+<div id="review-list" aria-live="polite">
 {% for p in review_pages %}
-  {% assign page_type = p.type | default: "" %}
+  {% assign page_type = "" %}
+  {% if p.parent == "Reading Notes" %}
+    {% assign page_type = "reading" %}
+  {% elsif p.parent == "Syntheses" %}
+    {% assign page_type = "synthesis" %}
+  {% elsif p.parent == "Knowledge Base" %}
+    {% assign page_type = "knowledge-base" %}
+  {% elsif p.parent == "Surveys" %}
+    {% assign page_type = "survey" %}
+  {% elsif p.parent == "The Backlog of the Strange" %}
+    {% assign page_type = "strange" %}
+  {% elsif p.parent == "Journal" %}
+    {% assign page_type = "journal" %}
+  {% endif %}
   {% assign page_tags_str = p.tags | join: "," | downcase %}
   <div class="review-entry" data-type="{{ page_type }}" data-tags="{{ page_tags_str }}">
     <h3>
       <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-      {% if p.type %}<span class="content-badge content-badge--{{ page_type }}">{% if page_type == "knowledge-base" %}Knowledge Base{% elsif page_type == "reading" %}Reading Note{% elsif page_type == "synthesis" %}Synthesis{% elsif page_type == "survey" %}Survey{% elsif page_type == "journal" %}Journal{% elsif page_type == "strange" %}Strange Seed{% else %}{{ page_type | capitalize }}{% endif %}</span>{% endif %}
+      {% if page_type != "" %}<span class="content-badge content-badge--{{ page_type }}">{% if page_type == "knowledge-base" %}Knowledge Base{% elsif page_type == "reading" %}Reading Note{% elsif page_type == "synthesis" %}Synthesis{% elsif page_type == "survey" %}Survey{% elsif page_type == "journal" %}Journal{% elsif page_type == "strange" %}Strange Seed{% else %}{{ page_type | capitalize }}{% endif %}</span>{% endif %}
     </h3>
     {% if p.tags %}
     <p class="post-meta">Tags: {{ p.tags | join: ", " }}</p>
     {% endif %}
     <ol>
     {% for question in p.review_questions %}
-      <li>{{ question }}</li>
+      <li>{{ question | escape }}</li>
     {% endfor %}
     </ol>
   </div>
 {% endfor %}
 </div>
 
-<p id="review-empty-msg" style="display:none;"><em>No prompts match the selected filter.</em></p>
+<p id="review-empty-msg" class="review-empty-msg" aria-live="polite"><em>No prompts match the selected filter.</em></p>
 
 <script>
 function applyReviewFilter() {
@@ -79,7 +94,7 @@ function applyReviewFilter() {
     var type = el.getAttribute('data-type') || '';
     var tags = el.getAttribute('data-tags') || '';
     var typeMatch = !typeFilter || type === typeFilter;
-    var tagMatch  = !tagFilter  || tags.split(',').indexOf(tagFilter.toLowerCase()) !== -1;
+    var tagMatch  = !tagFilter  || (tags && tags.split(',').indexOf(tagFilter.toLowerCase()) !== -1);
     if (typeMatch && tagMatch) {
       el.style.display = '';
       visible++;
@@ -88,7 +103,12 @@ function applyReviewFilter() {
     }
   });
 
-  document.getElementById('review-empty-msg').style.display = (visible === 0) ? '' : 'none';
+  var emptyMsg = document.getElementById('review-empty-msg');
+  if (visible === 0) {
+    emptyMsg.classList.add('review-empty-msg--visible');
+  } else {
+    emptyMsg.classList.remove('review-empty-msg--visible');
+  }
 }
 </script>
 
