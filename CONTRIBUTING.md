@@ -311,6 +311,26 @@ The repository includes a Python script that automatically generates:
 
 The script is idempotent - you can run it multiple times safely without causing issues.
 
+### Related Content Recommendations
+
+Reading notes, synthesis pages, and knowledge base entries automatically display a **Related Content** section at the bottom of each page. No manual configuration is needed.
+
+**How it works:**
+
+- Pages are ranked by tag overlap with the current page (highest intersection first).
+- The top 5 most-related pages are shown, with ties between pages at the same overlap level listed in site-page order.
+- Only reading notes, syntheses, and knowledge base pages are included as candidates — journal entries, surveys, strange seeds, and utility pages are excluded.
+- The current page is always excluded from its own results.
+- A page with no tags, or with fewer than 1 tag in common with any candidate, will show no related section.
+
+**To influence what appears as related content:**
+
+- Ensure your page's `tags` front matter is accurate and specific.
+- Add shared tags to related pages to strengthen their connection.
+- Tags defined in `_config.yml` defaults are applied automatically by path; individual pages may also set tags in their own front matter.
+
+The related content logic lives in `docs/_includes/related-content.html` (pure Liquid, no JavaScript). Styling is in `docs/_sass/custom/custom.scss` under the `related-content` block. The feature is activated via the `content-page` layout (`docs/_layouts/content-page.html`), which wraps `default` and injects the include after the page body.
+
 ## Style Guidelines
 
 ### Writing Style
