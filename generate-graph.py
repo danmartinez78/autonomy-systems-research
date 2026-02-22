@@ -6,7 +6,7 @@ Scans all markdown files in docs/ to extract nodes (pages) and edges:
   - shared-tag: two pages that share at least one tag
   - internal-link: a page that contains a markdown link to another page
 
-One edge per unique node pair is created (even if they share multiple tags).
+One shared-tag edge per unique node pair is created; all shared tags are stored in the edge's "tags" array.
 Outputs docs/assets/graph-data.json.
 
 Usage:
