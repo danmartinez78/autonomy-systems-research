@@ -521,6 +521,42 @@ a.nav-list-link[href*="/view-all"] {
   }
 }
 
+// --- Review page ---
+.review-controls {
+  margin-bottom: 1.5rem;
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  select {
+    margin-left: 0.25rem;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    background: $sidebar-color; // matches page background in both dark and light themes
+    color: $body-text-color;
+  }
+}
+
+.review-entry {
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+
 // --- Mobile Responsiveness ---
 @media (max-width: 50rem) {
   .tag-cloud {
