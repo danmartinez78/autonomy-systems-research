@@ -584,7 +584,7 @@ LLM Client → MCP (HTTP) → Dimensional → Unitree SDK → GO2 Hardware
 ### Official Documentation
 
 - [Unitree Robotics GitHub](https://github.com/unitreerobotics)
-- [Unitree Support Center](https://support.unitre.com)
+- [Unitree Support Center](https://support.unitree.com)
 - [GO2 Foxy Quick Start](https://www.docs.quadruped.de/projects/go2/html/go2-foxy.html)
 - [Dimensional (dim.os)](https://github.com/dimensionalOS/dimos)
 
