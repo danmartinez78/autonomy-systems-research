@@ -219,7 +219,7 @@ function toPageUrl(pageId) {
       .attr('tabindex', 0)
       .attr('role', 'link')
       .attr('aria-label', function (d) {
-        return 'Open ' + d.label + ' (' + (d.type || 'other') + ')';
+        return 'Open ' + escapeHtml(d.label) + ' (' + escapeHtml(d.type || 'other') + ')';
       })
       .call(
         d3.drag()
