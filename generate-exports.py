@@ -8,6 +8,7 @@ and generates:
 2. docs/exports/reading-notes.csv  — CSV with all reading note metadata
 
 Source fields used: title, authors, date_read, link, tags, summary, permalink
+(`permalink` is derived from file path, not read from front matter)
 
 Usage:
     python3 generate-exports.py
@@ -18,7 +19,6 @@ idempotent - it can be run multiple times safely.
 
 import csv
 import io
-import os
 import re
 import yaml
 from pathlib import Path
@@ -56,12 +56,12 @@ def make_bibtex_key(stem, date_read):
     key_base = re.sub(r'[^a-z0-9\-]', '', stem.lower())
     if date_read:
         if isinstance(date_read, (date, datetime)):
-            year = date_read.year
+            year = str(date_read.year)
         else:
             # Try to parse year from string
             m = re.match(r'(\d{4})', str(date_read))
             year = m.group(1) if m else ''
-        return f"{key_base}-{year}"
+        return f"{key_base}-{year}" if year else key_base
     return key_base
 
 
@@ -80,8 +80,22 @@ def bibtex_escape(text):
     """Escape characters that are special in BibTeX field values."""
     if not text:
         return ""
-    # Escape backslashes first, then braces used for literal text
-    return str(text).replace('\\', '\\\\').replace('{', '\\{').replace('}', '\\}')
+    # Escape backslashes first, then braces/percent; collapse newlines.
+    value = str(text).replace("\r\n", " ").replace("\n", " ").strip()
+    return (
+        value
+        .replace('\\', '\\\\')
+        .replace('{', '\\{')
+        .replace('}', '\\}')
+        .replace('%', '\\%')
+    )
+
+
+def normalize_text(value):
+    """Normalize nullable front matter fields to plain strings."""
+    if value is None:
+        return ""
+    return str(value).strip()
 
 
 def build_permalink(stem):
@@ -120,12 +134,12 @@ def collect_reading_notes():
 
         note = {
             'key': make_bibtex_key(stem, date_read),
-            'title': fm.get('title', ''),
-            'authors': fm.get('authors', ''),
+            'title': normalize_text(fm.get('title', '')),
+            'authors': normalize_text(fm.get('authors', '')),
             'date_read': format_date(date_read),
-            'link': fm.get('link', ''),
-            'tags': ', '.join(fm.get('tags', [])) if isinstance(fm.get('tags'), list) else str(fm.get('tags', '')),
-            'summary': fm.get('summary', ''),
+            'link': normalize_text(fm.get('link', '')),
+            'tags': ', '.join(normalize_text(tag) for tag in fm.get('tags', [])) if isinstance(fm.get('tags'), list) else normalize_text(fm.get('tags', '')),
+            'summary': normalize_text(fm.get('summary', '')),
             'permalink': build_permalink(stem),
         }
         notes.append(note)
