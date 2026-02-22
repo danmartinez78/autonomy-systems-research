@@ -15,19 +15,19 @@ layout: default
 {% assign all_tags = "" | split: "" %}
 
 {% for p in site.pages %}
-  {% if p.path contains 'reading/' and p.title %}
+  {% if p.path contains 'reading/' and p.title and p.parent == "Reading Notes" %}
     {% assign reading_count = reading_count | plus: 1 %}
   {% endif %}
-  {% if p.path contains 'syntheses/' and p.title %}
+  {% if p.path contains 'syntheses/' and p.title and p.parent == "Syntheses" %}
     {% assign synthesis_count = synthesis_count | plus: 1 %}
   {% endif %}
-  {% if p.path contains 'knowledge-base/' and p.title %}
+  {% if p.path contains 'knowledge-base/' and p.title and p.parent == "Knowledge Base" %}
     {% assign kb_count = kb_count | plus: 1 %}
   {% endif %}
-  {% if p.path contains 'survey/' and p.title %}
+  {% if p.path contains 'survey/' and p.title and p.parent == "Surveys" %}
     {% assign survey_count = survey_count | plus: 1 %}
   {% endif %}
-  {% if p.path contains 'strange/' and p.title %}
+  {% if p.path contains 'strange/' and p.title and p.parent == "The Backlog of the Strange" %}
     {% assign strange_count = strange_count | plus: 1 %}
   {% endif %}
   {% if p.tags %}
