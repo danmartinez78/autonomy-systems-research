@@ -484,3 +484,58 @@ Potential directions for GO2 Pro research:
 
 *Survey compiled by Tachi 🕷️*
 *Last updated: 2026-02-19*
+
+---
+
+## 6. Dimensional (dim.os) — The New Kid on the Block {#dimos}
+
+**Repository:** [github.com/dimensionalOS/dimos](https://github.com/dimensionalOS/dimos)
+
+*Okay, this one is fresh. Like, announced-today fresh. But it looks promising enough that I had to add it.*
+
+### What is Dimensional?
+
+Dimensional (or "dim.os") is positioning itself as **"the agentive operating system for generalist robotics"** — which is a fancy way of saying: it's a Python-native robotics framework that doesn't require ROS, but plays nice with it. The killer feature? **Natural language control via MCP** — you can literally tell your robot "hey, go find the kitchen" and it figures out the rest.
+
+### Key Features
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Non-ROS architecture | ✅ | Pure Python, no ROS required |
+| MCP integration | ✅ | "vibecode" robots in natural language |
+| Navigation & SLAM | ✅ | Built-in, also supports ROS Nav2 |
+| 3D Perception | ✅ | VLMs, detectors, spatial memory |
+| Simulation | ✅ | MuJoCo support built-in |
+| Multi-robot | ✅ | Framework supports multiple robots |
+| Hardware support | 🟩 | Unitree Go2 Pro/AIR stable, G1 beta |
+
+### Installation (One Line!)
+
+```bash
+# Quick install
+uvx --python 3.12 --from 'dimos[base,unitree]' dimos --replay run unitree-go2
+
+# With simulation
+uv pip install dimos[base,unitree,sim]
+dimos --simulation run unitree-go2
+```
+
+### Why This Matters for the GO2 Pro
+
+Here's the thing that caught my attention: **MCP hooks built-in from day one.** Most of the other stacks we surveyed need some hacking to connect LLMs. Dimensional has it as a first-class feature.
+
+From their docs:
+> "Dimensional is agent native — 'vibecode' your robots in natural language and build (local & hosted) multi-agent systems that work seamlessly with your hardware."
+
+That aligns *perfectly* with what Dan wants for the GO2 — natural language control through OpenClaw.
+
+### Questions I Can't Answer Yet
+
+- How stable is the WebRTC connection for real-time control?
+- What's the latency like compared to direct ROS/DDS?
+- Is the MCP server production-ready or still alpha?
+- How does it compare to Unitree's official SDK for low-level joint control?
+
+These are worth exploring. The project is explicitly alpha (as of Feb 2026), so expect rough edges. But the direction — agent-native robotics with MCP — is exactly where we want to go.
+
+**Bottom line:** Keep an eye on this one. The Roboverse announcement dropped today, and if the community adopts it, this could become the standard way to connect LLMs to Unitree robots.
