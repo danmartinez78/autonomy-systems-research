@@ -380,6 +380,37 @@ To keep the sidebar clean and scannable, each section shows **at most 5 child pa
    ---
    ```
 
+### CI Sidebar Validation
+
+A CI workflow (`validate-sidebar.yml`) automatically enforces the sidebar child cap on every pull request that touches content files. It runs:
+
+```bash
+python3 validate-sidebar.py --cap 5 --docs-dir docs
+```
+
+**What it checks:**
+
+1. **Visible children per section ≤ 5** — if more than 5 pages in a section lack `nav_exclude: true`, the build fails with a list of the offending files.
+2. **`view-all.md` required when total pages > 5** — if a section has grown past the cap but has no `view-all.md` redirect, the build fails with the exact path to create.
+
+**If the CI check fails**, do one of the following depending on which error is reported:
+
+- *Too many visible pages* — add `nav_exclude: true` to the front matter of the oldest page(s) in the section until the visible count is ≤ 5.
+- *Missing `view-all.md`* — copy the template and fill in the placeholders:
+  ```bash
+  cp docs/_templates/view-all.md docs/<section>/view-all.md
+  ```
+
+You can run the check locally before pushing:
+
+```bash
+python3 validate-sidebar.py --cap 5 --docs-dir docs
+# or:
+make validate-sidebar
+```
+
+The cap is configurable via `--cap N` for local testing, but the CI workflow always uses 5.
+
 ## Pull Request Process
 
 1. **Create a descriptive branch name**: `add-reading-note-slam` or `update-synthesis-perception`
