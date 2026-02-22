@@ -8,6 +8,8 @@ summary: "One-sentence description of what this synthesis covers"
 # review_questions:
 #   - "Question 1?"
 #   - "Question 2?"
+# Confidence in this synthesis; valid values: high, med, low (omit to show as unknown)
+confidence: med
 ---
 
 # Synthesis: [Topic Title]

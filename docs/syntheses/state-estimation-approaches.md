@@ -4,6 +4,7 @@ parent: Syntheses
 last_updated: 2026-02-18
 tags: [perception, state-estimation, localization]
 summary: "Comparison of different approaches to state estimation in mobile robotics"
+confidence: high
 ---
 
 # Synthesis: State Estimation Approaches for Mobile Robots
