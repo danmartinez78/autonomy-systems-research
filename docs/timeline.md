@@ -15,13 +15,13 @@ Chronological view of all research activity — reading notes, syntheses, knowle
 <div class="timeline-controls">
   <div class="timeline-filter-group" role="group" aria-label="Filter by content type">
     <span class="timeline-filter-label">Filter:</span>
-    <button class="timeline-filter-btn active" data-filter="all">All</button>
-    <button class="timeline-filter-btn" data-filter="reading">Reading</button>
-    <button class="timeline-filter-btn" data-filter="synthesis">Synthesis</button>
-    <button class="timeline-filter-btn" data-filter="knowledge-base">Knowledge Base</button>
-    <button class="timeline-filter-btn" data-filter="journal">Journal</button>
-    <button class="timeline-filter-btn" data-filter="survey">Survey</button>
-    <button class="timeline-filter-btn" data-filter="strange">Strange</button>
+    <button type="button" class="timeline-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="timeline-filter-btn" data-filter="reading" aria-pressed="false">Reading</button>
+    <button type="button" class="timeline-filter-btn" data-filter="synthesis" aria-pressed="false">Synthesis</button>
+    <button type="button" class="timeline-filter-btn" data-filter="knowledge-base" aria-pressed="false">Knowledge Base</button>
+    <button type="button" class="timeline-filter-btn" data-filter="journal" aria-pressed="false">Journal</button>
+    <button type="button" class="timeline-filter-btn" data-filter="survey" aria-pressed="false">Survey</button>
+    <button type="button" class="timeline-filter-btn" data-filter="strange" aria-pressed="false">Strange</button>
   </div>
   <button class="timeline-sort-btn" id="timeline-sort-btn" aria-label="Toggle sort order" title="Toggle sort order">
     <span class="timeline-sort-label">Newest first</span>
@@ -34,10 +34,10 @@ Chronological view of all research activity — reading notes, syntheses, knowle
   {% comment %}Reading notes — date field: date_read{% endcomment %}
   {% assign reading_pages = site.pages | where_exp: "page", "page.path contains 'reading/'" | where_exp: "page", "page.title != nil" | where_exp: "page", "page.date_read != nil" %}
   {% for item in reading_pages %}
-  <li class="timeline-item" data-date="{{ item.date_read }}" data-type="reading">
+  <li class="timeline-item" data-date="{{ item.date_read | date: '%Y-%m-%d' }}" data-type="reading">
     <div class="timeline-item__meta">
       <span class="content-badge content-badge--reading">Reading</span>
-      <span class="post-meta">{{ item.date_read }}</span>
+      <span class="post-meta">{{ item.date_read | date: '%Y-%m-%d' }}</span>
     </div>
     <h4><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h4>
     {% if item.authors %}<span class="post-meta">{{ item.authors }}</span>{% endif %}
@@ -133,11 +133,9 @@ Chronological view of all research activity — reading notes, syntheses, knowle
   function sortItems() {
     var items = getItems();
     items.sort(function (a, b) {
-      var da = a.getAttribute('data-date') || '';
-      var db = b.getAttribute('data-date') || '';
-      if (da < db) return ascending ? -1 : 1;
-      if (da > db) return ascending ? 1 : -1;
-      return 0;
+      var da = Date.parse(a.getAttribute('data-date') || '') || 0;
+      var db = Date.parse(b.getAttribute('data-date') || '') || 0;
+      return ascending ? da - db : db - da;
     });
     items.forEach(function (item) { list.appendChild(item); });
   }
@@ -160,8 +158,12 @@ Chronological view of all research activity — reading notes, syntheses, knowle
   // Filter button listeners
   filterBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      filterBtns.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       currentFilter = btn.getAttribute('data-filter');
       applyFilter();
     });

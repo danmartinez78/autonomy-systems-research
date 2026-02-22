@@ -522,6 +522,9 @@ a.nav-list-link[href*="/view-all"] {
 }
 
 // --- Timeline Page ---
+// Text color for active (filled) filter button — needs to contrast with $link-color background
+$timeline-filter-active-text: white;
+
 .timeline-controls {
   display: flex;
   flex-wrap: wrap;
@@ -565,7 +568,7 @@ a.nav-list-link[href*="/view-all"] {
   &.active {
     background-color: $link-color;
     border-color: $link-color;
-    color: #fff;
+    color: $timeline-filter-active-text;
   }
 }
 
