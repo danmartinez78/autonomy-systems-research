@@ -138,7 +138,11 @@ def collect_reading_notes():
             'authors': normalize_text(fm.get('authors', '')),
             'date_read': format_date(date_read),
             'link': normalize_text(fm.get('link', '')),
-            'tags': ', '.join(normalize_text(tag) for tag in fm.get('tags', [])) if isinstance(fm.get('tags'), list) else normalize_text(fm.get('tags', '')),
+            'tags': ', '.join(
+                t
+                for t in (normalize_text(tag) for tag in fm.get('tags', []))
+                if t
+            ) if isinstance(fm.get('tags'), list) else normalize_text(fm.get('tags', '')),
             'summary': normalize_text(fm.get('summary', '')),
             'permalink': build_permalink(stem),
         }
