@@ -162,7 +162,7 @@ def generate_bibtex(notes):
         title = bibtex_escape(note['title'])
         authors = bibtex_escape(note['authors'])
         year = note['date_read'][:4] if len(note['date_read']) >= 4 else ''
-        url = note['link']
+        url = bibtex_escape(note['link'])
         note_field = bibtex_escape(note['summary'])
 
         entry_lines = [f"@misc{{{key},"]
