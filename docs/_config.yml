@@ -95,14 +95,17 @@ defaults:
   - scope:
       path: "reading"
     values:
+      layout: "content-page"
       type: "reading"
   - scope:
       path: "syntheses"
     values:
+      layout: "content-page"
       type: "synthesis"
   - scope:
       path: "knowledge-base"
     values:
+      layout: "content-page"
       type: "knowledge-base"
   - scope:
       path: "survey"
