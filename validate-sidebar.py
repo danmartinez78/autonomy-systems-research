@@ -140,10 +140,11 @@ def validate(sections, cap, docs_dir):
         # Check 2: sections over cap must have a view-all.md redirect
         if total > cap and not has_view_all:
             view_all_path = os.path.join(docs_dir, section_dir, "view-all.md")
+            template_path = os.path.join(docs_dir, "_templates", "view-all.md")
             errors.append(
                 f"Section '{parent_label}' ({section_dir}/):\n"
                 f"  {total} total pages exceed the cap of {cap} but 'view-all.md' is missing.\n"
-                f"  Create {view_all_path} using the template at docs/_templates/view-all.md"
+                f"  Create {view_all_path} using the template at {template_path}"
             )
 
     return errors
