@@ -361,7 +361,7 @@ The `parent` field controls where the page appears in the sidebar navigation.
 
 #### Optional: `review_questions`
 
-Any page (reading note, synthesis, knowledge base entry, etc.) may include a `review_questions:` list in its front matter. These questions are surfaced on the [`/review/`]({{ site.baseurl }}/review/) page for spaced repetition and long-term retention.
+Any page (reading note, synthesis, knowledge base entry, etc.) may include a `review_questions:` list in its front matter. These questions are surfaced on the [/review/](/review/) page for spaced repetition and long-term retention.
 
 **Format:**
 

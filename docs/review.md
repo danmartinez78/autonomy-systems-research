@@ -49,24 +49,27 @@ Review prompts drawn from notes across the knowledge base. Use these to reinforc
 
 <div id="review-list" aria-live="polite">
 {% for p in review_pages %}
-  {% assign page_type = "" %}
-  {% if p.parent == "Reading Notes" %}
-    {% assign page_type = "reading" %}
-  {% elsif p.parent == "Syntheses" %}
-    {% assign page_type = "synthesis" %}
-  {% elsif p.parent == "Knowledge Base" %}
-    {% assign page_type = "knowledge-base" %}
-  {% elsif p.parent == "Surveys" %}
-    {% assign page_type = "survey" %}
-  {% elsif p.parent == "The Backlog of the Strange" %}
-    {% assign page_type = "strange" %}
-  {% elsif p.parent == "Journal" %}
-    {% assign page_type = "journal" %}
-  {% endif %}
+  {% assign page_type = p.type | default: "" %}
   {% if page_type == "" %}
-    {% assign page_type = "other" %}
+    {% if p.parent == "Reading Notes" %}
+      {% assign page_type = "reading" %}
+    {% elsif p.parent == "Syntheses" %}
+      {% assign page_type = "synthesis" %}
+    {% elsif p.parent == "Knowledge Base" %}
+      {% assign page_type = "knowledge-base" %}
+    {% elsif p.parent == "Surveys" %}
+      {% assign page_type = "survey" %}
+    {% elsif p.parent == "The Backlog of the Strange" %}
+      {% assign page_type = "strange" %}
+    {% elsif p.parent == "Journal" %}
+      {% assign page_type = "journal" %}
+    {% endif %}
   {% endif %}
-  {% assign page_tags_str = p.tags | join: "," | downcase %}
+  {% if p.tags %}
+    {% assign page_tags_str = p.tags | join: "," | downcase %}
+  {% else %}
+    {% assign page_tags_str = "" %}
+  {% endif %}
   <div class="review-entry" data-type="{{ page_type }}" data-tags="{{ page_tags_str }}">
     <h3>
       <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
