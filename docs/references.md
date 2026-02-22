@@ -31,6 +31,14 @@ This section provides quick reference material including:
 
 **Control Loop**: A feedback mechanism that monitors system output and adjusts inputs to maintain desired behavior.
 
+### M
+
+**Model Context Protocol (MCP)**: A protocol for connecting AI models to external tools and systems via JSON-RPC, enabling natural language control of software and hardware.
+
+### V
+
+**Visual Servoing**: A control technique that uses visual feedback (typically from cameras) to guide robot motion in real-time.
+
 ---
 
 ## Acronyms
@@ -40,6 +48,7 @@ This section provides quick reference material including:
 - **LIDAR**: Light Detection and Ranging
 - **ROS**: Robot Operating System
 - **PID**: Proportional-Integral-Derivative (controller)
+- **MCP**: Model Context Protocol
 
 ---
 

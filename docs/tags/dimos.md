@@ -1,14 +1,14 @@
 ---
 layout: default
-title: "Tag: nvidia-isaac"
-permalink: /tags/nvidia-isaac/
+title: "Tag: dimos"
+permalink: /tags/dimos/
 nav_exclude: true
 search_exclude: true
 ---
 
-# Tag: nvidia-isaac
+# Tag: dimos
 
-1 page tagged with **nvidia-isaac**
+1 page tagged with **dimos**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 

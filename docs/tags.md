@@ -31,6 +31,10 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <p>1 page</p>
   </div>
   <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/dimos/">dimos</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/embodied-ai/">embodied-ai</a></h3>
     <p>23 pages</p>
   </div>
@@ -130,6 +134,7 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**behavior-trees**]({{ site.baseurl }}/tags/behavior-trees/) (1 page)
 - [**control-architecture**]({{ site.baseurl }}/tags/control-architecture/) (1 page)
 - [**decision-making**]({{ site.baseurl }}/tags/decision-making/) (1 page)
+- [**dimos**]({{ site.baseurl }}/tags/dimos/) (1 page)
 - [**embodied-ai**]({{ site.baseurl }}/tags/embodied-ai/) (23 pages)
 - [**groot**]({{ site.baseurl }}/tags/groot/) (1 page)
 - [**identity**]({{ site.baseurl }}/tags/identity/) (1 page)
