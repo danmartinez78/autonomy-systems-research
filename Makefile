@@ -1,4 +1,4 @@
-.PHONY: tags exports graph serve build validate-sidebar
+.PHONY: tags exports graph serve build validate-sidebar validate-frontmatter
 
 tags:
 	python3 generate-tags.py
@@ -11,6 +11,9 @@ graph:
 
 validate-sidebar:
 	python3 validate-sidebar.py --cap 5 --docs-dir docs
+
+validate-frontmatter:
+	python3 validate-frontmatter-quality.py
 
 serve:
 	cd docs && bundle exec jekyll serve --livereload

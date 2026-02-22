@@ -416,6 +416,30 @@ review_questions:
 
 The review page at `/review/` supports filtering by content type and tag, so questions from related notes can be browsed together.
 
+#### Optional: `review_answers`
+
+If you want explicit answer keys on the review page, add a `review_answers:` list aligned by index with `review_questions:`.
+
+```yaml
+review_questions:
+   - "What problem does this paper solve?"
+   - "What is the key tradeoff?"
+review_answers:
+   - "It reduces localization drift by fusing wheel odometry with visual landmarks."
+   - "Lower latency, but reduced robustness in low-texture scenes."
+```
+
+If `review_answers` is omitted, the review page falls back to the note summary and source link.
+
+#### Review Mode (Randomized Drill)
+
+The `/review/` page includes:
+- **Show Answer** toggles per prompt
+- **Randomize Prompts** to reshuffle visible questions
+- **Start 10-Question Drill** session queue based on current filters
+
+Use type/tag filters first, then start drill mode for focused practice.
+
 ### Links
 
 - Use relative links for internal pages: `[Link text](../path/to/page.md)`
@@ -487,6 +511,24 @@ make validate-sidebar
 ```
 
 The cap is configurable via `--cap N` for local testing, but the CI workflow always uses 5.
+
+### CI Front Matter Quality Validation
+
+A blocking CI workflow (`validate-frontmatter.yml`) enforces front matter quality for content pages.
+
+It validates:
+- Required fields by content type (e.g., `date_read` for reading notes, `last_updated` for syntheses)
+- Non-empty `summary`
+- `tags` as a non-empty YAML list using lowercase hyphenated format
+- ISO date format for `date_read` / `last_updated` (`YYYY-MM-DD`)
+
+Run locally before pushing:
+
+```bash
+python3 validate-frontmatter-quality.py
+# or:
+make validate-frontmatter
+```
 
 ## Pull Request Process
 

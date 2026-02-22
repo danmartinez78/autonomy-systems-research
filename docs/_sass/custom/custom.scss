@@ -520,6 +520,39 @@ body {
   margin-left: 0.5rem;
 }
 
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.review-btn {
+  background: none;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  color: $body-text-color;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.7rem;
+
+  &:hover {
+    border-color: $link-color;
+    color: $link-color;
+  }
+}
+
+.review-btn--primary {
+  background-color: $link-color;
+  border-color: $link-color;
+  color: white;
+
+  &:hover {
+    filter: brightness(1.08);
+    color: white;
+  }
+}
+
 .review-empty-msg {
   display: none;
 }
@@ -543,6 +576,61 @@ body {
     margin-top: 0.5rem;
     margin-bottom: 0;
   }
+}
+
+.review-question-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding-left: 0;
+}
+
+.review-card {
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem;
+}
+
+.review-card__question {
+  margin: 0 0 0.6rem;
+  font-weight: 500;
+}
+
+.review-card__answer {
+  margin-bottom: 0.6rem;
+}
+
+.review-drill {
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: $table-background-color;
+}
+
+.review-drill__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.review-drill__question {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.review-drill__answer {
+  border-top: 1px solid $border-color;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.review-drill__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 // --- "View all…" sidebar links: subtle, deemphasized ---
@@ -604,6 +692,13 @@ a.nav-list-link[href*="/view-all"] {
 
   .review-controls__label--spaced {
     margin-left: 0;
+  }
+
+  .review-actions,
+  .review-drill__actions,
+  .review-drill__meta {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .related-content__list {
