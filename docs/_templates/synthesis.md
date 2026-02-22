@@ -4,6 +4,7 @@ parent: Syntheses
 last_updated: YYYY-MM-DD
 tags: [topic-area, subtopic]
 summary: "One-sentence description of what this synthesis covers"
+confidence: med
 ---
 
 # Synthesis: [Topic Title]

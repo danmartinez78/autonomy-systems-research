@@ -4,6 +4,7 @@ parent: Syntheses
 last_updated: 2026-02-18
 tags: [robotics, vla, memory-systems, semantic-memory, knowledge-graphs, embodied-ai]
 summary: "A synthesis of memory architectures for Vision-Language-Action models and autonomous robotic systems, covering working, episodic, semantic, and procedural memory approaches."
+confidence: med
 ---
 
 # Synthesis: Memory Systems for Autonomous Robots with VLA Architectures
