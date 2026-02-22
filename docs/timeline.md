@@ -48,10 +48,10 @@ Chronological view of all research activity — reading notes, syntheses, knowle
   {% comment %}Syntheses — date field: last_updated{% endcomment %}
   {% assign synthesis_pages = site.pages | where_exp: "page", "page.path contains 'syntheses/'" | where_exp: "page", "page.title != nil" | where_exp: "page", "page.last_updated != nil" %}
   {% for item in synthesis_pages %}
-  <li class="timeline-item" data-date="{{ item.last_updated }}" data-type="synthesis">
+  <li class="timeline-item" data-date="{{ item.last_updated | date: '%Y-%m-%d' }}" data-type="synthesis">
     <div class="timeline-item__meta">
       <span class="content-badge content-badge--synthesis">Synthesis</span>
-      <span class="post-meta">{{ item.last_updated }}</span>
+      <span class="post-meta">{{ item.last_updated | date: '%Y-%m-%d' }}</span>
     </div>
     <h4><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h4>
     {% if item.summary %}<p class="post-summary">{{ item.summary | escape }}</p>{% endif %}
