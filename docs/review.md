@@ -21,7 +21,7 @@ Review prompts drawn from notes across the knowledge base. Use these to reinforc
 
 <div class="review-controls" role="search" aria-label="Filter review prompts">
   <label for="review-filter-type"><strong>Filter by type:</strong></label>
-  <select id="review-filter-type" onchange="applyReviewFilter()" aria-controls="review-list review-empty-msg">
+  <select id="review-filter-type" aria-controls="review-list review-empty-msg">
     <option value="">All types</option>
     <option value="reading">Reading Notes</option>
     <option value="synthesis">Syntheses</option>
@@ -32,7 +32,7 @@ Review prompts drawn from notes across the knowledge base. Use these to reinforc
   </select>
 
   <label for="review-filter-tag" class="review-controls__label--spaced"><strong>Filter by tag:</strong></label>
-  <select id="review-filter-tag" onchange="applyReviewFilter()" aria-controls="review-list review-empty-msg">
+  <select id="review-filter-tag" aria-controls="review-list review-empty-msg">
     <option value="">All tags</option>
     {% assign all_review_tags = "" | split: "" %}
     {% for p in review_pages %}
@@ -62,6 +62,9 @@ Review prompts drawn from notes across the knowledge base. Use these to reinforc
     {% assign page_type = "strange" %}
   {% elsif p.parent == "Journal" %}
     {% assign page_type = "journal" %}
+  {% endif %}
+  {% if page_type == "" %}
+    {% assign page_type = "other" %}
   {% endif %}
   {% assign page_tags_str = p.tags | join: "," | downcase %}
   <div class="review-entry" data-type="{{ page_type }}" data-tags="{{ page_tags_str }}">
@@ -93,8 +96,14 @@ function applyReviewFilter() {
   entries.forEach(function(el) {
     var type = el.getAttribute('data-type') || '';
     var tags = el.getAttribute('data-tags') || '';
+    var normalizedTags = tags
+      .split(',')
+      .map(function (t) { return t.trim(); })
+      .filter(function (t) { return t.length > 0; });
+
     var typeMatch = !typeFilter || type === typeFilter;
-    var tagMatch  = !tagFilter  || (tags && tags.split(',').indexOf(tagFilter.toLowerCase()) !== -1);
+    var tagMatch  = !tagFilter || normalizedTags.indexOf(tagFilter.toLowerCase()) !== -1;
+
     if (typeMatch && tagMatch) {
       el.style.display = '';
       visible++;
@@ -110,6 +119,25 @@ function applyReviewFilter() {
     emptyMsg.classList.remove('review-empty-msg--visible');
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  var typeSelect = document.getElementById('review-filter-type');
+  var tagSelect = document.getElementById('review-filter-tag');
+
+  if (typeSelect) {
+    typeSelect.addEventListener('change', applyReviewFilter);
+    typeSelect.addEventListener('keyup', function (event) {
+      if (event.key === 'Enter') applyReviewFilter();
+    });
+  }
+
+  if (tagSelect) {
+    tagSelect.addEventListener('change', applyReviewFilter);
+    tagSelect.addEventListener('keyup', function (event) {
+      if (event.key === 'Enter') applyReviewFilter();
+    });
+  }
+});
 </script>
 
 {% endif %}

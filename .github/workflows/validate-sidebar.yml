@@ -1,0 +1,35 @@
+name: Validate Sidebar Navigation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+      - 'validate-sidebar.py'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**/*.md'
+      - 'validate-sidebar.py'
+
+jobs:
+  validate-sidebar:
+    runs-on: ubuntu-latest
+    name: Check Sidebar Child Cap
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Validate sidebar navigation
+        run: python3 validate-sidebar.py --cap 5 --docs-dir docs

@@ -171,7 +171,7 @@ body {
 
 .post-list li {
   margin-bottom: 1rem;
-  padding: 1.5rem 2.25rem;
+  padding: 1.5rem 1.75rem;
   border: 1px solid $border-color;
   border-radius: 8px;
   background: $table-background-color;
@@ -250,18 +250,6 @@ body {
   border: 1px solid rgba(139, 148, 158, 0.3);
 }
 
-.content-badge--strange {
-  background-color: rgba(188, 140, 255, 0.15);
-  color: #bc8cff;
-  border: 1px solid rgba(188, 140, 255, 0.3);
-}
-
-.content-badge--survey {
-  background-color: rgba(56, 189, 193, 0.15);
-  color: #38bdc1;
-  border: 1px solid rgba(56, 189, 193, 0.3);
-}
-
 // --- Section Cards (Home Page) ---
 .section-cards {
   display: grid;
@@ -316,39 +304,6 @@ body {
   }
 }
 
-// --- Strange card flair: animated shifting border glow ---
-@keyframes strange-border-shift {
-  0%   { border-color: rgba(188, 140, 255, 0.5); box-shadow: 0 0 8px rgba(188, 140, 255, 0.25); }
-  33%  { border-color: rgba(130, 100, 220, 0.7); box-shadow: 0 0 14px rgba(130, 100, 220, 0.35); }
-  66%  { border-color: rgba(210, 160, 255, 0.6); box-shadow: 0 0 10px rgba(210, 160, 255, 0.3); }
-  100% { border-color: rgba(188, 140, 255, 0.5); box-shadow: 0 0 8px rgba(188, 140, 255, 0.25); }
-}
-
-.section-card--strange {
-  border-color: rgba(188, 140, 255, 0.5);
-  box-shadow: 0 0 8px rgba(188, 140, 255, 0.2);
-  animation: strange-border-shift 4s ease-in-out infinite;
-
-  .section-card__title {
-    color: #bc8cff;
-  }
-
-  .section-card__count {
-    color: rgba(188, 140, 255, 0.8);
-  }
-
-  &:hover {
-    border-color: rgba(188, 140, 255, 0.9);
-    box-shadow: 0 6px 24px rgba(188, 140, 255, 0.35);
-    animation-play-state: paused;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .section-card--strange {
-    animation: none;
-  }
-}
 // --- Stats Row (Home Page) ---
 .stats-row {
   display: grid;
@@ -502,6 +457,31 @@ body {
   background-image: none;
 }
 
+// --- Review Page ---
+.review-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  select {
+    min-width: 12rem;
+  }
+}
+
+.review-controls__label--spaced {
+  margin-left: 0.5rem;
+}
+
+.review-empty-msg {
+  display: none;
+}
+
+.review-empty-msg--visible {
+  display: block;
+}
+
 // --- "View all…" sidebar links: subtle, deemphasized ---
 a.nav-list-link[href*="/view-all"] {
   font-size: 0.75rem;
@@ -518,54 +498,6 @@ a.nav-list-link[href*="/view-all"] {
 .main-content {
   ul, ol {
     padding-left: 1.75rem;
-  }
-}
-
-// --- Review page ---
-.review-controls {
-  margin-bottom: 1.5rem;
-
-  label {
-    font-size: 0.85rem;
-  }
-
-  select {
-    margin-left: 0.25rem;
-    font-size: 0.85rem;
-    padding: 2px 6px;
-    border: 1px solid $border-color;
-    border-radius: 4px;
-    background: $sidebar-color; // matches page background in both dark and light themes
-    color: $body-text-color;
-  }
-}
-
-.review-controls__label--spaced {
-  margin-left: 1rem;
-}
-
-.review-empty-msg {
-  display: none;
-
-  &--visible {
-    display: block;
-  }
-}
-
-.review-entry {
-  border: 1px solid $border-color;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.25rem;
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-  }
-
-  ol {
-    margin-top: 0.5rem;
-    margin-bottom: 0;
   }
 }
 
@@ -597,16 +529,13 @@ a.nav-list-link[href*="/view-all"] {
   }
 
   .review-controls {
-    display: flex;
-    flex-direction: column;
+    align-items: stretch;
     gap: 0.5rem;
 
-    label, select {
-      width: 100%;
-    }
-
+    label,
     select {
-      margin-left: 0; // override desktop 0.25rem left margin set in .review-controls select
+      width: 100%;
+      margin-left: 0;
     }
   }
 

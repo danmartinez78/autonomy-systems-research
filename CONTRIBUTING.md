@@ -311,6 +311,26 @@ The repository includes a Python script that automatically generates:
 
 The script is idempotent - you can run it multiple times safely without causing issues.
 
+### Related Content Recommendations
+
+Reading notes, synthesis pages, and knowledge base entries automatically display a **Related Content** section at the bottom of each page. No manual configuration is needed.
+
+**How it works:**
+
+- Pages are ranked by tag overlap with the current page (highest intersection first).
+- The top 5 most-related pages are shown, with ties between pages at the same overlap level listed in site-page order.
+- Only reading notes, syntheses, and knowledge base pages are included as candidates — journal entries, surveys, strange seeds, and utility pages are excluded.
+- The current page is always excluded from its own results.
+- A page with no tags, or with fewer than 1 tag in common with any candidate, will show no related section.
+
+**To influence what appears as related content:**
+
+- Ensure your page's `tags` front matter is accurate and specific.
+- Add shared tags to related pages to strengthen their connection.
+- Tags defined in `_config.yml` defaults are applied automatically by path; individual pages may also set tags in their own front matter.
+
+The related content logic lives in `docs/_includes/related-content.html` (pure Liquid, no JavaScript). Styling is in `docs/_sass/custom/custom.scss` under the `related-content` block. The feature is activated via the `content-page` layout (`docs/_layouts/content-page.html`), which wraps `default` and injects the include after the page body.
+
 ## Style Guidelines
 
 ### Writing Style
@@ -399,6 +419,37 @@ To keep the sidebar clean and scannable, each section shows **at most 5 child pa
    permalink: /reading/view-all/
    ---
    ```
+
+### CI Sidebar Validation
+
+A CI workflow (`validate-sidebar.yml`) automatically enforces the sidebar child cap on every pull request that touches content files. It runs:
+
+```bash
+python3 validate-sidebar.py --cap 5 --docs-dir docs
+```
+
+**What it checks:**
+
+1. **Visible children per section ≤ 5** — if more than 5 pages in a section lack `nav_exclude: true`, the build fails with a list of the offending files.
+2. **`view-all.md` required when total pages > 5** — if a section has grown past the cap but has no `view-all.md` redirect, the build fails with the exact path to create.
+
+**If the CI check fails**, do one of the following depending on which error is reported:
+
+- *Too many visible pages* — add `nav_exclude: true` to the front matter of the oldest page(s) in the section until the visible count is ≤ 5.
+- *Missing `view-all.md`* — copy the template and fill in the placeholders:
+  ```bash
+  cp docs/_templates/view-all.md docs/<section>/view-all.md
+  ```
+
+You can run the check locally before pushing:
+
+```bash
+python3 validate-sidebar.py --cap 5 --docs-dir docs
+# or:
+make validate-sidebar
+```
+
+The cap is configurable via `--cap N` for local testing, but the CI workflow always uses 5.
 
 ## Pull Request Process
 
