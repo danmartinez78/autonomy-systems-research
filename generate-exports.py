@@ -1,0 +1,243 @@
+#!/usr/bin/env python3
+"""
+Generate BibTeX and CSV export artifacts from reading notes.
+
+This script scans reading notes in docs/reading/, extracts front matter fields,
+and generates:
+1. docs/exports/reading-notes.bib  — BibTeX entries for each reading note
+2. docs/exports/reading-notes.csv  — CSV with all reading note metadata
+
+Source fields used: title, authors, date_read, link, tags, summary, permalink
+(`permalink` is derived from file path, not read from front matter)
+
+Usage:
+    python3 generate-exports.py
+
+The script is designed to be run from the repository root directory and is
+idempotent - it can be run multiple times safely.
+"""
+
+import csv
+import io
+import re
+import yaml
+from pathlib import Path
+from datetime import date, datetime
+
+
+# Configuration
+DOCS_DIR = Path(__file__).parent / "docs"
+READING_DIR = DOCS_DIR / "reading"
+EXPORTS_DIR = DOCS_DIR / "exports"
+BIB_FILE = EXPORTS_DIR / "reading-notes.bib"
+CSV_FILE = EXPORTS_DIR / "reading-notes.csv"
+
+EXCLUDE_FILES = {"view-all.md"}
+CSV_FIELDS = ["key", "title", "authors", "date_read", "link", "tags", "summary", "permalink"]
+
+
+def extract_front_matter(file_path):
+    """Extract YAML front matter from a markdown file."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        match = re.match(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
+        if not match:
+            return None
+        return yaml.safe_load(match.group(1))
+    except Exception as e:
+        print(f"Warning: Could not parse {file_path}: {e}")
+        return None
+
+
+def make_bibtex_key(stem, date_read):
+    """Build a deterministic BibTeX citation key from file stem and year."""
+    # Use the file stem (lowercased, hyphens retained) plus year if available
+    key_base = re.sub(r'[^a-z0-9\-]', '', stem.lower())
+    if date_read:
+        if isinstance(date_read, (date, datetime)):
+            year = str(date_read.year)
+        else:
+            # Try to parse year from string
+            m = re.match(r'(\d{4})', str(date_read))
+            year = m.group(1) if m else ''
+        return f"{key_base}-{year}" if year else key_base
+    return key_base
+
+
+def format_date(d):
+    """Return a consistent string representation of a date or date-like value."""
+    if d is None:
+        return ""
+    if isinstance(d, datetime):
+        return d.strftime('%Y-%m-%d')
+    if isinstance(d, date):
+        return d.strftime('%Y-%m-%d')
+    return str(d)
+
+
+def bibtex_escape(text):
+    """Escape characters that are special in BibTeX field values."""
+    if not text:
+        return ""
+    # Escape backslashes first, then braces/percent; collapse newlines.
+    value = str(text).replace("\r\n", " ").replace("\n", " ").strip()
+    return (
+        value
+        .replace('\\', '\\\\')
+        .replace('{', '\\{')
+        .replace('}', '\\}')
+        .replace('%', '\\%')
+    )
+
+
+def normalize_text(value):
+    """Normalize nullable front matter fields to plain strings."""
+    if value is None:
+        return ""
+    return str(value).strip()
+
+
+def build_permalink(stem):
+    """Construct the Jekyll permalink for a reading note."""
+    return f"/reading/{stem}/"
+
+
+def collect_reading_notes():
+    """
+    Scan docs/reading/ and return a sorted list of reading note metadata dicts.
+
+    Returns:
+        list[dict]: Sorted by date_read ascending, then title.
+    """
+    notes = []
+
+    if not READING_DIR.exists():
+        print(f"Warning: Reading notes directory not found: {READING_DIR}")
+        return notes
+
+    for md_file in sorted(READING_DIR.glob("*.md")):
+        if md_file.name in EXCLUDE_FILES:
+            continue
+
+        fm = extract_front_matter(md_file)
+        if fm is None:
+            print(f"  Skipping {md_file.name}: no front matter")
+            continue
+
+        # Only process reading notes (pages with parent == "Reading Notes")
+        if fm.get('parent') != 'Reading Notes':
+            continue
+
+        date_read = fm.get('date_read')
+        stem = md_file.stem
+
+        note = {
+            'key': make_bibtex_key(stem, date_read),
+            'title': normalize_text(fm.get('title', '')),
+            'authors': normalize_text(fm.get('authors', '')),
+            'date_read': format_date(date_read),
+            'link': normalize_text(fm.get('link', '')),
+            'tags': ', '.join(
+                t
+                for t in (normalize_text(tag) for tag in fm.get('tags', []))
+                if t
+            ) if isinstance(fm.get('tags'), list) else normalize_text(fm.get('tags', '')),
+            'summary': normalize_text(fm.get('summary', '')),
+            'permalink': build_permalink(stem),
+        }
+        notes.append(note)
+
+    # Sort deterministically: date_read ascending, then title
+    notes.sort(key=lambda n: (n['date_read'], n['title']))
+    return notes
+
+
+def generate_bibtex(notes):
+    """Return a BibTeX string for all reading notes."""
+    lines = [
+        "% BibTeX export from autonomy-systems-research reading notes",
+        "% Generated by generate-exports.py — do not edit manually",
+        "",
+    ]
+
+    for note in notes:
+        key = note['key']
+        title = bibtex_escape(note['title'])
+        authors = bibtex_escape(note['authors'])
+        year = note['date_read'][:4] if len(note['date_read']) >= 4 else ''
+        url = bibtex_escape(note['link'])
+        note_field = bibtex_escape(note['summary'])
+
+        entry_lines = [f"@misc{{{key},"]
+        if title:
+            entry_lines.append(f"  title = {{{title}}},")
+        if authors:
+            entry_lines.append(f"  author = {{{authors}}},")
+        if year:
+            entry_lines.append(f"  year = {{{year}}},")
+        if url:
+            entry_lines.append(f"  url = {{{url}}},")
+        if note_field:
+            entry_lines.append(f"  note = {{{note_field}}},")
+        entry_lines.append("}")
+        entry_lines.append("")
+
+        lines.extend(entry_lines)
+
+    return "\n".join(lines)
+
+
+def generate_csv(notes):
+    """Return a CSV string for all reading notes."""
+    output = io.StringIO()
+    writer = csv.DictWriter(
+        output,
+        fieldnames=CSV_FIELDS,
+        extrasaction='ignore',
+        lineterminator='\n',
+    )
+    writer.writeheader()
+    for note in notes:
+        writer.writerow(note)
+    return output.getvalue()
+
+
+def main():
+    """Main entry point."""
+    print("=" * 60)
+    print("Generating reading note exports")
+    print("=" * 60)
+    print()
+
+    # Collect notes
+    print("Scanning reading notes...")
+    notes = collect_reading_notes()
+    print(f"Found {len(notes)} reading note(s)")
+    print()
+
+    # Create exports directory
+    EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Generate BibTeX
+    print(f"Writing {BIB_FILE} ...")
+    bib_content = generate_bibtex(notes)
+    with open(BIB_FILE, 'w', encoding='utf-8') as f:
+        f.write(bib_content)
+    print(f"✓ {BIB_FILE}")
+
+    # Generate CSV
+    print(f"Writing {CSV_FILE} ...")
+    csv_content = generate_csv(notes)
+    with open(CSV_FILE, 'w', encoding='utf-8', newline='') as f:
+        f.write(csv_content)
+    print(f"✓ {CSV_FILE}")
+
+    print()
+    print("=" * 60)
+    print(f"✓ Export complete ({len(notes)} entries)")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    main()

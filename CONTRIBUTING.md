@@ -311,6 +311,43 @@ The repository includes a Python script that automatically generates:
 
 The script is idempotent - you can run it multiple times safely without causing issues.
 
+### Generating Export Files
+
+Reading note metadata can be exported to BibTeX and CSV formats for reuse in papers, reports, and external tooling.
+
+The repository includes a Python script that generates:
+- `docs/exports/reading-notes.bib` — BibTeX entries for every reading note
+- `docs/exports/reading-notes.csv` — CSV with columns: key, title, authors, date_read, link, tags, summary, permalink
+
+**To regenerate export files:**
+
+1. Run the export script from the repository root:
+   ```bash
+   python3 generate-exports.py
+   ```
+
+   Or use the Makefile shortcut:
+   ```bash
+   make exports
+   ```
+
+2. Commit the updated files with your content changes:
+   ```bash
+   git add docs/exports/
+   git commit -m "Regenerate reading note exports"
+   ```
+
+**When to regenerate:**
+- After adding or updating a reading note
+
+**Note:** A CI workflow automatically checks that export files are up-to-date when you create a pull request touching `docs/reading/` or `generate-exports.py`. If the workflow fails, simply run `python3 generate-exports.py` and commit the updated files.
+
+**Requirements:**
+- Python 3.6 or higher
+- PyYAML library (`pip install pyyaml` if not already installed)
+
+The script is idempotent - you can run it multiple times safely without causing issues.
+
 ### Related Content Recommendations
 
 Reading notes, synthesis pages, and knowledge base entries automatically display a **Related Content** section at the bottom of each page. No manual configuration is needed.

@@ -1,7 +1,10 @@
-.PHONY: tags graph serve build validate-sidebar
+.PHONY: tags exports graph serve build validate-sidebar
 
 tags:
 	python3 generate-tags.py
+
+exports:
+	python3 generate-exports.py
 
 graph:
 	python3 generate-graph.py

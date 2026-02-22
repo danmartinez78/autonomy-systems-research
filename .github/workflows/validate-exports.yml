@@ -1,0 +1,61 @@
+name: Validate Export Files
+
+on:
+  pull_request:
+    paths:
+      - 'docs/reading/**'
+      - 'generate-exports.py'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/reading/**'
+      - 'generate-exports.py'
+
+jobs:
+  validate-exports:
+    runs-on: ubuntu-latest
+    name: Check Export Files are Up-to-Date
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Generate exports
+        run: |
+          echo "Running generate-exports.py..."
+          python3 generate-exports.py
+
+      - name: Check for uncommitted changes
+        run: |
+          echo "Checking if export files are up-to-date..."
+
+          if [[ -n "$(git status --porcelain -- docs/exports/)" ]]; then
+            echo "❌ ERROR: Export files are out of date!"
+            echo ""
+            echo "The following files have uncommitted or untracked changes:"
+            git status --porcelain -- docs/exports/
+            echo ""
+            echo "To fix this:"
+            echo "  1. Run: python3 generate-exports.py   (or: make exports)"
+            echo "  2. Commit the updated export files"
+            echo "  3. Push your changes"
+            echo ""
+            echo "Detailed changes (tracked file diffs only):"
+            git --no-pager diff docs/exports/
+            exit 1
+          else
+            echo "✓ Export files are up-to-date!"
+          fi
