@@ -73,7 +73,7 @@ The following syntheses have **low** or **missing** confidence and may benefit f
 {% for post in needs_review %}
   {% if post.title %}
   {% assign conf_value = post.confidence | default: 'unknown' %}
-  {% if conf_value == "high" %}{% assign conf_label = "High" %}{% elsif conf_value == "med" %}{% assign conf_label = "Medium" %}{% elsif conf_value == "low" %}{% assign conf_label = "Low" %}{% else %}{% assign conf_label = "Unknown" %}{% endif %}
+  {% case conf_value %}{% when "high" %}{% assign conf_label = "High" %}{% when "med" %}{% assign conf_label = "Medium" %}{% when "low" %}{% assign conf_label = "Low" %}{% else %}{% assign conf_label = "Unknown" %}{% endcase %}
   <li>
     <span class="confidence-badge confidence-badge--{{ conf_value }}">{{ conf_label }}</span>
     <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
@@ -92,7 +92,7 @@ The following syntheses have **low** or **missing** confidence and may benefit f
 {% for post in synthesis_posts %}
   {% if post.title %}
   {% assign conf_value = post.confidence | default: 'unknown' %}
-  {% if conf_value == "high" %}{% assign conf_label = "High" %}{% elsif conf_value == "med" %}{% assign conf_label = "Medium" %}{% elsif conf_value == "low" %}{% assign conf_label = "Low" %}{% else %}{% assign conf_label = "Unknown" %}{% endif %}
+  {% case conf_value %}{% when "high" %}{% assign conf_label = "High" %}{% when "med" %}{% assign conf_label = "Medium" %}{% when "low" %}{% assign conf_label = "Low" %}{% else %}{% assign conf_label = "Unknown" %}{% endcase %}
   <li>
     <span class="content-badge content-badge--synthesis">Synthesis</span>
     <span class="confidence-badge confidence-badge--{{ conf_value }}">{{ conf_label }}</span>
