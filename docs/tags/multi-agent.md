@@ -8,7 +8,7 @@ search_exclude: true
 
 # Tag: multi-agent
 
-19 pages tagged with **multi-agent**
+20 pages tagged with **multi-agent**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -17,6 +17,11 @@ search_exclude: true
 ---
 
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Feb 22, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/notes-from-the-field-01-multiagent-orchestration/">Notes from the Field #1: Two Agents Build Their Own Memory System</a></h4>
+    <p class="post-summary">An OpenClaw user left two agents alone in a Discord channel overnight. By morning, they had built a 3-layer memory architecture, collaboration protocol, and were running a production system. What can we learn?</p>
+  </li>
   <li>
     <span class="post-meta">Feb 20, 2026</span>
     <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/phase3-05_final_recommendations/">Phase 3.5: Final Recommendations - Complete Implementation Guide</a></h4>
