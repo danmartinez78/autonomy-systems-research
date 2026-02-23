@@ -194,8 +194,7 @@ function toPageUrl(nodeOrId) {
       return {
         source: typeof e.source === 'object' ? e.source.id : e.source,
         target: typeof e.target === 'object' ? e.target.id : e.target,
-        type:   e.type,
-        tag:    e.tag
+        type:   e.type
       };
     });
 
