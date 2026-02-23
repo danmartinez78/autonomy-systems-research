@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - 'docs/**/*.md'
+      - 'validate-frontmatter-quality.py'
   push:
     branches:
       - main
     paths:
       - 'docs/**/*.md'
+      - 'validate-frontmatter-quality.py'
 
 jobs:
   validate-frontmatter-quality:
