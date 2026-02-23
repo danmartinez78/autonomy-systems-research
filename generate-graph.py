@@ -84,6 +84,22 @@ def infer_type(rel_path, front_matter):
     return "other"
 
 
+def infer_url(page_id, front_matter):
+    """Infer site URL for a page node.
+
+    Priority:
+    1) explicit front matter permalink
+    2) default Jekyll page output (/path/to/page.html)
+    """
+    permalink = (front_matter or {}).get("permalink")
+    if isinstance(permalink, str) and permalink.strip():
+        url = permalink.strip()
+        if not url.startswith("/"):
+            url = "/" + url
+        return url
+    return f"/{page_id}.html"
+
+
 def resolve_link(href, source_id):
     """Resolve a relative or absolute markdown href to a page ID string."""
     href = href.strip().split("#")[0].rstrip("/")
@@ -190,6 +206,7 @@ def collect_pages():
                 "id": page_id,
                 "title": str(title),
                 "type": infer_type(rel, fm),
+                "url": infer_url(page_id, fm),
                 "tags": tags,
                 "links": extract_links(body, page_id),
             }
@@ -280,6 +297,7 @@ def main():
             "id": p["id"],
             "label": p["title"],
             "type": p["type"],
+            "url": p["url"],
             "tags": p["tags"],
         }
         for p in pages

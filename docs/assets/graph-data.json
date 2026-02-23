@@ -4,12 +4,14 @@
       "id": "journal/2026",
       "label": "2026",
       "type": "journal",
+      "url": "/journal/2026/",
       "tags": []
     },
     {
       "id": "knowledge-base/watchdog-timers",
       "label": "Watchdog Timers in Autonomous Systems",
       "type": "knowledge-base",
+      "url": "/knowledge-base/watchdog-timers.html",
       "tags": [
         "safety",
         "reliability",
@@ -20,6 +22,7 @@
       "id": "reading/behavior-trees-robotics-ai",
       "label": "Behavior Trees in Robotics and AI",
       "type": "reading",
+      "url": "/reading/behavior-trees-robotics-ai.html",
       "tags": [
         "planning",
         "behavior-trees",
@@ -31,6 +34,7 @@
       "id": "reading/probabilistic-robotics-state-estimation",
       "label": "Probabilistic Robotics - State Estimation Chapter",
       "type": "reading",
+      "url": "/reading/probabilistic-robotics-state-estimation.html",
       "tags": [
         "perception",
         "state-estimation",
@@ -42,12 +46,21 @@
       "id": "references",
       "label": "References",
       "type": "reference",
+      "url": "/references/",
+      "tags": []
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "type": "other",
+      "url": "/review/",
       "tags": []
     },
     {
       "id": "strange/2026-02-20-example-strange-seed",
       "label": "Example Strange Seed: Terrain Texture as an Implicit Velocity Estimator",
       "type": "strange",
+      "url": "/strange/2026-02-20-example-strange-seed.html",
       "tags": [
         "strange",
         "state-estimation",
@@ -55,9 +68,23 @@
       ]
     },
     {
+      "id": "strange/tachikoma-personality-emergence/notes-from-the-field-01-multiagent-orchestration",
+      "label": "Notes from the Field #1: Two Agents Build Their Own Memory System",
+      "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/notes-from-the-field-01-multiagent-orchestration.html",
+      "tags": [
+        "strange",
+        "multi-agent",
+        "self-organization",
+        "memory-systems",
+        "openclaw"
+      ]
+    },
+    {
       "id": "strange/tachikoma-personality-emergence/personality-emergence-research-plan",
       "label": "Personality Emergence Research Plan",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/personality-emergence-research-plan.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -69,6 +96,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-01_llm_agents_tool_use",
       "label": "Phase 1.1: LLM Agents & Tool Use Survey",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-01_llm_agents_tool_use.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -80,6 +108,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-02_long_term_memory",
       "label": "Phase 1.2: Long-term Memory for Agents Survey",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-02_long_term_memory.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -91,6 +120,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-03_multiturn_longitudinal",
       "label": "Phase 1.3: Multi-turn / Longitudinal Dynamics Survey",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-03_multiturn_longitudinal.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -102,6 +132,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-04_multiagent_emergence",
       "label": "Phase 1.4: Multi-agent Emergence Survey",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-04_multiagent_emergence.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -113,6 +144,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-05_selfmodeling_governance",
       "label": "Phase 1.5: Self-modeling & Identity Governance Survey",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-05_selfmodeling_governance.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -124,6 +156,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-06_behavioral_science",
       "label": "Phase 1.6: Behavioral Science Insights Survey",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-06_behavioral_science.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -135,6 +168,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-07_academic_sources",
       "label": "Phase 1.7: Academic Sources Mining",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-07_academic_sources.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -146,6 +180,7 @@
       "id": "strange/tachikoma-personality-emergence/phase1-08_phase1_synthesis",
       "label": "Phase 1.8: Phase 1 Synthesis - Cross-Area Patterns and Recommendations",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase1-08_phase1_synthesis.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -157,6 +192,7 @@
       "id": "strange/tachikoma-personality-emergence/phase2-01_multiagent_memory_evolution",
       "label": "Phase 2.1: Multi-agent Memory Evolution - Depth Dive",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase2-01_multiagent_memory_evolution.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -168,6 +204,7 @@
       "id": "strange/tachikoma-personality-emergence/phase2-02_governed_self_modification",
       "label": "Phase 2.2: Governed Self-Modification - Depth Dive",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase2-02_governed_self_modification.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -179,6 +216,7 @@
       "id": "strange/tachikoma-personality-emergence/phase2-03_longitudinal_personality_measurement",
       "label": "Phase 2.3: Longitudinal Personality Measurement - Depth Dive",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase2-03_longitudinal_personality_measurement.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -190,6 +228,7 @@
       "id": "strange/tachikoma-personality-emergence/phase2-04_social_norm_emergence",
       "label": "Phase 2.4: Social Norm Emergence - Depth Dive",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase2-04_social_norm_emergence.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -201,6 +240,7 @@
       "id": "strange/tachikoma-personality-emergence/phase2-05_stress_response_mechanisms",
       "label": "Phase 2.5: Stress Response Mechanisms - Depth Dive",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase2-05_stress_response_mechanisms.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -212,6 +252,7 @@
       "id": "strange/tachikoma-personality-emergence/phase3-01_research_synthesis",
       "label": "Phase 3.1: Meta-Synthesis \u2014 What the Research Tells Us",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase3-01_research_synthesis.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -223,6 +264,7 @@
       "id": "strange/tachikoma-personality-emergence/phase3-02_architecture_options",
       "label": "Phase 3.2: Architecture Options - Concrete Implementation Approaches",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase3-02_architecture_options.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -234,6 +276,7 @@
       "id": "strange/tachikoma-personality-emergence/phase3-03_measurement_framework",
       "label": "Phase 3.3: Measurement Framework - How to Evaluate Emergence",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase3-03_measurement_framework.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -245,6 +288,7 @@
       "id": "strange/tachikoma-personality-emergence/phase3-04_soul_governance_design",
       "label": "Phase 3.4: SOUL.md Governance Design - Policy Update Mechanisms",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase3-04_soul_governance_design.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -256,6 +300,7 @@
       "id": "strange/tachikoma-personality-emergence/phase3-05_final_recommendations",
       "label": "Phase 3.5: Final Recommendations - Complete Implementation Guide",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/phase3-05_final_recommendations.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -267,6 +312,7 @@
       "id": "strange/tachikoma-personality-emergence/tachikoma-soul-research",
       "label": "Tachikoma Soul Research",
       "type": "strange",
+      "url": "/strange/tachikoma-personality-emergence/tachikoma-soul-research.html",
       "tags": [
         "strange",
         "embodied-ai",
@@ -278,6 +324,7 @@
       "id": "survey/2026-02-19-go2-embodied-ai-stack",
       "label": "Unitree GO2 Pro Embodied AI Stack Survey",
       "type": "survey",
+      "url": "/survey/2026-02-19-go2-embodied-ai-stack.html",
       "tags": [
         "robotics",
         "quadruped",
@@ -295,6 +342,7 @@
       "id": "syntheses/memory-systems-vla-robots",
       "label": "Memory Systems for Autonomous Robots with VLA Architectures",
       "type": "synthesis",
+      "url": "/syntheses/memory-systems-vla-robots.html",
       "tags": [
         "robotics",
         "vla",
@@ -308,6 +356,7 @@
       "id": "syntheses/state-estimation-approaches",
       "label": "State Estimation Approaches for Mobile Robots",
       "type": "synthesis",
+      "url": "/syntheses/state-estimation-approaches.html",
       "tags": [
         "perception",
         "state-estimation",
@@ -318,6 +367,7 @@
       "id": "timeline",
       "label": "Timeline",
       "type": "other",
+      "url": "/timeline/",
       "tags": []
     }
   ],

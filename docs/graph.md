@@ -23,9 +23,18 @@ function normalizeBaseUrl(base) {
   return val.replace(/\/+$/, '');
 }
 
-function toPageUrl(pageId) {
+function toPageUrl(nodeOrId) {
   var base = normalizeBaseUrl(SITE_BASEURL);
-  return base + '/' + String(pageId).replace(/^\/+/, '').replace(/\/+$/, '') + '/';
+  if (nodeOrId && typeof nodeOrId === 'object' && nodeOrId.url) {
+    var raw = String(nodeOrId.url).trim();
+    if (!raw) return base + '/';
+    if (!raw.startsWith('/')) raw = '/' + raw;
+    return base + raw;
+  }
+
+  var pageId = String(nodeOrId || '').replace(/^\/+/, '').replace(/\/+$/, '');
+  if (!pageId) return base + '/';
+  return base + '/' + pageId + '.html';
 }
 </script>
 
@@ -237,12 +246,12 @@ function toPageUrl(pageId) {
       )
       .on('click', function (event, d) {
         event.stopPropagation();
-        window.location.href = toPageUrl(d.id);
+        window.location.href = toPageUrl(d);
       })
       .on('keydown', function (event, d) {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          window.location.href = toPageUrl(d.id);
+          window.location.href = toPageUrl(d);
         }
       })
       .on('mouseover', function (event, d) {
