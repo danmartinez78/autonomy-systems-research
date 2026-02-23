@@ -354,11 +354,12 @@ Reading notes, synthesis pages, and knowledge base entries automatically display
 
 **How it works:**
 
-- Pages are ranked by tag overlap with the current page (highest intersection first).
-- The top 5 most-related pages are shown, with ties between pages at the same overlap level listed in site-page order.
+- Pages are ranked by a hybrid score: **tag overlap + lightweight TF-IDF keyword overlap**.
+- Tag overlap remains the primary signal; TF-IDF keyword similarity refines ranking among near matches.
+- The top 5 most-related pages are shown.
 - Only reading notes, syntheses, and knowledge base pages are included as candidates — journal entries, surveys, strange seeds, and utility pages are excluded.
 - The current page is always excluded from its own results.
-- A page with no tags, or with fewer than 1 tag in common with any candidate, will show no related section.
+- If no candidates have meaningful overlap, the section may be omitted.
 
 **To influence what appears as related content:**
 
@@ -366,7 +367,7 @@ Reading notes, synthesis pages, and knowledge base entries automatically display
 - Add shared tags to related pages to strengthen their connection.
 - Tags defined in `_config.yml` defaults are applied automatically by path; individual pages may also set tags in their own front matter.
 
-The related content logic lives in `docs/_includes/related-content.html` (pure Liquid, no JavaScript). Styling is in `docs/_sass/custom/custom.scss` under the `related-content` block. The feature is activated via the `content-page` layout (`docs/_layouts/content-page.html`), which wraps `default` and injects the include after the page body.
+The related content logic lives in `docs/_includes/related-content.html` (Liquid fallback + lightweight JavaScript rerank). Styling is in `docs/_sass/custom/custom.scss` under the `related-content` block. The feature is activated via the `content-page` layout (`docs/_layouts/content-page.html`), which wraps `default` and injects the include after the page body.
 
 ## Style Guidelines
 
@@ -415,6 +416,30 @@ review_questions:
 - Omitting `review_questions` entirely is fine — pages without it are ignored by the review page.
 
 The review page at `/review/` supports filtering by content type and tag, so questions from related notes can be browsed together.
+
+#### Optional: `review_answers`
+
+If you want explicit answer keys on the review page, add a `review_answers:` list aligned by index with `review_questions:`.
+
+```yaml
+review_questions:
+   - "What problem does this paper solve?"
+   - "What is the key tradeoff?"
+review_answers:
+   - "It reduces localization drift by fusing wheel odometry with visual landmarks."
+   - "Lower latency, but reduced robustness in low-texture scenes."
+```
+
+If `review_answers` is omitted, the review page falls back to the note summary and source link.
+
+#### Review Mode (Randomized Drill)
+
+The `/review/` page includes:
+- **Show Answer** toggles per prompt
+- **Randomize Prompts** to reshuffle visible questions
+- **Start 10-Question Drill** session queue based on current filters
+
+Use type/tag filters first, then start drill mode for focused practice.
 
 ### Links
 
@@ -487,6 +512,24 @@ make validate-sidebar
 ```
 
 The cap is configurable via `--cap N` for local testing, but the CI workflow always uses 5.
+
+### CI Front Matter Quality Validation
+
+A blocking CI workflow (`validate-frontmatter.yml`) enforces front matter quality for content pages.
+
+It validates:
+- Required fields by content type (e.g., `date_read` for reading notes, `last_updated` for syntheses)
+- Non-empty `summary`
+- `tags` as a non-empty YAML list using lowercase hyphenated format
+- ISO date format for `date_read` / `last_updated` (`YYYY-MM-DD`)
+
+Run locally before pushing:
+
+```bash
+python3 validate-frontmatter-quality.py
+# or:
+make validate-frontmatter
+```
 
 ## Pull Request Process
 

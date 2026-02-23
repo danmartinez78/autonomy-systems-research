@@ -8,6 +8,10 @@ summary: "One-sentence description of what this synthesis covers"
 # review_questions:
 #   - "Question 1?"
 #   - "Question 2?"
+# Optional: answer key aligned by index with review_questions
+# review_answers:
+#   - "Answer to Question 1"
+#   - "Answer to Question 2"
 # Confidence in this synthesis; valid values: high, med, low (omit to show as unknown)
 confidence: med
 ---

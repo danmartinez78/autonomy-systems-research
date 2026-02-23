@@ -10,6 +10,10 @@ summary: "One-sentence summary of the paper"
 # review_questions:
 #   - "Question 1?"
 #   - "Question 2?"
+# Optional: answer key aligned by index with review_questions
+# review_answers:
+#   - "Answer to Question 1"
+#   - "Answer to Question 2"
 ---
 
 # Reading Note: [Paper Title]

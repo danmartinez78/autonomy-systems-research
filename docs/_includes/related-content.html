@@ -1,69 +1,59 @@
 {% comment %}
-  Related Content — shown at the bottom of reading, synthesis, and knowledge-base pages.
-
-  Algorithm: multi-pass tag intersection (highest overlap first).
-  For each pass N (from page.tags.size down to 1) we collect candidate pages
-  that share exactly N tags with the current page, until we have up to 5 results.
-  Pages are de-duplicated by URL. Templates, index pages, and the current page
-  are excluded.
-
-  A multi-pass approach is used because Liquid cannot sort arrays by computed
-  values. This is the idiomatic Liquid pattern for priority-ordered collection
-  without JavaScript. Site content counts are small (tens of pages), so the
-  O(N × T × passes) cost is negligible at build time.
+  Semantic Relatedness v2 (progressive enhancement):
+  - Fallback (no JS): tag-overlap ranking via Liquid multi-pass.
+  - Enhanced (JS): tag overlap + lightweight TF-IDF keyword similarity.
 {% endcomment %}
 
 {% assign _rc_allowed = "reading,synthesis,knowledge-base" | split: "," %}
 
-{% if _rc_allowed contains page.type and page.tags and page.tags.size > 0 %}
+{% if _rc_allowed contains page.type and page.title %}
 
-  {% assign _rc_related = "" | split: "" %}
-  {% assign _rc_seen    = "" | split: "" %}
-  {% assign _rc_max     = 5 %}
-  {% assign _rc_ntags   = page.tags | size %}
-
-  {% for _rc_n in (1.._rc_ntags) reversed %}
-    {% if _rc_related.size >= _rc_max %}{% break %}{% endif %}
-
-    {% for _rc_p in site.pages %}
-      {% if _rc_related.size >= _rc_max %}{% break %}{% endif %}
-
-      {% comment %} Skip: current page {% endcomment %}
-      {% if _rc_p.url == page.url %}{% continue %}{% endif %}
-
-      {% comment %} Skip: no title (index / utility pages) {% endcomment %}
-      {% unless _rc_p.title %}{% continue %}{% endunless %}
-
-      {% comment %} Skip: no tags {% endcomment %}
-      {% unless _rc_p.tags and _rc_p.tags.size > 0 %}{% continue %}{% endunless %}
-
-      {% comment %} Skip: wrong content type {% endcomment %}
-      {% unless _rc_allowed contains _rc_p.type %}{% continue %}{% endunless %}
-
-      {% comment %} Skip: already included in a previous pass {% endcomment %}
-      {% if _rc_seen contains _rc_p.url %}{% continue %}{% endif %}
-
-      {% comment %} Count shared tags {% endcomment %}
-      {% assign _rc_shared = 0 %}
-      {% for _rc_tag in page.tags %}
-        {% if _rc_p.tags contains _rc_tag %}
-          {% assign _rc_shared = _rc_shared | plus: 1 %}
-        {% endif %}
-      {% endfor %}
-
-      {% if _rc_shared == _rc_n %}
-        {% assign _rc_related = _rc_related | push: _rc_p %}
-        {% assign _rc_seen    = _rc_seen    | push: _rc_p.url %}
-      {% endif %}
-
-    {% endfor %}
+  {% assign _rc_candidates = "" | split: "" %}
+  {% for _rc_p in site.pages %}
+    {% if _rc_p.url == page.url %}{% continue %}{% endif %}
+    {% unless _rc_p.title %}{% continue %}{% endunless %}
+    {% unless _rc_allowed contains _rc_p.type %}{% continue %}{% endunless %}
+    {% assign _rc_candidates = _rc_candidates | push: _rc_p %}
   {% endfor %}
 
-  {% if _rc_related.size > 0 %}
+  {% assign _rc_related = "" | split: "" %}
+  {% assign _rc_seen = "" | split: "" %}
+  {% assign _rc_max = 5 %}
+
+  {% if page.tags and page.tags.size > 0 %}
+    {% assign _rc_ntags = page.tags | size %}
+    {% for _rc_n in (1.._rc_ntags) reversed %}
+      {% if _rc_related.size >= _rc_max %}{% break %}{% endif %}
+
+      {% for _rc_p in _rc_candidates %}
+        {% if _rc_related.size >= _rc_max %}{% break %}{% endif %}
+        {% if _rc_seen contains _rc_p.url %}{% continue %}{% endif %}
+        {% unless _rc_p.tags and _rc_p.tags.size > 0 %}{% continue %}{% endunless %}
+
+        {% assign _rc_shared = 0 %}
+        {% for _rc_tag in page.tags %}
+          {% if _rc_p.tags contains _rc_tag %}
+            {% assign _rc_shared = _rc_shared | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+
+        {% if _rc_shared == _rc_n %}
+          {% assign _rc_related = _rc_related | push: _rc_p %}
+          {% assign _rc_seen = _rc_seen | push: _rc_p.url %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
 <hr class="related-content__divider">
-<section class="related-content" aria-labelledby="related-content-heading">
+<section class="related-content"
+         aria-labelledby="related-content-heading"
+         data-current-url="{{ page.url | escape }}"
+         data-current-tags="{% if page.tags %}{{ page.tags | join: ',' | downcase | escape }}{% endif %}"
+         data-current-title="{{ page.title | escape }}"
+         data-current-summary="{{ page.summary | default: '' | escape }}">
   <h2 class="related-content__heading" id="related-content-heading">Related Content</h2>
-  <ul class="related-content__list">
+  <ul class="related-content__list" id="related-content-list">
     {% for _rc_p in _rc_related %}
     <li class="related-content__item">
       <span class="content-badge content-badge--{{ _rc_p.type }}">{{ _rc_p.type | replace: "-", " " }}</span>
@@ -72,7 +62,189 @@
     </li>
     {% endfor %}
   </ul>
+
+  <script type="application/json" id="related-content-corpus">
+  [
+    {% for _rc_p in _rc_candidates %}
+      {% capture _rc_text %}{{ _rc_p.title }} {{ _rc_p.summary }} {{ _rc_p.content | strip_html | strip_newlines | truncate: 900 }}{% endcapture %}
+      {
+        "url": {{ _rc_p.url | jsonify }},
+        "title": {{ _rc_p.title | jsonify }},
+        "type": {{ _rc_p.type | jsonify }},
+        "summary": {{ _rc_p.summary | default: "" | jsonify }},
+        "tags": {{ _rc_p.tags | default: empty | jsonify }},
+        "text": {{ _rc_text | strip | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  </script>
+
+  <script>
+    (function () {
+      var section = document.querySelector('.related-content');
+      var listEl = document.getElementById('related-content-list');
+      var corpusEl = document.getElementById('related-content-corpus');
+      if (!section || !listEl || !corpusEl) return;
+
+      var corpus;
+      try {
+        corpus = JSON.parse(corpusEl.textContent || '[]');
+      } catch (error) {
+        return;
+      }
+      if (!Array.isArray(corpus) || corpus.length === 0) return;
+
+      var stopWords = new Set([
+        'the','and','for','with','that','this','from','into','their','there','about','when','where','which',
+        'while','using','use','used','also','than','then','over','under','through','between','across','into',
+        'your','have','has','had','are','was','were','been','being','can','could','should','would','will',
+        'may','might','must','our','you','its','they','them','his','her','she','him','his','ours','yours'
+      ]);
+
+      function tokenize(text) {
+        return String(text || '')
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, ' ')
+          .split(/\s+/)
+          .filter(function (token) {
+            return token.length > 2 && !stopWords.has(token);
+          });
+      }
+
+      function buildVector(tokens, idfMap) {
+        if (!tokens.length) return {};
+        var freq = {};
+        for (var i = 0; i < tokens.length; i++) {
+          var token = tokens[i];
+          freq[token] = (freq[token] || 0) + 1;
+        }
+        var vector = {};
+        var total = tokens.length;
+        Object.keys(freq).forEach(function (term) {
+          var tf = freq[term] / total;
+          var idf = idfMap[term] || 0;
+          vector[term] = tf * idf;
+        });
+        return vector;
+      }
+
+      function cosineSimilarity(a, b) {
+        var dot = 0;
+        var normA = 0;
+        var normB = 0;
+        Object.keys(a).forEach(function (term) {
+          var av = a[term];
+          normA += av * av;
+          if (b[term] !== undefined) dot += av * b[term];
+        });
+        Object.keys(b).forEach(function (term) {
+          var bv = b[term];
+          normB += bv * bv;
+        });
+        if (!normA || !normB) return 0;
+        return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+      }
+
+      function intersectionSize(aSet, bSet) {
+        var count = 0;
+        aSet.forEach(function (value) {
+          if (bSet.has(value)) count += 1;
+        });
+        return count;
+      }
+
+      function titleCaseType(typeValue) {
+        return String(typeValue || '')
+          .split('-')
+          .map(function (part) {
+            return part ? part.charAt(0).toUpperCase() + part.slice(1) : '';
+          })
+          .join(' ');
+      }
+
+      function escapeHtml(value) {
+        return String(value || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      var currentTags = new Set(
+        (section.getAttribute('data-current-tags') || '')
+          .split(',')
+          .map(function (tag) { return tag.trim().toLowerCase(); })
+          .filter(function (tag) { return !!tag; })
+      );
+      var currentText =
+        (section.getAttribute('data-current-title') || '') + ' ' +
+        (section.getAttribute('data-current-summary') || '');
+      var currentTokens = tokenize(currentText);
+
+      var docs = corpus.map(function (item) {
+        return tokenize((item.title || '') + ' ' + (item.summary || '') + ' ' + (item.text || ''));
+      });
+
+      var df = {};
+      docs.concat([currentTokens]).forEach(function (tokens) {
+        var unique = new Set(tokens);
+        unique.forEach(function (term) {
+          df[term] = (df[term] || 0) + 1;
+        });
+      });
+
+      var nDocs = docs.length + 1;
+      var idf = {};
+      Object.keys(df).forEach(function (term) {
+        idf[term] = Math.log((nDocs + 1) / (df[term] + 1)) + 1;
+      });
+
+      var currentVector = buildVector(currentTokens, idf);
+
+      var ranked = corpus
+        .map(function (item) {
+          var itemTags = new Set((item.tags || []).map(function (tag) {
+            return String(tag).toLowerCase();
+          }));
+          var itemTokens = tokenize((item.title || '') + ' ' + (item.summary || '') + ' ' + (item.text || ''));
+          var itemVector = buildVector(itemTokens, idf);
+          var tagOverlap = intersectionSize(currentTags, itemTags);
+          var keywordOverlap = cosineSimilarity(currentVector, itemVector);
+          var score = tagOverlap + (0.65 * keywordOverlap);
+          return {
+            item: item,
+            tagOverlap: tagOverlap,
+            keywordOverlap: keywordOverlap,
+            score: score
+          };
+        })
+        .filter(function (entry) {
+          return entry.score > 0;
+        })
+        .sort(function (a, b) {
+          if (b.score !== a.score) return b.score - a.score;
+          if (b.tagOverlap !== a.tagOverlap) return b.tagOverlap - a.tagOverlap;
+          if (b.keywordOverlap !== a.keywordOverlap) return b.keywordOverlap - a.keywordOverlap;
+          return String(a.item.title || '').localeCompare(String(b.item.title || ''));
+        })
+        .slice(0, 5);
+
+      if (!ranked.length) return;
+
+      listEl.innerHTML = ranked.map(function (entry) {
+        var item = entry.item;
+        var type = String(item.type || 'other');
+        return [
+          '<li class="related-content__item">',
+            '<span class="content-badge content-badge--' + escapeHtml(type) + '">' + escapeHtml(titleCaseType(type)) + '</span>',
+            '<a class="related-content__title" href="' + escapeHtml(item.url || '#') + '">' + escapeHtml(item.title || 'Untitled') + '</a>',
+            item.summary ? '<p class="related-content__summary">' + escapeHtml(item.summary) + '</p>' : '',
+          '</li>'
+        ].join('');
+      }).join('');
+    })();
+  </script>
 </section>
-  {% endif %}
 
 {% endif %}
