@@ -8,7 +8,7 @@ search_exclude: true
 
 # Tag: memory-systems
 
-21 pages tagged with **memory-systems**
+22 pages tagged with **memory-systems**
 
 [← Back to all tags]({{ site.baseurl }}/tags/)
 
@@ -17,6 +17,11 @@ search_exclude: true
 ---
 
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Feb 22, 2026</span>
+    <h4><a href="{{ site.baseurl }}/strange/tachikoma-personality-emergence/notes-from-the-field-01-multiagent-orchestration/">Notes from the Field #1: Two Agents Build Their Own Memory System</a></h4>
+    <p class="post-summary">An OpenClaw user left two agents alone in a Discord channel overnight. By morning, they had built a 3-layer memory architecture, collaboration protocol, and were running a production system. What can we learn?</p>
+  </li>
   <li>
     <span class="post-meta">Feb 20, 2026</span>
     <h4><a href="{{ site.baseurl }}/strange/2026-02-20-tachikoma-personality-emergence-packet/">Tachikoma Fleet: Personality &amp; Emergence (Research Packet)</a></h4>

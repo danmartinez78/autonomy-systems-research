@@ -56,14 +56,18 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/memory-systems/">memory-systems</a></h3>
-    <p>21 pages</p>
+    <p>22 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/multi-agent/">multi-agent</a></h3>
-    <p>19 pages</p>
+    <p>20 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/nvidia-isaac/">nvidia-isaac</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/openclaw/">openclaw</a></h3>
     <p>1 page</p>
   </div>
   <div class="tag-item">
@@ -95,6 +99,10 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
     <p>1 page</p>
   </div>
   <div class="tag-item">
+    <h3><a href="{{ site.baseurl }}/tags/self-organization/">self-organization</a></h3>
+    <p>1 page</p>
+  </div>
+  <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/semantic-memory/">semantic-memory</a></h3>
     <p>1 page</p>
   </div>
@@ -108,7 +116,7 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/strange/">strange</a></h3>
-    <p>23 pages</p>
+    <p>24 pages</p>
   </div>
   <div class="tag-item">
     <h3><a href="{{ site.baseurl }}/tags/system-architecture/">system-architecture</a></h3>
@@ -140,9 +148,10 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**identity**]({{ site.baseurl }}/tags/identity/) (1 page)
 - [**knowledge-graphs**]({{ site.baseurl }}/tags/knowledge-graphs/) (1 page)
 - [**localization**]({{ site.baseurl }}/tags/localization/) (2 pages)
-- [**memory-systems**]({{ site.baseurl }}/tags/memory-systems/) (21 pages)
-- [**multi-agent**]({{ site.baseurl }}/tags/multi-agent/) (19 pages)
+- [**memory-systems**]({{ site.baseurl }}/tags/memory-systems/) (22 pages)
+- [**multi-agent**]({{ site.baseurl }}/tags/multi-agent/) (20 pages)
 - [**nvidia-isaac**]({{ site.baseurl }}/tags/nvidia-isaac/) (1 page)
+- [**openclaw**]({{ site.baseurl }}/tags/openclaw/) (1 page)
 - [**perception**]({{ site.baseurl }}/tags/perception/) (3 pages)
 - [**planning**]({{ site.baseurl }}/tags/planning/) (1 page)
 - [**quadruped**]({{ site.baseurl }}/tags/quadruped/) (1 page)
@@ -150,10 +159,11 @@ This page shows all tags used across the knowledge base. Click on a tag to see a
 - [**robotics**]({{ site.baseurl }}/tags/robotics/) (2 pages)
 - [**ros2**]({{ site.baseurl }}/tags/ros2/) (1 page)
 - [**safety**]({{ site.baseurl }}/tags/safety/) (1 page)
+- [**self-organization**]({{ site.baseurl }}/tags/self-organization/) (1 page)
 - [**semantic-memory**]({{ site.baseurl }}/tags/semantic-memory/) (1 page)
 - [**soul**]({{ site.baseurl }}/tags/soul/) (1 page)
 - [**state-estimation**]({{ site.baseurl }}/tags/state-estimation/) (3 pages)
-- [**strange**]({{ site.baseurl }}/tags/strange/) (23 pages)
+- [**strange**]({{ site.baseurl }}/tags/strange/) (24 pages)
 - [**system-architecture**]({{ site.baseurl }}/tags/system-architecture/) (1 page)
 - [**unitree-go2**]({{ site.baseurl }}/tags/unitree-go2/) (1 page)
 - [**vla**]({{ site.baseurl }}/tags/vla/) (2 pages)
