@@ -121,7 +121,8 @@ def validate_summary(value, issues: list[str]):
 
 
 def iter_rule_files(rule: Rule) -> Iterable[Path]:
-    yield from sorted((DOCS / Path(rule.pattern).parent).glob(Path(rule.pattern).name))
+    # Use the full relative glob pattern so complex patterns (e.g. "**/*.md") are supported.
+    yield from sorted(DOCS.glob(rule.pattern))
 
 
 def main() -> int:
