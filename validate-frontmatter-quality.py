@@ -70,7 +70,7 @@ def extract_front_matter(file_path: Path):
     if not text.startswith("---\n"):
         return None, "File must start with YAML front matter delimiter ('---')."
 
-    match = re.match(r"^---\s*\n(.*?)\n---\s*(?:\n|$)", text, re.DOTALL)
+    match = re.match(r"^---\n(.*?)\n---\s*(?:\n|$)", text, re.DOTALL)
     if not match:
         return None, "Front matter block is not closed with a terminating '---'."
 
