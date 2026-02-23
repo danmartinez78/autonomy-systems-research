@@ -142,7 +142,7 @@ def main() -> int:
                 issues.append(parse_error)
             else:
                 for field in rule.required_fields:
-                    if field not in fm:
+                    if field not in fm or fm.get(field) is None:
                         issues.append(f"Missing required field '{field}'.")
 
                 if "summary" in fm:
