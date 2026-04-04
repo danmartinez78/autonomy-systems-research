@@ -59,8 +59,8 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ## Key Links
 
-- **Course Site:** https://web.stanford.edu/class/cs25/
-- **YouTube Playlist:** https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM
+- [Course Site](https://web.stanford.edu/class/cs25/)
+- [YouTube Playlist](https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM)
 - **Live session access / Q&A / community / auditor signup:** See the official course site for the current links and participation details.
 
 ---
