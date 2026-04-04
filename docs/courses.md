@@ -16,7 +16,7 @@ Structured notes and research from courses, seminars, and lecture series relevan
 
 ## Active Courses
 
-### [CS25: Transformers United V6](/courses/cs25-transformers-united/)
+### [CS25: Transformers United V6](/autonomy-systems-research/courses/cs25-transformers-united/)
 **Stanford University • Spring 2026**
 
 Weekly seminar featuring top researchers at the forefront of Transformers research. Topics include LLMs, world models (JEPA), state space models (Mamba), interpretability, and applications in robotics, biology, and medicine.
