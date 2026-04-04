@@ -3,7 +3,7 @@ title: "Session 1: Overview of Transformers"
 layout: default
 parent: CS25: Transformers United V6
 nav_order: 1
-permalink: /courses/cs25-transformers-united/sessions/2026-04-02-overview/
+permalink: /courses/cs25-transformers-united/sessions/2026-04-02-overview//
 date: 2026-04-02
 ---
 
