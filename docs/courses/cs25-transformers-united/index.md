@@ -33,25 +33,24 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ## Schedule
 
-| Date | Topic | Speaker(s) | Materials |
-|------|-------|------------|-----------|
-| Apr 2 | Overview of Transformers | Instructors | [Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) |
-| Apr 9 | JEPA | Hazel Nam & Lucas Maes (Brown) | [Research Notes](speakers.md#week-2-april-9-jepa) |
-| Apr 16 | SSMs | Albert Gu (CMU) | [Research Notes](speakers.md#week-3-april-16-ssms) |
-| Apr 23 | TBD | Nouamane Tazi (Hugging Face) | [Research Notes](speakers.md#week-4-april-23-tbd) |
-| Apr 30 | TBA | TBD | — |
-| May 7 | TBD | Andrew Lampinen (Anthropic) | [Research Notes](speakers.md#week-6-may-7-tbd) |
-| May 14 | TBD | Vivek Natarajan (DeepMind) | [Research Notes](speakers.md#week-7-may-14-tbd) |
-| May 21 | TBA | TBD | — |
-| May 28 | TBD | Charles Frye (Modal) | [Research Notes](speakers.md#week-10-may-28-tbd) |
+| Date | Topic | Speaker(s) | Slides | Research | Session Notes |
+|------|-------|------------|--------|----------|----------------|
+| Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Speaker Bio](sessions/2026-04-02-overview/research) | [Notes](sessions/2026-04-02-overview/) |
+| Apr 9 | JEPA | Hazel Nam & Lucas Maes (Brown) | — | [Research](speakers#week-2-april-9-jepa) | — |
+| Apr 16 | SSMs | Albert Gu (CMU) | — | [Research](speakers#week-3-april-16-ssms) | — |
+| Apr 23 | TBD | Nouamane Tazi (Hugging Face) | — | [Research](speakers#week-4-april-23-tbd) | — |
+| Apr 30 | TBA | TBD | — | — | — |
+| May 7 | TBD | Andrew Lampinen (Anthropic) | — | [Research](speakers#week-6-may-7-tbd) | — |
+| May 14 | TBD | Vivek Natarajan (DeepMind) | — | [Research](speakers#week-7-may-14-tbd) | — |
+| May 21 | TBA | TBD | — | — | — |
+| May 28 | TBD | Charles Frye (Modal) | — | [Research](speakers#week-10-may-28-tbd) | — |
 
 ---
 
 ## Quick Links
 
-- [Speaker Research Notes](speakers.md) — Pre-lecture research on each speaker + their papers
-- [Session Notes](sessions/) — Notes from each lecture (updated after talks)
-- [Themes & Connections](themes.md) — Cross-lecture patterns and connections
+- [Speaker Research](speakers) — Pre-lecture research on each speaker + their papers
+- [Themes & Connections](themes) — Cross-lecture patterns and connections
 
 ---
 
