@@ -39,7 +39,7 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 | Date | Topic | Speaker(s) | Slides | Pre-Read | Session Notes |
 |------|-------|------------|--------|----------|---------------|
-| Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Bio](sessions/2026-04-02-overview/research) | [Notes](sessions/2026-04-02-overview/) |
+| Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Pre-Read](sessions/2026-04-02-overview/pre-read) | [Notes](sessions/2026-04-02-overview/) |
 | Apr 9 | JEPA | Hazel Nam & Lucas Maes (Brown) | — | [Pre-Read](sessions/2026-04-09-jepa/pre-read) | — |
 | Apr 16 | SSMs | Albert Gu (CMU) | — | [Pre-Read](sessions/2026-04-16-ssms/pre-read) | — |
 | Apr 23 | TBD | Nouamane Tazi (Hugging Face) | — | [Pre-Read](sessions/2026-04-23-tbd/pre-read) | — |

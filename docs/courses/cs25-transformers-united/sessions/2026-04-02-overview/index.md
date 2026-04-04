@@ -9,9 +9,9 @@ date: 2026-04-02
 
 # Session 1: Overview of Transformers
 
-[2026-04-02-overview-slides.pdf](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view?usp=sharing)
-
 **Video:** Not yet posted to YouTube playlist
+
+**Status:** ⚠️ Slide insights only — awaiting lecture video for complete synthesis
 
 ---
 
@@ -89,6 +89,17 @@ Brief intro and overview of the history of ML/NLP, Transformers and how they wor
 - [ ] Fill in Key Takeaways section with detailed notes
 - [ ] Complete Open Questions section with questions for the speakers
 - [ ] Add connections to autonomy research section
+
+---
+
+## Awaiting Video
+
+The following sections will be populated once the lecture video is posted to YouTube:
+
+- **Transcript highlights** — Key moments with timestamps
+- **Answers to pre-read questions** — Which questions from the [Pre-Read](pre-read) were addressed?
+- **Additional papers mentioned** — Any papers referenced in lecture not in pre-read
+- **Speaker insights** — Perspectives shared verbally vs. slides
 
 ---
 
