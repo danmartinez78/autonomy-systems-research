@@ -33,23 +33,22 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ## Schedule
 
-| Date | Topic | Speaker(s) | Slides | Research | Session Notes |
-|------|-------|------------|--------|----------|----------------|
-| Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Speaker Bio](sessions/2026-04-02-overview/research) | [Notes](sessions/2026-04-02-overview/) |
-| Apr 9 | JEPA | Hazel Nam & Lucas Maes (Brown) | — | [Research](speakers#week-2-april-9-jepa) | — |
-| Apr 16 | SSMs | Albert Gu (CMU) | — | [Research](speakers#week-3-april-16-ssms) | — |
-| Apr 23 | TBD | Nouamane Tazi (Hugging Face) | — | [Research](speakers#week-4-april-23-tbd) | — |
+| Date | Topic | Speaker(s) | Slides | Pre-Read | Session Notes |
+|------|-------|------------|--------|----------|---------------|
+| Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Bio](sessions/2026-04-02-overview/research) | [Notes](sessions/2026-04-02-overview/) |
+| Apr 9 | JEPA | Hazel Nam & Lucas Maes (Brown) | — | [Pre-Read](sessions/2026-04-09-jepa/pre-read) | — |
+| Apr 16 | SSMs | Albert Gu (CMU) | — | [Pre-Read](sessions/2026-04-16-ssms/pre-read) | — |
+| Apr 23 | TBD | Nouamane Tazi (Hugging Face) | — | [Pre-Read](sessions/2026-04-23-tbd/pre-read) | — |
 | Apr 30 | TBA | TBD | — | — | — |
-| May 7 | TBD | Andrew Lampinen (Anthropic) | — | [Research](speakers#week-6-may-7-tbd) | — |
-| May 14 | TBD | Vivek Natarajan (DeepMind) | — | [Research](speakers#week-7-may-14-tbd) | — |
+| May 7 | TBD | Andrew Lampinen (Anthropic) | — | [Pre-Read](sessions/2026-05-07-tbd/pre-read) | — |
+| May 14 | TBD | Vivek Natarajan (DeepMind) | — | [Pre-Read](sessions/2026-05-14-tbd/pre-read) | — |
 | May 21 | TBA | TBD | — | — | — |
-| May 28 | TBD | Charles Frye (Modal) | — | [Research](speakers#week-10-may-28-tbd) | — |
+| May 28 | TBD | Charles Frye (Modal) | — | [Pre-Read](sessions/2026-05-28-tbd/pre-read) | — |
 
 ---
 
 ## Quick Links
 
-- [Speaker Research](speakers) — Pre-lecture research on each speaker + their papers
 - [Themes & Connections](themes) — Cross-lecture patterns and connections
 
 ---
