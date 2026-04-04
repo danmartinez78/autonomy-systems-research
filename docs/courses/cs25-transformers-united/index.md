@@ -58,10 +58,8 @@ This page tracks my notes, speaker research, and key insights from the course.
 ## Key Links
 
 - **Course Site:** https://web.stanford.edu/class/cs25/
-- **Zoom:** https://stanford.zoom.us/j/92196729352
-- **Slido (Q&A):** https://app.sli.do/event/vxU9T2xwAYZf5U3cNAR9Ew
-- **Discord:** https://discord.gg/eKu6RNr3aG
-- **Mailing List (Auditors):** https://mailman.stanford.edu/mailman/listinfo/cs25-spr2526-guests
+- **YouTube Playlist:** https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM
+- **Live session access / Q&A / community / auditor signup:** See the official course site for the current links and participation details.
 
 ---
 
