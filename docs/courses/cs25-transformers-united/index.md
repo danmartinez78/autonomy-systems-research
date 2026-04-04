@@ -31,6 +31,10 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ---
 
+**Note:** Some pre-reads are based on speaker research only, with topics still TBD. These will be updated as the course announces topics. Check the official course site for the latest schedule.
+
+---
+
 ## Schedule
 
 | Date | Topic | Speaker(s) | Slides | Pre-Read | Session Notes |
