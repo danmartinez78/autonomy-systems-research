@@ -57,24 +57,6 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ---
 
-## Workflow Notes
-
-### Video posting check
-- New recordings are expected to appear on the official [YouTube Playlist](https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM) or Stanford CS25 recordings pages, usually within about 1-2 weeks of lecture.
-- Until a direct session video is visible there, session pages should remain marked **awaiting video**.
-- Do not assume a video is posted just because the playlist exists.
-
-### Slide analysis method
-- Current baseline: manual synthesis from the slide deck/PDF into `slides.md` and the session `index.md`.
-- For dense visual slides, charts, or diagrams, use image/screenshot analysis to extract:
-  - slide text,
-  - chart takeaways,
-  - diagram structure,
-  - visually emphasized claims.
-- Treat vision-assisted analysis as a supplement to manual synthesis, not a replacement for lecture/video notes.
-
----
-
 ## Key Links
 
 - [Course Site](https://web.stanford.edu/class/cs25/)
