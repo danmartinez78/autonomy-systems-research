@@ -9,7 +9,7 @@ date: 2026-04-02
 
 # Session 1: Overview of Transformers
 
-**Video:** Not yet posted to YouTube playlist
+**Video:** Not yet confirmed on the official YouTube playlist or recordings page
 
 **Status:** ⚠️ Slide insights only — awaiting lecture video for complete synthesis
 
@@ -94,7 +94,9 @@ Brief intro and overview of the history of ML/NLP, Transformers and how they wor
 
 ## Awaiting Video
 
-The following sections will be populated once the lecture video is posted to YouTube:
+Current check status: no direct Week 1 video confirmed yet on the official playlist or recordings page.
+
+The following sections will be populated once the lecture video is posted:
 
 - **Transcript highlights** — Key moments with timestamps
 - **Answers to pre-read questions** — Which questions from the [Pre-Read](pre-read) were addressed?
