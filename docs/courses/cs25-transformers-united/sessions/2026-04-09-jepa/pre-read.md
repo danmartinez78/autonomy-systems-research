@@ -13,6 +13,16 @@ nav_exclude: true
 
 ---
 
+## Talk Description
+
+*From the course page:* World models are increasingly moving away from reconstruction and toward prediction in latent space. This talk presents two recent JEPA-based approaches that illustrate this shift from complementary angles.
+
+**Causal-JEPA** induces object-level relational bias to promote representations that capture entities *and interactions*, leading to stronger reasoning and more efficient planning. **LeWorldModel** shows that such predictive world models can also be trained stably end-to-end from raw pixels using a minimal objective and a clean architectural recipe, while remaining competitive on control tasks.
+
+**Unified thesis:** Predictive latent learning becomes most powerful when combined with both **structural bias** and **architectural simplicity**. This suggests a promising path toward robust world models that support abstraction, reasoning, and control.
+
+---
+
 ## Topic Overview
 
 JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's proposed alternative to generative and autoregressive models for learning world representations. Instead of predicting pixels or tokens, JEPA predicts in *latent embedding space* — learning abstract structure without reconstruction. This lecture covers C-JEPA (object-centric) and recent advances in stable training.
@@ -36,16 +46,63 @@ JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's proposed alternat
 ## Speakers
 
 ### Hazel Nam (Heejeong Nam)
-- **Affiliation:** Brown University, Mila, NYU collaboration
+- **Affiliation:** Brown University, working on representation learning, causality, and self-supervised learning
 - **Focus:** World models, self-supervised learning, object-centric representations
-- **Key contribution:** C-JEPA — extending JEPA to object-level reasoning
+- **Key contribution:** C-JEPA — extending JEPA to object-level reasoning via latent interventions
 
 ### Lucas Maes
-- **Affiliation:** Brown University
-- **Focus:** Training stability in JEPA architectures
-- **Key contribution:** LeWorldModel — techniques to prevent collapse and improve convergence
+- **Affiliation:** Mila and University of Montreal, PhD student
+- **Focus:** JEPA and planning, training stability in JEPA architectures
+- **Key contribution:** LeWorldModel — stable end-to-end training from pixels
 
 **Connection:** Both work with Yann LeCun on advancing the JEPA framework toward autonomous machine intelligence.
+
+---
+
+## Technical Deep Dive
+
+### C-JEPA — Object-Level Latent Interventions
+
+**Key innovation:** C-JEPA treats object masking as a *structured latent intervention* — forces the model to infer masked objects from their interactions with other objects. This prevents "shortcut solutions" where the model relies on low-level visual features rather than reasoning about relationships.
+
+**Method:** Applies object-level masking throughout the history window (except for a minimal identity anchor). The model must use interactions with other entities to minimize prediction error.
+
+**Results:**
+- **20% absolute improvement** in counterfactual reasoning vs same architecture without object-level masking
+- **Only 1% of latent features** vs patch-based world models → **8× faster planning**
+- Formal analysis: object-level masking induces causal inductive bias via latent interventions
+
+**Paper:** [C-JEPA on arXiv](https://arxiv.org/abs/2602.11389) | [Project Page](https://hazel-heejeong-nam.github.io/cjepa/)
+
+---
+
+### LeWorldModel — SIGReg for Stable End-to-End Training
+
+**The core problem:** JEPA tends toward representation collapse without careful loss balancing. Existing methods rely on complex multi-term losses, exponential moving averages, pre-trained encoders, or auxiliary supervision.
+
+**LeWorldModel's solution:** Only **two loss terms**:
+1. Next-embedding prediction loss
+2. SIGReg — regularizer enforcing Gaussian-distributed latent embeddings
+
+**Result:** Reduces loss hyperparameters from 6 to 1 vs other end-to-end approaches. Trainable on a single GPU (~15M params) in a few hours.
+
+**Performance:** Plans **48× faster** than foundation-model-based world models while remaining competitive across 2D and 3D control tasks. The latent space also encodes meaningful physical structure.
+
+**Paper:** [LeWorldModel on arXiv](https://arxiv.org/abs/2603.19312) | [GitHub](https://github.com/lucas-maes/le-wm)
+
+---
+
+## Unified Thesis
+
+**"Predictive latent learning becomes most powerful when combined with both structural bias and architectural simplicity"**
+
+| Component | C-JEPA | LeWorldModel |
+|-----------|--------|--------------|
+| **Structural bias** | Object-level masking (causal/relational) | None — purely end-to-end |
+| **Architectural simplicity** | Joint embedding + predictor | Only 2 loss terms, no EMA, no pre-trained encoder |
+| **Result** | Interaction reasoning, efficient planning | Stable training, 48× faster inference |
+
+Both works argue: neither structural bias alone nor architectural simplicity alone is sufficient — you need both for robust world models.
 
 ---
 
@@ -59,19 +116,22 @@ JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's proposed alternat
 
 **Method:** Uses object-level masking and interventions to learn causal structure in scenes.
 
-**Authors:** Heejeong Nam, Quentin Le Lidec, Lucas Maes, Yann LeCun, Randall Balestriero
+**Authors:** Heejeong Nam, Quentin Le Lidec*, Lucas Maes*, Yann LeCun, Randall Balestriero
+(* equal contribution)
 
-🔗 [Project Page](https://hazel-heejeong-nam.github.io/cjepa/)
+🔗 [Project Page](https://hazel-heejeong-nam.github.io/cjepa/) | [arXiv](https://arxiv.org/abs/2602.11389)
 
 ---
 
 ### 2. LeWorldModel: Stable End-to-End JEPA from Pixels (arXiv 2026)
 
-**Contribution:** Addresses training stability in JEPA architectures — a key practical challenge.
+**Contribution:** First JEPA that trains stably end-to-end from raw pixels using only two loss terms.
 
-**Key insight:** Proposes techniques to prevent collapse and improve convergence, making JEPA more practical for real-world use.
+**Key insight:** SIGReg (Gaussian regularizer) prevents collapse — that's the key trick. Reduces loss hyperparameters from 6 to 1.
 
-🔗 [GitHub](https://github.com/lucas-maes/le-wm)
+**Authors:** Lucas Maes, Quentin Le Lidec, Damien Scieur, Yann LeCun, Randall Balestriero
+
+🔗 [GitHub](https://github.com/lucas-maes/le-wm) | [arXiv](https://arxiv.org/abs/2603.19312)
 
 ---
 
@@ -89,11 +149,12 @@ JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's proposed alternat
 
 | Aspect | Relevance to Robotics/Embodied AI |
 |--------|-----------------------------------|
+| **Abstraction** | SIGReg enforces compact, Gaussian-distributed latent representations — good for generalization |
+| **Reasoning** | C-JEPA's counterfactual-like interventions enable interaction reasoning — robots need to predict how objects affect each other |
+| **Control** | LeWorldModel achieves competitive control at 48× faster inference — practical for real-time robotics |
 | **Sample efficiency** | Predicting in latent space requires less data than pixel reconstruction — crucial for real-world robot learning |
-| **Object-centric representations** | Robots need to reason about objects, not pixels; C-JEPA learns this automatically |
-| **World models** | JEPA-style prediction could enable planning in learned representation spaces |
-| **Causal reasoning** | Object-level interventions may enable learning cause-effect relationships |
-| **No reconstruction** | Avoids wasting capacity on irrelevant visual details |
+| **Efficient planning** | C-JEPA uses only 1% of latent features vs patch-based → 8× faster planning, essential for online control |
+| **Structural bias** | Object-level causal inductive bias helps robots learn physical intuitions without supervision |
 | **LeCun's thesis** | JEPA is central to the proposed path to autonomous machine intelligence |
 
 ---
@@ -103,10 +164,10 @@ JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's proposed alternat
 ### Technical Questions
 
 1. How does C-JEPA's object discovery mechanism compare to Slot Attention or other object-centric methods?
-2. What causes training instability in JEPA, and how does LeWorldModel specifically address it?
-3. How do you balance the encoder and predictor capacities? Is there a risk of the predictor being too weak or too strong?
-4. Can C-JEPA generalize to novel objects not seen during training, or does it overfit to training categories?
-5. How does prediction error in latent space correlate with downstream task performance?
+2. What causes training instability in JEPA, and how does LeWorldModel's SIGReg specifically address it?
+3. The unified thesis says you need both structural bias *and* architectural simplicity. Is there a spectrum here — can you trade one for the other?
+4. How do you balance the encoder and predictor capacities? Is there a risk of the predictor being too weak or too strong?
+5. Can C-JEPA generalize to novel objects not seen during training, or does it overfit to training categories?
 
 ### Robotics/Autonomy Questions
 
@@ -118,8 +179,10 @@ JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's proposed alternat
 
 ### Research Direction Questions
 
-11. How closely does this work align with Yann LeCun's full autonomous machine intelligence vision?
-12. Are there plans to combine C-JEPA object-centric representations with V-JEPA temporal modeling?
+11. The unified thesis argues that "predictive latent learning + structural bias + architectural simplicity" is the winning combination. How does this compare to diffusion-based world models that rely on reconstruction?
+12. How closely does this work align with Yann LeCun's full autonomous machine intelligence vision?
+13. Are there plans to combine C-JEPA object-centric representations with V-JEPA temporal modeling?
+14. LeWorldModel encodes "meaningful physical structure" in its latent space. Does this generalize to complex physics (fluids, deformable objects)?
 
 ---
 
@@ -147,4 +210,4 @@ JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's proposed alternat
 
 ---
 
-*Prepared: 2026-04-04*
+*Prepared: 2026-04-04 | Updated: 2026-04-09 with expanded description and technical deep dive*
