@@ -274,6 +274,16 @@ The first speaker framed world models as **policy evaluators**: instead of learn
 
 This is fundamentally different from VLA's direct mapping approach. It decouples "understanding the world" (world model) from "deciding what to do" (policy/planning). The world model is reusable across many tasks; the policy layer can be lighter because it can query the world model.
 
+### Hierarchical Temporal Reasoning for Long-Horizon Planning
+
+Lucas Maes mentioned that JEPA requires **hierarchies of temporal reasoning** for longer-horizon planning. This is a key insight:
+
+- **Single-step JEPA** (frame T → frame T+1): predicts immediate next state — useful for fine-grained manipulation, reactive control
+- **Multi-scale JEPA** (frame T → frame T+N at multiple N): predicts at multiple temporal horizons — captures both low-level dynamics and high-level structure
+- **Hierarchical planning**: "go to the kitchen" (high-level, abstract) → "walk forward 3m, turn left, open door" (low-level, executable). The world model must operate at multiple granularities to support both.
+
+The hierarchy question is still open in JEPA research — how to architect the multi-scale temporal prediction, and how to connect high-level goal reasoning to low-level motor control.
+
 ### Why This Matters for Robotics Autonomy
 
 | Approach | How it works | Limitation |
