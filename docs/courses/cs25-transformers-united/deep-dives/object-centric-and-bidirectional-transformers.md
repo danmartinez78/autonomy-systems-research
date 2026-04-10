@@ -173,6 +173,96 @@ In C-JEPA (JEPA + causal/object-centric):
 
 ---
 
+---
+
+## Confounders and Why Object-Centric Representations Help
+
+Hazel Nam mentioned confounders multiple times — this is a concept from causal inference that is central to why JEPA's object-centric approach matters for physical AI.
+
+### What Is a Confounder?
+
+A **confounder** is a variable Z that causally influences *both* X and Y, creating a spurious correlation between X and Y that isn't causal:
+
+```
+Z → X
+Z → Y
+
+X ─ ? ─ Y   (spurious correlation, not causal)
+```
+
+Classic example: age is a confounder between shoe size and reading ability. Larger shoes don't cause better reading — both are caused by age. If you don't control for age, you incorrectly conclude shoes cause reading.
+
+### Confounders in Video Prediction / World Models
+
+In world model training for robotics, confounders appear at the pixel level:
+- **Camera angle** — affects both current frame and future frames identically
+- **Lighting conditions** — causes both observations in similar ways
+- **Background static elements** — consistent confounder across frames
+
+If you want to learn "does action A cause outcome B" in the world, but camera angle causes both the current and future observations — the confounder poisons your representation. The model learns to predict camera-consistent futures (confounded) rather than actual causal dynamics (actual causal structure).
+
+### How Object-Centric Representations Handle Confounders
+
+Object-centric slots factor out confounders automatically:
+- The **background slot** absorbs camera angle, lighting, and static scene elements
+- **Object slots** (ball, robot arm, door) capture the causally relevant dynamics
+- When predicting future latents, you predict ball_slot → ball_slot, not background_slot → background_slot
+
+The confounder (background/camera) gets isolated into its own slot where it can't contaminate object-level predictions. This is why C-JEPA specifically talks about causal object structure — it factors out confounders at the representation level, making the learned dynamics genuinely causal rather than confounded.
+
+---
+
+## World Models in Physical AI and Robotics
+
+Lucas Maes (second speaker) articulated a critique of VLA (Vision Language Action) models and proposed world models as the path forward for physical AI. Hazel Nam added the "policy evaluator" framing from the first talk.
+
+### The VLA Critique
+
+VLA models learn end-to-end mappings from observations to actions via imitation learning or RL. The problem: VLAs have no model of the world — they learn correlations (obs → action) but can't predict what happens if they do something different. This means:
+
+- **No counterfactual reasoning**: "What happens if I do X instead of Y?" — VLA can't answer this, it just picks the action it saw in training
+- **No physical understanding**: A robot trained to stack blocks might succeed 90% of the time but fail in new configurations — it learned pattern-matching, not physics
+- **Brittle to distributional shift**: VLA fails when the scene differs from training even in subtle ways
+
+### The World Model Response
+
+World models address this by learning a predictive model of how the world evolves:
+
+```
+Current state + Action → Predicted future state
+```
+
+If you have a good world model, you can ask: "If I do action A, will the outcome be good?" — and get an answer from simulation, not physical trial. This is safe, fast, and allows planning over many candidate actions before executing any.
+
+### Robot Dancing Exception
+
+Lucas Maes made an interesting point: a robot dancing only really needs understanding of **internal dynamics** (its own body mechanics, joint torques, etc.), not a full world model. For purely self-referential tasks, the world model only needs to model the robot's own body, not external objects.
+
+But for tasks where the robot interacts with the world (manipulation, navigation, tool use), you need a world model that predicts both the robot's dynamics AND how external objects respond to those dynamics.
+
+### Policy Evaluation (Hazel Nam's Framework)
+
+The first speaker framed world models as **policy evaluators**: instead of learning a policy directly from observations→actions, you can:
+
+1. Train a world model that predicts: `state_t → state_{t+1}` given an action
+2. For a candidate policy/plan, simulate it through the world model
+3. Evaluate whether the simulated outcome achieves the goal
+4. Only execute actions that look promising in simulation
+
+This is fundamentally different from VLA's direct mapping approach. It decouples "understanding the world" (world model) from "deciding what to do" (policy/planning). The world model is reusable across many tasks; the policy layer can be lighter because it can query the world model.
+
+### Why This Matters for Robotics Autonomy
+
+| Approach | How it works | Limitation |
+|----------|-------------|------------|
+| VLA (end-to-end) | obs → action directly | No counterfactual, no physical understanding |
+| World model + policy eval | world model predicts outcomes; policy queries it | World model accuracy is the bottleneck |
+| World model + planning | simulate many action sequences; pick best | Computationally expensive for long-horizon |
+
+For ShadowHound and physical AI: a world model that predicts drone/pet/environment dynamics would let you evaluate search strategies in simulation before committing to a real-world action. The world model doesn't need to be photorealistic — it needs to capture the dynamics that matter for the task (pet movement patterns, terrain traversability, drone flight physics).
+
+---
+
 ## Key Takeaways
 
 1. **Patch-based = grid of patches, processed equally** — the transformer must learn object structure from scratch
