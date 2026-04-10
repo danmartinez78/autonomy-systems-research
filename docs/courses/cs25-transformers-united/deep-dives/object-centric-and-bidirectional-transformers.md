@@ -12,6 +12,29 @@ permalink: /courses/cs25-transformers-united/deep-dives/object-centric-represent
 
 ---
 
+## What JEPA Actually Is: A Framework, Not an Architecture
+
+JEPA stands for **Joint Embedding Predictive Architecture** — and this distinction matters enormously.
+
+JEPA is **not a specific neural network architecture**. It's a **training framework / self-supervised learning objective** that defines how to train encoders and predictors to learn world models.
+
+The components of JEPA are existing, well-known architectures:
+- **Encoder**: Encodes current frame → latent (typically a ViT / transformer)
+- **Predictor**: Predicts future latent from current latent (typically a transformer)
+- **Target encoder**: Encodes the target frame for contrastive alignment
+
+JEPA tells you *how to connect and train these pieces* via a latent prediction objective, not *what those pieces must be*. You still use transformers. You just train them differently.
+
+| Term | What it is | JEPA analogy |
+|------|-----------|--------------|
+| BERT | Pre-training framework (masked language modeling) | JEPA is the "masked world modeling" equivalent |
+| ViT | Vision transformer architecture | JEPA uses ViT as its encoder |
+| JEPA | Training framework for latent world modeling | "BERT for video/world prediction" |
+
+This means: when speakers say "we don't want generative models," they're describing JEPA as an alternative *training objective*, not a new architecture. The "generative" critique is about the *training approach* (pixel-level prediction) — JEPA replaces it with latent-level prediction while keeping the same transformer building blocks.
+
+---
+
 ## Two Ways to Represent a Scene
 
 ### Patch-Based Representation
