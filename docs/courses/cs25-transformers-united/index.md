@@ -54,6 +54,13 @@ This page tracks my notes, speaker research, and key insights from the course.
 ## Quick Links
 
 - [Themes & Connections](themes) — Cross-lecture patterns and connections
+- [Deep Dives](deep-dives/) — Extended technical explanations
+
+## Deep Dives
+
+| Topic | Description |
+|-------|-------------|
+| [Object-Centric vs. Patch-Based Representations & Bidirectional Transformers](deep-dives/object-centric-and-bidirectional-transformers) | Why JEPA uses object-centric representations instead of patches, how Slot Attention resolves binding, and what bidirectional transformers enable |
 
 ---
 
