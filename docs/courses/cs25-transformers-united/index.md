@@ -53,6 +53,7 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ## Quick Links
 
+- [Speaker Research](speakers) — Bio, papers, question banks, and relevance to autonomy for all course speakers
 - [Themes & Connections](themes) — Cross-lecture patterns and connections
 - [Deep Dives](deep-dives/) — Extended technical explanations (empty — content now in session notes)
 

@@ -1,21 +1,30 @@
 ---
-title: "Pre-Read: State Space Models & Mamba"
+title: "Pre-Read: State Space Models & Tradeoffs"
 layout: default
 parent: CS25: Transformers United V6
 grand_parent: Sessions
 nav_exclude: true
 ---
 
-# Pre-Read: State Space Models & Mamba
+# Pre-Read: State Space Models & Tradeoffs
 
 **Date:** April 16, 2026
-**Speaker:** Albert Gu (CMU)
+**Speaker:** Albert Gu (CMU / Cartesia AI)
 
 ---
 
-## Topic Overview
+## Talk Overview
 
-State Space Models (SSMs) offer an alternative to attention-based transformers with O(n) complexity instead of O(n²). Albert Gu's Mamba architecture has emerged as the leading SSM, enabling 100K+ context windows and efficient inference. This lecture covers the evolution from S4 to Mamba-3 and their implications for long-horizon reasoning.
+> "This talk will provide a high level overview of a recently popular subquadratic alternative to the Transformer, the state space model (SSM). We will discuss the core characteristics and design choices of SSMs and other related modern linear models, and focus on the fundamental tradeoffs between SSMs and Transformers both from a modeling perspective and their strengths and weaknesses on different application areas. A central theme is that different architectures have very different performance characteristics depending on the resolution of the data and its tokenization scheme; we will also talk about recent progress on tokenizer-free models such as H-Nets."
+>
+> — Course site, CS25 Spring 2026
+
+**Key themes:**
+- SSMs vs Transformers: when does each win? (hint: depends heavily on tokenization and data resolution)
+- Subquadratic alternatives: linear attention, gated convolutions, SSMs
+- The **selective state** breakthrough: content-based reasoning in SSMs
+- **Tokenizer-free models (H-Nets)**: emerging alternative to discretized token inputs
+- **Mamba-3**: inference-first improvements — expressive recurrence, complex-valued state, MIMO formulation
 
 ---
 
@@ -23,12 +32,15 @@ State Space Models (SSMs) offer an alternative to attention-based transformers w
 
 | Term | Definition |
 |------|------------|
-| **State Space Model (SSM)** | Sequence model based on continuous-time dynamics, discretized for neural networks |
-| **Mamba** | Selective state space model with content-aware reasoning (2023) |
-| **S4** | Structured State Space — foundational SSM work (Gu et al., 2021) |
-| **Selective SSM** | SSM with input-dependent state transitions (key Mamba innovation) |
+| **SSM** | State Space Model — continuous-time dynamics discretized for neural networks |
+| **Selective SSM** | SSM with input-dependent state transitions (Mamba's key innovation) |
+| **S4** | Structured State Space — foundational SSM (Gu et al., 2021) |
+| **SSD (State Space Duality)** | Mathematical framework showing SSMs ↔ attention equivalence via structured semiseparable matrices |
+| **Mamba** | Selective SSM with content-aware reasoning (2023) |
+| **H-Nets** | tokenizer-free models — tokenization-free alternative to standard LM inputs |
 | **Linear attention** | Attention approximation with O(n) complexity |
-| **Hardware-aware algorithm** | Algorithm designed to exploit GPU memory hierarchy |
+| **Hardware-aware scan** | Algorithm exploiting GPU memory hierarchy for efficient SSM computation |
+| **MIMO-SSM** | Multi-input multi-output SSM formulation — parallelize multiple streams without decode latency |
 
 ---
 
@@ -36,113 +48,127 @@ State Space Models (SSMs) offer an alternative to attention-based transformers w
 
 ### Albert Gu
 
-**Affiliation:** Carnegie Mellon University, co-creator of Mamba
+**Affiliations:**
+- Assistant Professor, Machine Learning Dept., Carnegie Mellon University
+- Chief Scientist, **Cartesia AI** (commercializing SSM technology)
 
-**Background:** PhD at Stanford under Chris Ré, pioneering work on structured state spaces. Now at CMU continuing SSM research.
+**Recognition:** TIME AI100 — most influential AI researchers (2024)
+
+**Background:** PhD at Stanford under Chris Ré. Research spans theoretical and empirical foundations of deep sequence modeling. Created S4 → Mamba → Mamba-2 → Mamba-3 lineage.
 
 **Key contributions:**
-- S4 (Structured State Spaces) — first practical SSM for long sequences
-- Mamba — selective SSM with content-dependent reasoning
-- Mamba-2 — 2-8X faster with algorithmic improvements
-- Mamba-3 — latest iteration (2026)
+- **S4** — first practical SSM for long sequences (2021)
+- **Mamba** — selective SSM, 5× throughput vs Transformers, linear scaling (2023)
+- **Mamba-2** — SSD framework, proves SSM-attention equivalence, 2-8× faster (ICML 2024)
+- **Mamba-3** — inference-first design, complex-valued state, MIMO (2026)
 
 ---
 
 ## Papers
 
-### 1. Mamba: Linear-Time Sequence Modeling with Selective State Spaces (2023)
+### 1. Mamba: Linear-Time Sequence Modeling with Selective State Spaces
+**arXiv: [2312.00752](https://arxiv.org/abs/2312.00752)** | [GitHub](https://github.com/state-spaces/mamba)
 
-**Contribution:** O(n) complexity alternative to attention's O(n²).
+**What it does:** Replaces attention with a selective state space model. SSM parameters become functions of the input — the model can selectively propagate or forget information based on content.
 
-**Key insight:** Selective state spaces enable content-aware reasoning — the model can choose what to remember based on input content.
+**Key results:**
+- 5× higher throughput than Transformers during inference
+- Linear scaling in sequence length (vs quadratic for attention)
+- Improves on real data up to **million-length sequences**
+- Mamba-3B matches Transformers 2× its size on language modeling
 
-**Method:** Input-dependent state transition matrices + hardware-efficient scan algorithm.
-
-🔗 [arXiv](https://arxiv.org/abs/2312.00752) • [GitHub](https://github.com/state-spaces/mamba)
-
----
-
-### 2. Transformers are SSMs: Generalized Models and Efficient Algorithms (ICML 2024)
-
-**Contribution:** Shows mathematical equivalence between transformers and state space models.
-
-**Key insight:** Many attention variants can be reformulated as SSMs, enabling cross-pollination of techniques.
-
-**Result:** Mamba-2 is 2-8X faster than Mamba-1 with better quality.
-
-🔗 [arXiv](https://arxiv.org/abs/2405.21060)
+**Why it matters for autonomy:** KV-cache-free inference means constant memory over arbitrarily long contexts — huge for robot memory across missions.
 
 ---
 
-### 3. Mamba-3: Improved Sequence Modeling using State Space Principles (2026)
+### 2. Mamba-2: Generalized Models and Efficient Algorithms Through Structured State Space Duality
+**arXiv: [2405.21060](https://arxiv.org/abs/2405.21060)** | ICML 2024
 
-**Contribution:** Latest iteration with further improvements in quality and efficiency.
+**What it does:** Proves that attention variants and SSMs are both decompositions of structured semiseparable matrices — a unified theoretical framework (SSD). This cross-pollination enables techniques from both worlds.
 
-**Key changes:** (Check paper for specifics — recent release)
+**Key results:**
+- Mamba-2 is **2-8× faster** than Mamba-1
+- Maintains competitive language modeling quality
+- Core layer is a refinement of Mamba's selective SSM
 
-🔗 [arXiv](https://arxiv.org/abs/2603.15569)
+**Why it matters:** The SSM-Transformer equivalence means we can mix and match techniques from both architectures.
+
+---
+
+### 3. Mamba-3
+**arXiv: [2603.15569](https://arxiv.org/abs/2603.15569)**
+
+**What it does:** "Inference-first" redesign. Current linear models trade off model quality (especially state tracking) for algorithmic efficiency and remain hardware-inefficient in practice. Mamba-3 addresses all three with three core improvements:
+
+1. **More expressive recurrence** derived from SSM discretization
+2. **Complex-valued state update** for richer state tracking (crucial for multi-entity reasoning)
+3. **MIMO formulation** — better performance without increasing decode latency (handles multiple input streams in parallel)
+
+**Key tension explored:** Linear-complexity models that actually match Transformer quality. State tracking (where Transformers excel) is the testbed.
+
+**Why it matters for autonomy:** Complex-valued state could be critical for tracking multiple entities in the world simultaneously — a core robotics problem.
 
 ---
 
 ## Why It Matters for Autonomy
 
-| Aspect | Relevance to Robotics/Embodied AI |
-|--------|-----------------------------------|
-| **Long-horizon memory** | 100K+ context windows enable multi-session recall — critical for persistent autonomy |
-| **Efficient inference** | Linear scaling makes edge deployment feasible on constrained hardware |
-| **Real-time processing** | No KV-cache explosion — sustained performance over long missions |
-| **Alternative to attention** | Could be crucial for long-term autonomy tasks where transformer context limits bite |
-| **Streaming inference** | Natural fit for continuous sensor streams |
-
----
-
-## Question Bank
-
-### Technical Questions
-
-1. How does selective SSM compare to linear attention variants like Performer or Linformer in practice?
-2. What's the memory/quality tradeoff when reducing state dimension?
-3. How does Mamba handle structured vs unstructured data (code vs natural language)?
-4. Are there tasks where Mamba underperforms transformers significantly?
-5. How does Mamba-3 improve over Mamba-2 specifically?
-
-### Robotics/Autonomy Questions
-
-6. Have you tested Mamba on multimodal sensor fusion (vision + proprioception + language)?
-7. How might SSMs handle irregularly-sampled sensor data (common in robotics)?
-8. Is there work on action-conditioned SSMs for control?
-9. How does Mamba compare to transformers for offline RL / behavior cloning?
-10. What's the minimum hardware to run Mamba-3 efficiently? Edge deployment story?
-
-### Research Direction Questions
-
-11. Is the transformer-SSM equivalence practical for model conversion, or mostly theoretical?
-12. What's the path to 1M+ context windows? Are there fundamental limits?
+| SSM Property | Autonomy Relevance |
+|---|---|
+| **O(n) inference, no KV cache explosion** | Sustained performance over 1M+ token missions without memory degradation |
+| **100K+ context windows** | Multi-session memory — robot recalls prior missions without retraining |
+| **Streaming sensor fit** | Continuous sensor streams (LiDAR, IMU, cameras) map naturally to SSM's continuous-time formulation |
+| **Linear scaling** | Edge deployment on constrained hardware (Jetson, robot compute) |
+| **Complex-valued state (Mamba-3)** | Better multi-entity tracking — robots must track many moving objects |
+| **MIMO formulation** | Handle multiple sensor modalities simultaneously without added decode latency |
 
 ---
 
 ## Pre-Lecture Reading
 
-### Essential (15-20 min)
-- [Mamba GitHub](https://github.com/state-spaces/mamba) — code and examples
-- [Mamba-2 blog series](https://goombalab.github.io/blog/2024/mamba2-part1-model/) — technical deep dive
+### Essential (~20 min)
+- **[Mamba GitHub](https://github.com/state-spaces/mamba)** — code, pretrained models, examples
+- **[Mamba-2 blog series](https://goombalab.github.io/blog/2024/mamba2-part1-model/)** (Goomba Lab) — technical deep dive on SSD framework
 
-### Background (30-45 min)
-- [Mamba paper](https://arxiv.org/abs/2312.00752) — foundational work
-- [Mamba Wikipedia](https://en.wikipedia.org/wiki/Mamba_(deep_learning_architecture)) — quick overview
+### Paper Abstracts (~15 min)
+- [Mamba paper abstract](https://arxiv.org/abs/2312.00752) — understand the core selection mechanism
+- [Mamba-2 paper abstract](https://arxiv.org/abs/2405.21060) — understand SSD duality
+- [Mamba-3 paper abstract](https://arxiv.org/abs/2603.15569) — understand inference-first improvements
 
-### Related Work
-- [S4 paper](https://arxiv.org/abs/2111.00396) — Albert's earlier SSM work
-- [Hungry Hungry Hippos](https://arxiv.org/abs/2212.14052) — SSM for language modeling
-- [RWKV](https://arxiv.org/abs/2305.13048) — alternative RNN-based approach
+### Background (~30 min)
+- [S4 paper](https://arxiv.org/abs/2111.00396) — the SSM foundation
+- [Hungry Hungry Hippos](https://arxiv.org/abs/2212.14052) — SSM at scale for language
+
+---
+
+## Question Bank
+
+### Technical
+1. You say the tokenization scheme affects which architecture wins — can you quantify that? Is there a theory?
+2. What's the actual hardware efficiency of "linear-time" SSMs vs optimized attention on modern GPUs?
+3. Mamba-3 uses complex-valued states for state tracking. What's the intuition — why does complex help?
+4. The MIMO formulation — does this mean Mamba-3 can process multiple sequences in parallel with zero overhead?
+5. Where do SSMs clearly lose to Transformers on practical tasks?
+
+### Autonomy-Specific
+6. Have you tested Mamba on multimodal sensor fusion — vision + proprioception + language in a single model?
+7. How do SSMs handle the irregularly-sampled, heterogeneous sensor streams typical in robotics?
+8. What's the smallest efficient Mamba deployment on edge hardware? (Jetson Orin, etc.)
+9. For offline RL and behavior cloning — does Mamba's compression vs Transformers' full context hurt or help?
+10. Is there work on action-conditioned SSMs for receding-horizon control?
+
+### Research Directions
+11. H-Nets (tokenizer-free) — what's the actual story? Is tokenization a fundamental bottleneck for SSM quality?
+12. The SSM-Transformer equivalence — practically, can we convert a trained Transformer to Mamba and back?
+13. What's beyond Mamba-3? Is there a theoretical ceiling on SSM expressivity?
 
 ---
 
 ## Cross-References
 
-- **Week 2 (JEPA)** — World models for planning (complementary to long-context)
-- **Week 10 (Modal/GPU)** — Deployment infrastructure for efficient inference
+- **Week 2 (JEPA)** — World models for planning; JEPA also predicts in latent space, complementary to SSM long-context
+- **Week 4 (Ultra-Scale)** — Training large SSMs; how does MoE interact with SSM architecture?
+- **Week 10 (Modal/GPU)** — Edge deployment of large models; SSM inference efficiency fits naturally here
 
 ---
 
-*Prepared: 2026-04-04*
+*Pre-read updated: 2026-04-16 (critical review against course site and arXiv abstracts)*
