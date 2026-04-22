@@ -19,9 +19,9 @@ Lecture notes, key insights, and reference materials from each CS25 session.
 | Date | Topic | Speaker(s) | Notes |
 |------|-------|------------|-------|
 | Apr 2 | Overview of Transformers | Instructors | [Session Notes](2026-04-02-overview/) |
-| Apr 9 | JEPA | Hazel Nam & Lucas Maes (Brown) | Coming soon |
-| Apr 16 | SSMs | Albert Gu (CMU) | Coming soon |
-| Apr 23 | TBD | Nouamane Tazi (Hugging Face) | Coming soon |
+| Apr 9 | JEPA | Hazel Nam & Lucas Maes (Brown) | [Session Notes](2026-04-09-jepa/) |
+| Apr 16 | SSMs & Mamba | Albert Gu (CMU) | [Session Notes](2026-04-16-ssms/) |
+| Apr 23 | Ultra-Scale Training | Nouamane Tazi (Hugging Face) | [Pre-read](2026-04-23-ultra-scale-training/) |
 | May 7 | TBD | Andrew Lampinen (Anthropic) | Coming soon |
 | May 14 | TBD | Vivek Natarajan (DeepMind) | Coming soon |
 | May 28 | TBD | Charles Frye (Modal) | Coming soon |

@@ -1,12 +1,11 @@
 ---
-title: "Session: Nouamane Tazi - Ultra-Scale Training"
+title: "Pre-Read: Ultra-Scale Training"
 layout: default
-parent: CS25: Transformers United V6
-grand_parent: Sessions
+parent: Session 4: Ultra-Scale Training
 nav_exclude: true
 ---
 
-# CS25 Session: Nouamane Tazi — Ultra-Scale Talk
+# Pre-Read: Ultra-Scale Training — Nouamane Tazi
 
 **Date:** April 23, 2026
 **Topic:** Scaling Training to Thousands of GPUs
