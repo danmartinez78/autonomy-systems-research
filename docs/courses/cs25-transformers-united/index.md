@@ -40,7 +40,7 @@ This page tracks my notes, speaker research, and key insights from the course.
 | Date | Topic | Speaker(s) | Slides | Pre-Read | Session Notes |
 |------|-------|------------|--------|----------|---------------|
 | Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Pre-Read](sessions/2026-04-02-overview/pre-read) | [Notes](sessions/2026-04-02-overview/) |
-| Apr 9 | JEPA & World Models | Hazel Nam & Lucas Maes (Brown) | — | [Pre-Read](sessions/2026-04-09-jepa/pre-read) | [Notes](sessions/2026-04-09-jepa/) |
+| Apr 9 | JEPA & World Models | Hazel Nam & Lucas Maes (Brown) | [Slides](https://drive.google.com/file/d/1bF5Yfzf-FG5iNIAgsXn2DwVD3l3ymvZW/view) | [Pre-Read](sessions/2026-04-09-jepa/pre-read) | [Notes](sessions/2026-04-09-jepa/) |
 | Apr 16 | SSMs & Mamba | Albert Gu (CMU) | — | [Pre-Read](sessions/2026-04-16-ssms/pre-read) | [Notes](sessions/2026-04-16-ssms/) |
 | Apr 23 | Ultra-Scale Training | Nouamane Tazi (Hugging Face) | — | [Pre-Read](sessions/2026-04-23-ultra-scale-training/pre-read) | — |
 | Apr 30 | TBA | TBD | — | — | — |
