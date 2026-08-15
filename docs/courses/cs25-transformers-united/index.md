@@ -31,10 +31,6 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ---
 
-**Note:** Some pre-reads are based on speaker research only, with topics still TBD. These will be updated as the course announces topics. Check the official course site for the latest schedule.
-
----
-
 ## Schedule
 
 | Date | Topic | Speaker(s) | Slides | Pre-Read | Session Notes |
@@ -42,12 +38,12 @@ This page tracks my notes, speaker research, and key insights from the course.
 | Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Pre-Read](sessions/2026-04-02-overview/pre-read) | [Notes](sessions/2026-04-02-overview/) |
 | Apr 9 | JEPA & World Models | Hazel Nam & Lucas Maes (Brown) | [Slides](https://drive.google.com/file/d/1bF5Yfzf-FG5iNIAgsXn2DwVD3l3ymvZW/view) | [Pre-Read](sessions/2026-04-09-jepa/pre-read) | [Notes](sessions/2026-04-09-jepa/) |
 | Apr 16 | SSMs & Mamba | Albert Gu (CMU) | — | [Pre-Read](sessions/2026-04-16-ssms/pre-read) | [Notes](sessions/2026-04-16-ssms/) |
-| Apr 23 | Ultra-Scale Training | Nouamane Tazi (Hugging Face) | — | [Pre-Read](sessions/2026-04-23-ultra-scale-training/pre-read) | — |
-| Apr 30 | TBA | TBD | — | — | — |
-| May 7 | TBD | Andrew Lampinen (Anthropic) | — | [Pre-Read](sessions/2026-05-07-tbd/pre-read) | — |
-| May 14 | TBD | Vivek Natarajan (DeepMind) | — | [Pre-Read](sessions/2026-05-14-tbd/pre-read) | — |
-| May 21 | TBA | TBD | — | — | — |
-| May 28 | TBD | Charles Frye (Modal) | — | [Pre-Read](sessions/2026-05-28-tbd/pre-read) | — |
+| Apr 23 | Ultra-Scale Training | Nouamane Tazi (Hugging Face) | [Slides](https://drive.google.com/file/d/1dxdC76Rk_o6UEd5AqhHjp0rapsxYOR6j/view) | [Pre-Read](sessions/2026-04-23-ultra-scale-training/pre-read) | — |
+| Apr 30 | Future of Pretraining | Nouamane Tazi (Hugging Face) | [Slides](https://drive.google.com/file/d/1dxdC76Rk_o6UEd5AqhHjp0rapsxYOR6j/view) | [Pre-Read](sessions/2026-04-30-future-of-pretraining/pre-read) | — |
+| May 7 | Generalization Gap | Andrew Lampinen (Anthropic) | [Slides](https://drive.google.com/file/d/1-YIOa5Yal4RCjAsV-0tnW_NNDGbY1GTo/view) | [Pre-Read](sessions/2026-05-07-generalization-gap/pre-read) | [Notes](sessions/2026-05-07-generalization-gap/) |
+| May 14 | Collaborative AI Agents | Vivek Natarajan (DeepMind) | — | [Pre-Read](sessions/2026-05-14-collaborative-ai-agents/pre-read) | — |
+| May 21 | Native Multimodal Intelligence | Victoria Lin (Thinking Machines) | [Slides](https://drive.google.com/file/d/10Doblrt3Le_FpbVQoMP0DbuCIO3rtWPW/view) | [Pre-Read](sessions/2026-05-21-native-multimodal-intelligence/pre-read) | [Notes](sessions/2026-05-21-native-multimodal-intelligence/) |
+| May 28 | Serving Transformers | Charles Frye (Modal) | — | [Pre-Read](sessions/2026-05-28-serving-transformers/pre-read) | — |
 
 ---
 
@@ -85,4 +81,4 @@ This course is particularly relevant for:
 
 ---
 
-*Last updated: 2026-04-22*
+*Last updated: 2026-08-15*
