@@ -13,6 +13,7 @@ date: 2026-05-21
 **Speaker:** Victoria Lin (Thinking Machines)
 **Topic:** From Language Models to Native Multimodal Intelligence
 **Slides:** [Link](https://drive.google.com/file/d/10Doblrt3Le_FpbVQoMP0DbuCIO3rtWPW/view)
+**Video:** [▶ YouTube](https://www.youtube.com/watch?v=NDdc39KYqDU)
 **Status:** ✅ Slide insights extracted
 
 ---

@@ -13,6 +13,7 @@ date: 2026-05-07
 **Speaker:** Andrew Lampinen (Anthropic)
 **Topic:** Distinct Modes of Generalization from Parameters and Context, and Paths to Bridge the Gap
 **Slides:** [Link](https://drive.google.com/file/d/1-YIOa5Yal4RCjAsV-0tnW_NNDGbY1GTo/view)
+**Video:** [▶ YouTube](https://www.youtube.com/watch?v=dJtHauhRasc)
 **Status:** ✅ Slide insights extracted
 
 ---

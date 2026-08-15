@@ -33,17 +33,17 @@ This page tracks my notes, speaker research, and key insights from the course.
 
 ## Schedule
 
-| Date | Topic | Speaker(s) | Slides | Pre-Read | Session Notes |
-|------|-------|------------|--------|----------|---------------|
-| Apr 2 | Overview of Transformers | Instructors | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Pre-Read](sessions/2026-04-02-overview/pre-read) | [Notes](sessions/2026-04-02-overview/) |
-| Apr 9 | JEPA & World Models | Hazel Nam & Lucas Maes (Brown) | [Slides](https://drive.google.com/file/d/1bF5Yfzf-FG5iNIAgsXn2DwVD3l3ymvZW/view) | [Pre-Read](sessions/2026-04-09-jepa/pre-read) | [Notes](sessions/2026-04-09-jepa/) |
-| Apr 16 | SSMs & Mamba | Albert Gu (CMU) | — | [Pre-Read](sessions/2026-04-16-ssms/pre-read) | [Notes](sessions/2026-04-16-ssms/) |
-| Apr 23 | Ultra-Scale Training | Nouamane Tazi (Hugging Face) | [Slides](https://drive.google.com/file/d/1dxdC76Rk_o6UEd5AqhHjp0rapsxYOR6j/view) | [Pre-Read](sessions/2026-04-23-ultra-scale-training/pre-read) | — |
-| Apr 30 | Future of Pretraining | Nouamane Tazi (Hugging Face) | [Slides](https://drive.google.com/file/d/1dxdC76Rk_o6UEd5AqhHjp0rapsxYOR6j/view) | [Pre-Read](sessions/2026-04-30-future-of-pretraining/pre-read) | — |
-| May 7 | Generalization Gap | Andrew Lampinen (Anthropic) | [Slides](https://drive.google.com/file/d/1-YIOa5Yal4RCjAsV-0tnW_NNDGbY1GTo/view) | [Pre-Read](sessions/2026-05-07-generalization-gap/pre-read) | [Notes](sessions/2026-05-07-generalization-gap/) |
-| May 14 | Collaborative AI Agents | Vivek Natarajan (DeepMind) | — | [Pre-Read](sessions/2026-05-14-collaborative-ai-agents/pre-read) | — |
-| May 21 | Native Multimodal Intelligence | Victoria Lin (Thinking Machines) | [Slides](https://drive.google.com/file/d/10Doblrt3Le_FpbVQoMP0DbuCIO3rtWPW/view) | [Pre-Read](sessions/2026-05-21-native-multimodal-intelligence/pre-read) | [Notes](sessions/2026-05-21-native-multimodal-intelligence/) |
-| May 28 | Serving Transformers | Charles Frye (Modal) | — | [Pre-Read](sessions/2026-05-28-serving-transformers/pre-read) | — |
+| Date | Topic | Speaker(s) | Video | Slides | Pre-Read | Session Notes |
+|------|-------|------------|-------|--------|----------|---------------|
+| Apr 2 | Overview of Transformers | Instructors | [▶ Video](https://www.youtube.com/watch?v=bHSDPgZYie0) | [Course Slides](https://drive.google.com/file/d/153Gu4BIfpnn6jj6WmXlsyD7kv702zcrB/view) | [Pre-Read](sessions/2026-04-02-overview/pre-read) | [Notes](sessions/2026-04-02-overview/) |
+| Apr 9 | JEPA & World Models | Hazel Nam & Lucas Maes (Brown) | [▶ Video](https://www.youtube.com/watch?v=GBd7iuJkW08) | [Slides](https://drive.google.com/file/d/1bF5Yfzf-FG5iNIAgsXn2DwVD3l3ymvZW/view) | [Pre-Read](sessions/2026-04-09-jepa/pre-read) | [Notes](sessions/2026-04-09-jepa/) |
+| Apr 16 | SSMs & Mamba | Albert Gu (CMU) | [▶ Video](https://www.youtube.com/watch?v=OyimE74UMF8) | — | [Pre-Read](sessions/2026-04-16-ssms/pre-read) | [Notes](sessions/2026-04-16-ssms/) |
+| Apr 23 | Ultra-Scale Training | Nouamane Tazi (Hugging Face) | [▶ Video](https://www.youtube.com/watch?v=I5BKi32IEa8) | [Slides](https://drive.google.com/file/d/1dxdC76Rk_o6UEd5AqhHjp0rapsxYOR6j/view) | [Pre-Read](sessions/2026-04-23-ultra-scale-training/pre-read) | — |
+| Apr 30 | Future of Pretraining | Nouamane Tazi (Hugging Face) | [▶ Video](https://www.youtube.com/watch?v=e_H_tkpCAK4) | [Slides](https://drive.google.com/file/d/1dxdC76Rk_o6UEd5AqhHjp0rapsxYOR6j/view) | [Pre-Read](sessions/2026-04-30-future-of-pretraining/pre-read) | — |
+| May 7 | Generalization Gap | Andrew Lampinen (Anthropic) | [▶ Video](https://www.youtube.com/watch?v=dJtHauhRasc) | [Slides](https://drive.google.com/file/d/1-YIOa5Yal4RCjAsV-0tnW_NNDGbY1GTo/view) | [Pre-Read](sessions/2026-05-07-generalization-gap/pre-read) | [Notes](sessions/2026-05-07-generalization-gap/) |
+| May 14 | Collaborative AI Agents | Vivek Natarajan (DeepMind) | [▶ Video](https://www.youtube.com/watch?v=jFdH7n6BAl0) | — | [Pre-Read](sessions/2026-05-14-collaborative-ai-agents/pre-read) | — |
+| May 21 | Native Multimodal Intelligence | Victoria Lin (Thinking Machines) | [▶ Video](https://www.youtube.com/watch?v=NDdc39KYqDU) | [Slides](https://drive.google.com/file/d/10Doblrt3Le_FpbVQoMP0DbuCIO3rtWPW/view) | [Pre-Read](sessions/2026-05-21-native-multimodal-intelligence/pre-read) | [Notes](sessions/2026-05-21-native-multimodal-intelligence/) |
+| May 28 | Serving Transformers | Charles Frye (Modal) | [▶ Video](https://www.youtube.com/watch?v=ZUdIsRZhWXI) | — | [Pre-Read](sessions/2026-05-28-serving-transformers/pre-read) | — |
 
 ---
 
